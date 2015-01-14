@@ -1,0 +1,249 @@
+[
+  {
+    "DayOfWeek": 1,
+    "Title": "Homity pie",
+    "Time": "60 minutes",
+    "Menu": [
+      "Mushrooms on toast",
+      "Spicy roasted root veg soup",
+      "Celery and carrot with tzatziki dip"
+    ],
+    "Body": [
+      {
+        "Title": "Mushrooms on toast",
+        "Body": "<p>Toast two slices of <em>wholemeal bread from a 400g loaf</em>, and top with tasty button or closed <strong>mushrooms</strong>, pan fried in <strong>low calorie spray</strong>. This quick and easy breakfast is perfect for starting your day! Follow with an <strong>apple</strong> and bunch of <strong>grapes</strong>.</p>" 
+      },
+      {
+        "Title": "Spicy roasted root veg soup",
+        "Body": "<p>This tasty and <strong>delicious soup</strong> is full of flavour and great to help kick-start your weight loss. For added substance, dive in with <strong>Slimming World wedges</strong>. Enjoy <strong>grapes</strong> and <strong>bananas</strong> for dessert.</p>",
+        "Recipe": ["D8AE9926C76C4AE19BACEF72984FD0FD","458D8C1519A2496B8F7D2DBA15AA18C9"]
+      },
+      {
+        "Title": "Homity pie",
+        "Body": "<p>Tuck into this delicious healthy <strong>homity pie</strong> made from <strong>potatoes, leeks, onions, peas</strong> and <em>cheese</em>. Serve with a huge <strong>garden salad</strong>. For pud, tuck into a bowl of <strong>fat free yogurt</strong> with <strong>blueberries</strong> and <strong>raspberries</strong>.</p>",
+        "Recipe": "3D98D450AAED42D49E116B54BC7595A9"
+      },
+      {
+        "Title": "Snacks: wherever, whenever and however much you like!",
+        "Body": "<p><strong>Celery</strong> and <strong>carrot</strong> sticks dipped in <strong>homemade tzatziki</strong> dip (<strong>fat free plain yogurt</strong>, <strong>cucumber, mint</strong> and <strong>garlic</strong>). Plus fresh <strong>fruit</strong> whenever you like!</p>"
+      }
+    ],
+     "Images": [
+      {
+        "URL": ""
+      }
+      ]
+  },
+    {
+    "DayOfWeek": 2,
+    "Title": "Indian vegetable curry",
+    "Time": "60 minutes",
+    "Menu": [
+      "Sausage, mushrooms & tomatoes",
+      "Cheesy beans on toast",
+      "Cucumber with fat free natural cottage cheese"
+    ],
+    "Body": [
+      {
+        "Title": "Sausage, mushrooms & tomatoes",
+        "Body": "<p>Tuck into <strong>Quorn low fat sausages, mushrooms</strong> and <strong>tinned tomatoes</strong>. Follow with <strong>strawberries</strong>, <strong>raspberries</strong> and <strong>grapes</strong>.</p>"
+      },
+      {
+        "Title": "Cheesy beans on toast",
+        "Body": "<p>A classic and good old favourite, tuck into a tin (or two) of <strong>baked beans</strong> on top of 2 toasted slices of bread from a <em>400g wholemeal loaf</em>. Grate <em>30g of cheddar</em> on top and watch it melt before you dive in! You could even turn it into a cheesy bean toastie! Follow with juicy <strong>pear</strong> and <strong>melon</strong> slices.</p>"
+      },
+      {
+        "Title": "Indian vegetable curry",
+        "Body": "<p>Serve lashings of this creamy <strong>vegetable curry</strong> over boiled <strong>rice</strong> and enjoy your ‘fakeaway.’ <strong>Ginger</strong>, <strong>chilli</strong>, <strong>turmeric</strong> and <strong>garlic</strong> create a subtle yet spicy combination for this delicious curry. Follow your meal with an <strong>exotic fruit salad</strong>, including <strong>mango</strong>, <strong>pineapples</strong>, <strong>kiwi</strong> and <strong>melon</strong>.</p>",
+        "Recipe": "A518BA7DF8BB4BB8AC776543DE8BB2D9"
+      },
+      {
+        "Title": "Snacks: wherever, whenever and however much you like!",
+        "Body": "<p>Dip slices of <strong>cucumber</strong> into f<strong>at free natural cottage cheese</strong> and munch on throughout the day, roll up <strong>Quorn chicken</strong> style slices and dip away! Enjoy <strong>fresh fruit</strong> whenever you want!</p>"
+      }
+    ],
+     "Images": [
+      {
+        "URL": ""
+      }
+      ]
+  },
+    {
+    "DayOfWeek": 3,
+    "Title": "Red pepper, spinach and sweet potato tortilla",
+    "Time": "30-60 minutes",
+    "Menu": [
+      "Scrambled eggs on toast",
+      "Spaghetti bolognese",
+      "Sweet potato wedges and homemade tasty dip"
+    ],
+    "Body": [
+      {
+        "Title": "Scrambled eggs on toast",
+        "Body": "<p>Scramble 2 (or more) <strong>eggs</strong> over a medium heat and add seasoning to taste. Toast 2 slices of bread from a <em>400g wholemeal loaf</em> and tip the scrambled <strong>eggs</strong> on top. If you fancy tomato or brown sauce add 1 Syn per tsp.</p>"
+      },
+      {
+        "Title": "Red pepper, spinach & sweet potato tortilla",
+        "Body": "<p>Healthy and tasty, this <strong>tortilla</strong> is packed with <strong>onions</strong>, <strong>sweet potatoes</strong>, p<strong>eppers</strong>, and <strong>spinach</strong>. Serve with a large <strong>garden salad</strong>.</p>",
+        "Recipe": "B786BC4CB2404380A7610AA21F0A0AF6"
+      },
+      {
+        "Title": "Spaghetti Bolognese",
+        "Body": "<p>Serve lashings of this creamy <strong>vegetable curry</strong> over boiled <strong>rice</strong> and enjoy your ‘fakeaway.’ <strong>Ginger</strong>, <strong>chilli</strong>, <strong>turmeric</strong> and <strong>garlic</strong> create a subtle yet spicy combination for this delicious curry. Follow your meal with an <strong>exotic fruit salad</strong>, including <strong>mango</strong>, <strong>pineapples</strong>, <strong>kiwi</strong> and <strong>melon</strong>.</p>"
+      },
+      {
+        "Title": "Snacks: wherever, whenever and however much you like!",
+        "Body": "<p>Rustle up some <strong>sweet potato</strong> wedges and make your own tasty dip &#8211; chop up a red <strong>chilli</strong>, chopped <strong>coriander</strong> and a squeeze of <strong>lemon juice</strong>, add to <strong>fat free plain yogurt</strong>, mix well and hey presto... a delicious dip for your wedges.</p>"
+      }
+    ],
+     "Images": [
+      {
+        "URL": ""
+      }
+      ]
+  },
+    {
+    "DayOfWeek": 4,
+    "Title": "Fruity porridge",
+    "Time": "30 minutes",
+    "Menu": [
+      "Garlic mushroom jackets",
+      "Quick vegetable risotto",
+      "Hard boiled eggs, carrots and peppers with homemade houmous"
+    ],
+    "Body": [
+      {
+        "Title": "Fruity porridge",
+        "Body": "<p>Make a bowl of porridge using <em>35g porridge oats</em> and milk from your allowance. Top with a dollop of <strong>fat-free natural yogurt</strong>, <strong>frozen berries</strong> and 1 level tsp runny honey drizzled over (1 Syn).</p>"
+      },
+      {
+        "Title": "Garlic mushroom jackets",
+        "Body": "<p>Pop a <strong>potato</strong> or two in the oven and &#8216;bake&#8217; until crispy and brown. Make up a saucepan of delicious <strong>garlic mushrooms</strong> and tuck in whilst hot! Creamy and delicious, and you can have seconds!</p>"
+      },
+      {
+        "Title": "Quick vegetable risotto",
+        "Body": "<p>Enjoy a bowl or two of this delicious and filling <strong>veg risotto</strong>. Packed with <strong>onions</strong>, <strong>courgettes</strong>, <strong>greens beans</strong>, <strong>cherry tomatoes</strong>, and any other <strong>veg</strong> you fancy!</p><p>Follow with a refreshing <strong>fruit salad</strong> bowl with all your favourite fresh <strong>fruits</strong>.</p>",
+        "Recipe": "7841F5146A794FFE8F7E82285F18F8A8"
+      },
+      {
+        "Title": "Snacks: wherever, whenever and however much you like!",
+        "Body": "<p>Hard boiled <strong>eggs</strong>, <strong>carrot</strong> sticks and <strong>peppers</strong> dipped in Slimming World&#8217;s <strong>homemade houmous</strong>.</p>",
+        "Recipe": "61C3A09A58AB4ABBA542E6F1BD34E3E8"
+      }
+    ],
+     "Images": [
+      {
+        "URL": ""
+      }
+      ]
+  },
+    {
+    "DayOfWeek": 5,
+    "Title": "Egg, tomato and mushroom chip bake",
+    "Time": "30-60 minutes",
+    "Menu": [
+      "Tasty cereal and fruit",
+      "Soup and salad",
+      "Couscous with chopped spring onion, cucumber, carrots and tomatoes"
+    ],
+    "Body": [
+      {
+        "Title": "Tasty cereal and fruit",
+        "Body": "<p>Pour 35g <em>Kellogg&#39;s All-Bran Yogurty Flakes</em> in a bowl and top with some of your <em>milk allowance</em>, sweet <strong>strawberries</strong>, <strong>raspberries</strong> and <strong>grapes</strong>.</p>"
+      },
+      {
+        "Title": "Soup and salad",
+        "Body": "<p>Start with a bed of crisp <strong>iceberg lettuce leaves</strong> topped with sliced <strong>beetroot</strong>, <strong>tomato wedges</strong> and <strong>crunchy coleslaw</strong>. Then serve a bowl or two of this smooth and tasty <strong>butternut squash soup</strong>.</p>",
+        "Recipe": "1A766D356E004C93B5DC3C9A6D31619F"
+
+      },
+      {
+        "Title": "Egg, tomato and mushroom chip bake",
+        "Body": "<p>Enjoy spoonfuls of this delicious one pot wonder. <strong>Egg, tomato and mushroom chip bake</strong> is perfect when you&#39;re a little pushed for time and want something comforting and tasty.</p><p>For dessert, chop up a <strong>banana</strong> or two, mix through <strong>fat free plain yogurt</strong> and drizzle 1 tsp of runny honey over (1 Syn).</p>",
+        "Recipe": "AD9D1223ADC44A34B62A8D8AB5FABF8C"
+      },
+      {
+        "Title": "Snacks: wherever, whenever and however much you like!",
+        "Body": "<p>Make up some <strong>couscous</strong> to snack on throughout the day &#8211; add <strong>lemon juice</strong> and <strong>herbs</strong> to your <strong>couscous</strong> with <strong>tomatoes</strong>, <strong>cucumber</strong>, grated <strong>carrot</strong> and <strong>spring onions</strong>.</p>"
+      }
+    ],
+     "Images": [
+      {
+        "URL": ""
+      }
+      ]
+  },
+    {
+    "DayOfWeek": 6,
+    "Title": "Frittata and salad",
+    "Time": "30 minutes",
+    "Menu": [
+      "Boiled eggs 'n' soldiers",
+      "Quorn moussaka with cheese",
+      "Salad, butter beans, broad beans and rice"
+    ],
+    "Body": [
+      {
+        "Title": "Boiled eggs &#8216;n&#8217; soldiers",
+        "Body": "<p>Take 2 slices of bread from a <em>400g wholemeal loaf</em>, toast and cut into strips. Dunk into perfectly-boiled <strong>eggs</strong> (bring a pan of water to the boil, add your <strong>eggs</strong> and time them for exactly 4&frac12; minutes).</p>"
+      },
+      {
+        "Title": "Frittata and salad",
+        "Body": "<p>Baked to perfection, this <strong>vegetable frittata</strong> is delicious and filling, and Free, so you can snack on it throughout the day too! Serve with a <strong>side salad</strong> of <strong>lettuce</strong>, <strong>tomatoes</strong>, <strong>cucumber</strong>, sliced <strong>peppers</strong> and <strong>spring onions</strong>. Finish with juicy chunks of <strong>pineapple</strong>.</p>",
+        "Recipe": "E0C939F6BC6C46628FEB33E111B551C2"
+      },
+      {
+        "Title": "Quorn moussaka with cheese",
+        "Body": "<p>Tasty and packed with flavour, sprinkle <em>30g cheddar cheese</em> on the top of your delicious <strong>Quorn mousakka</strong> before it goes in the oven, and enjoy the cheese topped delight it brings. </p><p>Follow your meal with <strong>blueberries</strong> in <strong>fat free plain yogurt</strong> with 1 level tsp runny honey drizzled through (1 Syn). </p>",
+        "Recipe": "1069C2D314A14421A67E6C9FF5D9B547"
+      },
+      {
+        "Title": "Snacks: wherever, whenever and however much you like!",
+        "Body": "<p>If there&#39;s any spare after lunch, tuck into your leftover <strong>frittata</strong>. Make up a box of <strong>salad</strong>, add <strong>butter beans</strong>, <strong>broad beans</strong> and <strong>rice</strong>.</p>"
+      }
+    ],
+     "Images": [
+      {
+        "URL": ""
+      }
+      ]
+  },
+    {
+    "DayOfWeek": 7,
+    "Title": "Moroccan veg stew with mixed herb couscous",
+    "Time": "60 minutes",
+    "Menu": [
+      "Farmhouse pizza omelette",
+      "Farfalle with beans & vegetables",
+      "Slimming World's famous chips"
+    ],
+    "Body": [
+      {
+        "Title": "Farmhouse pizza omelette",
+        "Body": "<p>Start the day as you mean to go on and delve into this tasty <strong>farmhouse pizza omelette</strong>. Switch the ham for <strong>Quorn ham slices</strong> and enjoy! Have a couple of <strong>bananas</strong> to follow. </p>",
+        "Recipe": "7094FC89D6F345CD80DF355629D87D4A"
+      },
+      {
+        "Title": "Farfalle with beans & vegetables",
+        "Body": "<p>Quick, easy and tastes delicious hot or cold, serve up <strong>farfalle with beans & veg</strong> for lunch with a bowl of your favourite <strong>salad</strong>. Enjoy <strong>fat free plain yogurt</strong> and <strong>fruit</strong> for dessert.</p>",
+        "Recipe": "E8FCE86D961B43DD9FCAE62D1AC29CA9"
+      },
+      {
+        "Title": "Moroccan veg stew & cous cous",
+        "Body": "<p>Enjoy spoonfuls of <strong>Moroccan veg stew & cous cous</strong> with a <em>Weight Watchers wholemeal pitta bread</em>. Packed with flavour, this is a fantastic dish to wow everyone at your table! Indulge in a homemade <strong>cardamom & vanilla panacotta</strong>, made with agar-agar &#8211; a vegetarian-friendly gelatine.</p>",
+        "Recipe": ["C75D3628ECA24FE69726C038CEB30CA8","B02F39A627294AA0B42ED0C0B79E8618"]
+
+      },
+      {
+        "Title": "Snacks: wherever, whenever and however much you like!",
+        "Body": "<p><strong>Slimming World&#39;s famous chips</strong> are fantastic! <strong>Fat free natural cottage cheese</strong> works great as a dip too, or sprinkle some <strong>piri piri</strong> seasoning over to add a bit of spice and flavour.</p>",
+        "Recipe": "B786BC4CB2404380A7610AA21F0A0AF6"
+      }
+    ],
+     "Images": [
+      {
+        "URL": ""
+      }
+      ]
+  }
+]

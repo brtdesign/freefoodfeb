@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:300,600:latin%7CSource+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="assets/css/default.css" type="text/css">
+</head>
+   <body>
+        <h1>theme page</h1>
+        <div id="results" class="wrapper">
+
+        </div>
+   </body>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--  <script src="assets/js/libs/zepto.min.js"></script>-->
+   <script src="assets/js/libs/masonry.min.js"></script>
+
+   <script>
+
+        $(document).ready(function() {
+            getRecipe();
+        });
+
+       //config
+
+
+       var recipesArray = new Array( "vegetable-frittata", "bbq-pork", "vegetable-frittata-2", "bbq-pork-2", "vegetable-frittata-3", "bbq-pork-3" );
+
+       var recipeCount=recipesArray.length;
+       var i=1;
+
+       getRecipe=function(){
+               $.each(recipesArray, function(i, recipeName){
+                   parseRecipe(recipeName);
+               });
+            }
+
+       parseRecipe = function(recipeName){
+
+           // create a holder with loading text. Create this here so we can have anice loading function
+           $('#results').append('<section class="fff-panel loading" id="json-'+recipeName+'">loading&hellip;</section>');
+           recipeURL='json/recipes/' + recipeName + '.json';
+           console.log(i);
+
+                $.ajax({
+                    url: recipeURL, // IE7 wants it to have text/javascript mime
+                    //force to handle it as text
+                  dataType: "text",
+                    success: function(data) {
+                        //data downloaded so we call parseJSON function
+                        //and pass downloaded data
+                        var json = $.parseJSON(data);
+                        //now json variable contains data in json format
+                        //let's display a few items
+                        $('#json-'+recipeName).html('<p class="pre-header">Recipe:</p><img src="http://ri.slimmingworld.com/'+json.PageName+'/homepage.jpg"><h1>' + json.Title + '</h1><p>' + json.GlobalIntroduction+'</p>');
+                        $('#json-'+recipeName).removeClass('loading');
+                        $('#json-'+recipeName).addClass('loaded');
+                    },
+                    error: function (){
+                        $('#json-'+recipeName).html('<p>error</p>');
+                        $('#json-'+recipeName).del;
+                        }
+                });
+
+
+                   if (i==recipeCount){
+                       setupMasonary();
+                   }  else {
+                     i++;
+                   }
+           };
+
+setupMasonary=function(){
+        var $container = $('#results');
+        // initialize
+        $container.masonry({
+          //columnWidth: 60,
+          itemSelector: '.fff-panel'
+        });
+
+};
+
+       $('.fff-panel').click(function(){
+           $(this).width(600);
+           console.log('click');
+       })
+
+   </script>
+</html>

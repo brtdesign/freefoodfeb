@@ -1,0 +1,82 @@
+/* ######################################################### */
+/*                CALLS TO ALL THE PARTIALS                  */
+/* ######################################################### */
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_reset";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_variables-global";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_helpers";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_utilities";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_mixins";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_navigation";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_typography";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_buttons";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_tables";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_icons";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_forms";
+
+/* #####################################################
+copied from group register - should be in lib?
+#####################################################*/
+
+html {
+    background-color:#000;
+    background-image:url('//groupregister.slimmingworld.com/assets/images/backgrounds/320/bg-pizza-full.jpg'); // all about the pizza by default
+    background-position:center;
+    background-size: cover; // must be prefixed - prepros doing it at the moment.
+    background-attachment:fixed;
+    min-height:100%;
+   @media screen and (min-width:520px) {
+       box-shadow: inset 0px 0px 64px 0px rgba(0, 0, 0, 0.95); // inset it backwards so the form input 'hovers' over the content
+   }
+}
+
+
+$breakpoints: 320 768 1280 1920; // used as the actual breakpoint in px, and is the directory structure path.
+    @each $breakpoint in $breakpoints {
+        @media screen and (min-width:#{$breakpoint}px) {
+            html.noaccount,  html.hadaccount {
+                background-image:url('//groupregister.slimmingworld.com/assets/images/backgrounds/#{$breakpoint}/bg-doughballs.jpg');
+            }
+            html.register1 {
+                background-image:url('//groupregister.slimmingworld.com/assets/images/backgrounds/#{$breakpoint}/bg-sauce.jpg');
+            }
+            html.register2 {
+                background-image:url('//groupregister.slimmingworld.com/assets/images/backgrounds/#{$breakpoint}/bg-construction.jpg');
+            }
+            html, html.register2 {
+                background-image:url('//groupregister.slimmingworld.com/assets/images/backgrounds/#{$breakpoint}/bg-pizza-full.jpg');
+            }
+        }
+    }
+
+body {
+    padding:$gutter/2;
+}
+
+.wrapper {
+    max-width:960px;
+    width:100%;
+    margin:auto;
+    outline:1px solid #fff;
+    background-color:rgba(255,255,255,0.2);
+}
+
+.fff-panel {
+    padding:10px;
+    margin:$gutter/2;
+    border-radius:2px;
+
+        &.loading {
+            background:rgba(#fff, 0.25);
+            }
+        &.loaded {
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.95);
+            background:rgba(#fff, 0.95);
+            transition:$default-transition;
+        }
+
+    @media screen and (min-width:540px) {
+        width:50%;
+        float:left;
+        clear:none;
+    }
+}
