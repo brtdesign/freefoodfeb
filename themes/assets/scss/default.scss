@@ -1,0 +1,241 @@
+/* ######################################################### */
+/*                CALLS TO ALL THE PARTIALS                  */
+/* ######################################################### */
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_reset";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_variables-global";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_helpers";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_utilities";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_mixins";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_navigation";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_typography";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_buttons";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_tables";
+//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_icons";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_forms";
+
+
+/* #####################################################
+
+Local Variables
+
+###################################################### */
+
+$lime-green:#D5DC31;
+$dark-green:#42A058;
+$slate-grey:#23262a;
+
+// not sure who thought these two shades of green go well together. they look awful. probably one of the 'real' designers. not us pretend web people.
+
+/* #####################################################
+Font declarations
+###################################################### */
+
+@font-face {
+    font-family: 'harabarahanditalic';
+    src: url('//www.slimmingworld.com/assets/fonts/harabarahand-webfont.eot');
+    src: url('//www.slimmingworld.com/assets/fonts/harabarahand-webfont.eot?#iefix') format('embedded-opentype'),
+         url('//www.slimmingworld.com/assets/fonts/harabarahand-webfont.woff2') format('woff2'),
+         url('//www.slimmingworld.com/assets/fonts/harabarahand-webfont.woff') format('woff'),
+         url('//www.slimmingworld.com/assets/fonts/harabarahand-webfont.ttf') format('truetype'),
+         url('//www.slimmingworld.com/assets/fonts/harabarahand-webfont.svg#harabarahanditalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ####################################################
+
+copied from group register - should be in lib?
+
+#####################################################*/
+
+html {
+    background-color:#dfdfdf;
+    background-image:url('../images/backgrounds/768/primary.jpg');
+    background-position: right bottom; // we want the free food feb graphic in shot
+    background-size: cover; // must be prefixed - prepros doing it at the moment.
+    background-attachment:fixed;
+    min-height:100%;
+   @media screen and (min-width:520px) {
+       box-shadow: inset 0px 0px 64px 0px rgba(0, 0, 0, 0.95);
+   }
+}
+
+
+$breakpoints: 320 768 1280 1920; // used as the actual breakpoint in px, and is the directory structure path.
+    @each $breakpoint in $breakpoints {
+        @media screen and (min-width:#{$breakpoint}px) {
+            html.noaccount,  html.hadaccount {
+                background-image:url('../images/backgrounds/#{$breakpoint}/primary.jpg');
+            }
+            html.register1 {
+                background-image:url('../images/backgrounds/#{$breakpoint}/primary.jpg');
+            }
+            html.register2 {
+                background-image:url('../images/backgrounds/#{$breakpoint}/primary.jpg');
+            }
+            html, html.register2 {
+                background-image:url('../images/backgrounds/#{$breakpoint}/primary.jpg');
+            }
+        }
+    }
+
+body {
+    padding:$gutter/2;
+
+}
+.wrapper {
+    position:relative;
+    max-width:960px;
+    width:100%;
+    margin:auto;
+}
+
+
+
+
+/* ##############################################
+
+Theme 'Cards' layout
+
+###############################################*/
+
+
+.fff-header {
+    margin:auto;
+    width:95%;
+    max-width:600px;
+    margin-bottom:2em;
+        img {
+            width:100%;
+        }
+    }
+
+
+.theme__holder{
+    position:relative;
+    width:100%;
+    margin:0;
+}
+
+.loading {
+   & .theme__card {
+        opacity:0;
+
+    }
+}
+
+
+
+    .theme__card {
+        opacity:1;
+        transition:opacity 1255ms ease-in-out;
+        transition:margin-top 1255ms ease-in-out;
+        box-shadow:1px 1px 3px 1px rgba(#000, 0.45), 0px 0px 96px 18px rgba(#fff, 0.85);
+        margin: 28px 1.5%;
+        background-color:#fff;
+        //border:3px dotted $slate-grey;
+        border:1px solid lighten($slate-grey, 30%);
+        padding:3px;
+        border-radius:6px;
+        width:30.3%; // set the desktop size as default so we dont have to mess about for IE8
+        float:left;
+        ///padding-top:66%; // gives fluid height in proportion to the image
+
+
+
+
+        &:hover {
+
+            }
+        &--one {
+
+        }
+
+        &--two {
+
+            & h1 span:first-child {
+                margin-right:-5px; //  kerning by selecting the first span that the arctext.js creates
+            }
+        }
+        &--three {
+
+        }
+
+        &--four {
+            & h1 span:first-child {
+                margin-right:-5px; //  kerning by selecting the first span that the arctext.js creates
+            }
+        }
+
+       &--five {
+
+       }
+
+         @media screen and (max-width:539px){
+            width:96%;
+            margin:28px 2%;
+        }
+
+        @media screen and (min-width:540px) and (max-width:880px){
+            width:46%;
+            margin:28px 2%;
+        }
+
+        a {
+            line-height:0;
+            display:block; // force to encapsulate img correctly chrome:40
+        }
+
+    }
+
+
+        .theme__card__header {
+            width:100%;
+            max-width:288px;
+            padding:3px 10px 4px 10px;
+            height:3.0em;
+            margin:auto;
+            position:absolute;
+            top:-46px;
+            left:0;
+            right:0;
+            background:transparent url(../images/svg/green-header.svg) center center no-repeat;
+            background-size: cover;
+            font-family:harabarahanditalic;
+            font-size:1.5em;
+            line-height:1.95;
+            color:$slate-grey;
+            text-shadow: 0px 0px 3px lighten($lime-green, 20%);
+            text-align:center;
+
+            @media screen and (max-width:319px){
+                width:88%;
+                margin-top:12px;
+            }
+        }
+
+        .theme__card__image {
+            width:100%;
+            border-radius:4px;
+            box-shadow: inset 0px 0px 5px 9px rgba(0,0,0,0.75);
+        }
+
+
+
+ .secondary-header {
+ font-family: 'Sorts Mill Goudy', serif;
+
+ }
+
+//}
+
+.fff-panel {
+    padding:$gutter/2;
+    margin:$gutter/2;
+    border-radius:2px;
+    width:100%;
+    float:left;
+}
+
+

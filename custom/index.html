@@ -20,16 +20,30 @@
    <script>
 
         $(document).ready(function() {
-            getRecipe();
+          setupMasonary();
+          getRecipe();
+          panelResizer();
         });
 
-       //config
+        $(window).load(function() {
+
+        });
 
 
-       var recipesArray = new Array( "vegetable-frittata", "bbq-pork", "vegetable-frittata-2", "bbq-pork-2", "vegetable-frittata-3", "bbq-pork-3" );
+      var $container = $('#results');
 
-       var recipeCount=recipesArray.length;
-       var i=1;
+       setupMasonary=function(){
+            $container.masonry({
+              itemSelector: '.fff-panel'
+            });
+       };
+
+
+
+
+
+       // recipe array function
+       var recipesArray = new Array( "vegetable-frittata", "bbq-pork", "vegetable-frittata-2", "bbq-pork-2", "vegetable-frittata-3", "bbq-pork-3", "vegetable-frittata-4", "bbq-pork-4" );
 
        getRecipe=function(){
                $.each(recipesArray, function(i, recipeName){
@@ -42,50 +56,51 @@
            // create a holder with loading text. Create this here so we can have anice loading function
            $('#results').append('<section class="fff-panel loading" id="json-'+recipeName+'">loading&hellip;</section>');
            recipeURL='json/recipes/' + recipeName + '.json';
-           console.log(i);
 
                 $.ajax({
                     url: recipeURL, // IE7 wants it to have text/javascript mime
                     //force to handle it as text
-                  dataType: "text",
+                    dataType: "text",
                     success: function(data) {
                         //data downloaded so we call parseJSON function
                         //and pass downloaded data
                         var json = $.parseJSON(data);
                         //now json variable contains data in json format
                         //let's display a few items
-                        $('#json-'+recipeName).html('<p class="pre-header">Recipe:</p><img src="http://ri.slimmingworld.com/'+json.PageName+'/homepage.jpg"><h1>' + json.Title + '</h1><p>' + json.GlobalIntroduction+'</p>');
+                        $('#json-'+recipeName).html('<p class="pre-header">Recipe</p><img src="http://ri.slimmingworld.com/'+json.PageName+'/homepage.jpg"><h1>' + json.Title + '</h1><p>' + json.GlobalIntroduction+'</p>');
                         $('#json-'+recipeName).removeClass('loading');
                         $('#json-'+recipeName).addClass('loaded');
+
+//                        //tell masonary we've added something
+                      elem='#json-'+recipeName;
+                      $container.masonry('prepended', $(elem));
+         container.masonry('layout');
                     },
+
                     error: function (){
                         $('#json-'+recipeName).html('<p>error</p>');
                         $('#json-'+recipeName).del;
-                        }
+                      }
                 });
-
-
-                   if (i==recipeCount){
-                       setupMasonary();
-                   }  else {
-                     i++;
-                   }
            };
 
-setupMasonary=function(){
-        var $container = $('#results');
-        // initialize
-        $container.masonry({
-          //columnWidth: 60,
-          itemSelector: '.fff-panel'
-        });
 
-};
+       // try to use masonary stamp to create space and shift everything out the way
 
-       $('.fff-panel').click(function(){
-           $(this).width(600);
-           console.log('click');
-       })
+       panelResizer=function(){
+            $('.fff-panel').click(function(){
+             // $container.masonry('unstamp', $('.stamped'));
+                $('.fff-panel').removeClass('stamped');
+                $(this).addClass('stamped');
+                //$container.masonry('stamp', $(this));
+                $container.masonry();
+             });
+
+
+// close ready
+        };
+
+
 
    </script>
 </html>
