@@ -101,75 +101,101 @@
    <script src="assets/js/libs/jquery.transit.min.js"></script>
 
    <script>
-    $(document).ready(function() { // shoudl be window loaded
+    $(document).ready(function() { 
+        
+       setupMasonary(); 
+        
+       $('.theme__holder').removeClass('loading');
+        
+       $('.theme__card__header').arctext({radius: 280});
+        
+    // event listener for the individual cards
+       themeListener();  
+        
+        
 
-            setupMasonary();
 
-           $('.theme__holder').removeClass('loading');
-
-           $('.theme__card__header').arctext({radius: 280});
-
-            themeListener();
+        
+}); // close $ready
 
 
+
+setupMasonary=function(){
+   // arrange items using masonary
+        var $container = $('.theme__holder');
+        $container.masonry({
+          itemSelector: '.theme__card'
         });
+   };
 
-
-// arrange items using masonary
-       setupMasonary=function(){
-            var $container = $('.theme__holder');
-            $container.masonry({
-              itemSelector: '.theme__card'
-            });
-       };
-
-// click event listeners on the theme cards
-    themeListener =function(){
-        $('.theme__card').click(function(event){
-            createNavigationThumb($(this));
-            event.preventDefault;
-
-
-        })
-    }
+themeListener = function(){
+    // click event listeners on the theme cards
+    $('.theme__card').click(function(event){
+        event.preventDefault;
+        createNavigationThumb($(this));
+        createAllThumbs();                    
+    });
+};
 
 // function to animate into position as a thumbnail item
 createNavigationThumb = function(elem){
 
-                   elem.transition({ // requires transit.js
-                            top:0,
-                            left:0,
-                            scale:0.5,
-                            rotate:'-360deg',
-                            opacity:'0',
-                            },
-                             255, // timing in ms
-                             //'cubic-bezier(0.10,0.35, 0.2, 0.25)'
-                             'easeOutSine'
-                             /*linear ease in out in-out snap easeOutCubic easeInOutCubic easeInCirc easeOutCirc easeInOutCirc easeInExpo easeOutExpo easeInOutExpo easeInQuad easeOutQuad easeInOutQuad easeInQuart easeOutQuart easeInOutQuart easeInQuint easeOutQuint easeInOutQuint easeInSine easeOutSine easeInOutSine easeInBack easeOutBack easeInOutBack*/
-                            )
-                               elem.transition({
-                               rotate:'360deg',
-                               opacity:'1',
-                               left:0,
-                               top:0
-                               },
-                                123,
-                                'easeOutSine'
-                                 );
+    /*
+    try to keep a constant speed by basing the timing on the distance to travel
+    */
+    elem.transition({
+    scale:1.2,
+    rotate:'12deg'
+    },
+    125,
+    'ease'
+    ),
+  
 
+    elem.transition({ // requires transit.js
+    top:0,
+    left:0,
+    scale:0.5,
+    rotate:'-360deg',
+    opacity:'0',
+    },
+    275, 
+    'easeInOutSine'
+    ),
+    
+    elem.transition({
+    rotate:'360deg',
+    opacity:'1',
+    left:0,
+    top:0
+    },
+    275,
+    'easeOutSine'
+     )
 
-                               createAllThumbs();
-                               }
+// unbind resize when we have nav in place
+    
+/*linear ease in out in-out snap easeOutCubic easeInOutCubic easeInCirc easeOutCirc easeInOutCirc easeInExpo easeOutExpo easeInOutExpo easeInQuad easeOutQuad easeInOutQuad easeInQuart easeOutQuart easeInOutQuart easeInQuint easeOutQuint easeInOutQuint easeInSine easeOutSine easeInOutSine easeInBack easeOutBack easeInOutBack*/
+    
+}   
 
 createAllThumbs=function(){
+    
+        var cards = $('.theme__card');
+        var cardArray = $.makeArray(cards); // Convert the NodeList to an Array
 
-            $('.theme__holder section').each(function(i) {
-                $(this).delay((i++) * 100, createNavigationThumb($(this)) );
-            })
-
-       }
-
+    
+        $.each(cards, function(i, val) {
+            setTimeout(function() {
+                
+                createNavigationThumb();
+                console.log(i);
+                
+               
+            }, i * 125);
+        });
+   };
+       
 
 
 
