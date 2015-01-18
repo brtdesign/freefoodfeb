@@ -132,11 +132,16 @@ themeListener = function(){
     // click event listeners on the theme cards
     $('.theme__card').click(function(event){
         event.preventDefault;
+        
         createNavigationThumb($(this));
+        
+       
         createAllThumbs();                    
     });
 };
 
+var thumbPosY=0;       
+       
 // function to animate into position as a thumbnail item
 createNavigationThumb = function(elem){
 
@@ -145,7 +150,7 @@ createNavigationThumb = function(elem){
     */
     elem.transition({
     scale:1.2,
-    rotate:'12deg'
+    //rotate:'12deg'
     },
     125,
     'ease'
@@ -154,9 +159,9 @@ createNavigationThumb = function(elem){
 
     elem.transition({ // requires transit.js
     top:0,
-    left:0,
+    left:thumbPosY,
     scale:0.5,
-    rotate:'-360deg',
+    //rotate:'-360deg',
     opacity:'0',
     },
     275, 
@@ -164,9 +169,9 @@ createNavigationThumb = function(elem){
     ),
     
     elem.transition({
-    rotate:'360deg',
+   // rotate:'360deg',
     opacity:'1',
-    left:0,
+    left:thumbPosY,
     top:0
     },
     275,
@@ -176,23 +181,23 @@ createNavigationThumb = function(elem){
 // unbind resize when we have nav in place
     
 /*linear ease in out in-out snap easeOutCubic easeInOutCubic easeInCirc easeOutCirc easeInOutCirc easeInExpo easeOutExpo easeInOutExpo easeInQuad easeOutQuad easeInOutQuad easeInQuart easeOutQuart easeInOutQuart easeInQuint easeOutQuint easeInOutQuint easeInSine easeOutSine easeInOutSine easeInBack easeOutBack easeInOutBack*/
-    
+    thumbPosY+=140;
 }   
 
 createAllThumbs=function(){
     
         var cards = $('.theme__card');
-        var cardArray = $.makeArray(cards); // Convert the NodeList to an Array
-
+        var cardArray = $.makeArray(cards); // Convert the NodeList to an Arra
     
-        $.each(cards, function(i, val) {
+        $.each(cardArray, function(i, val) {
+               
             setTimeout(function() {
                 
-                createNavigationThumb();
-                console.log(i);
+                createNavigationThumb($(val));
+                //console.log(thisElem);
                 
                
-            }, i * 125);
+            }, i * 205);
         });
    };
        
