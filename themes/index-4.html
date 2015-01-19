@@ -13,82 +13,81 @@
 
 </head>
    <body>
-      <div class="wrapper">
 
-       <h1 class="fff-header">
+      <div class="wrapper">
+      <h1 class="fff-header">
        <!-- need to fix this onerror'ing as a generic -->
         <img src="assets/images/svg/fff-header.svg" onerror="this.onerror=null; this.src='image.png'" alt="Free Food February">
        </h1>
+     <nav class="navigation" role="navigation"><a href="themes" id="js-themes-nav"><b>&larr;</b> Show all themes</a></nav>
+
+
             <div class="theme__holder loading">
-
               <section class="theme__card theme__card--one"><h1 class="theme__card__header">come slim with me</h1>
-                  <a href="#theme-one">
-
+                  <a href="#slim-with-me" class="theme__card__link">
                       <img src="assets/images/invites/thumb1.jpg" class="theme__card__image">
-
                   </a>
               </section>
               <section class="theme__card theme__card--two"><h1 class="theme__card__header">Fakeaway treat night</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb2.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--three"><h1 class="theme__card__header">hangover party</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb3.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--four"><h1 class="theme__card__header">Valentines dinner</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb4.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--five"><h1 class="theme__card__header">budget party</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb1.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--six"><h1 class="theme__card__header">Sunday lunch</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb2.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--seven"><h1 class="theme__card__header">Chinese banquet</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb3.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--eight"><h1 class="theme__card__header">theme eight</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb4.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--nine"><h1 class="theme__card__header">theme nine</h1>
-                  <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb1.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--ten"><h1 class="theme__card__header">theme ten</h1>
-                   <a href="#theme-one">
+                  <a href="#slim-with-me" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb2.jpg" class="theme__card__image">
-
                   </a>
               </section>
 
@@ -102,20 +101,11 @@
 
    <script>
     $(document).ready(function() {
-
        setupMasonary();
-
        $('.theme__holder').removeClass('loading');
-
        $('.theme__card__header').arctext({radius: 280});
-
-    // event listener for the individual cards
+    // click event listener for the individual cards
        themeListener();
-
-
-
-
-
 }); // close $ready
 
 
@@ -129,80 +119,83 @@ setupMasonary=function(){
    };
 
 themeListener = function(){
+    // listener on navigation item
+    $('#js-themes-nav').click(function(event){
+        event.preventDefault();
+        fadeAllThumbs('in');
+    });
+
     // click event listeners on the theme cards
-    $('.theme__card').click(function(event){
+    $('.theme__card__link').click(function(event){
+        $(this).addClass('visited');
         event.preventDefault;
-
-        createNavigationThumb($(this));
-
-
-        createAllThumbs();
+        fadeCard($(this).parent(), '0.5', '0'); // force this one as we want it to dissapear immediately
+        fadeAllThumbs('out'); // can be in or out#
+        var pageToLoad=($(this)).attr('href');
+        loadThemePage(pageToLoad);
     });
 };
 
-var thumbPosY=0;
-
-// function to animate into position as a thumbnail item
-createNavigationThumb = function(elem){
-
-    /*
-    try to keep a constant speed by basing the timing on the distance to travel
-    */
-    elem.transition({
-    scale:1.15,
-    //rotate:'12deg'
-    },
-    225,
-    'ease'
-    ),
-
-
+// function to animate opacity and scale
+fadeCard = function(elem, cardScale, cardOpacity){
     elem.transition({ // requires transit.js
-    top:0,
-    left:thumbPosY,
-    scale:0.5,
-    //rotate:'-360deg',
-    opacity:'1',
-    },
-    275,
-    'easeInOutSine'
-    ),
+    scale:cardScale,
+    opacity:cardOpacity,
+//    rotateY: '360deg'
 
-    elem.transition({
-    //rotate:'360deg',
-    opacity:'1',
-    left:thumbPosY,
-    top:0
     },
     275,
     'easeOutSine'
-     )
-
-// unbind resize when we have nav in place
-
-/*linear ease in out in-out snap easeOutCubic easeInOutCubic easeInCirc easeOutCirc easeInOutCirc easeInExpo easeOutExpo easeInOutExpo easeInQuad easeOutQuad easeInOutQuad easeInQuart easeOutQuart easeInOutQuart easeInQuint easeOutQuint easeInOutQuint easeInSine easeOutSine easeInOutSine easeInBack easeOutBack easeInOutBack*/
-    thumbPosY+=140;
+    )
 }
 
-createAllThumbs=function(){
 
-        var cards = $('.theme__card');
-        var cardArray = $.makeArray(cards); // Convert the NodeList to an Arra
+fadeAllThumbs=function(inOrOut){
+    // some basic vars dependent on wether we are going in or out
+    if  (inOrOut=='out'){
+        var cardScale="0.5";
+        var cardOpacity="0";
+        var navOpacity="1";
+        var navPosition="-16px"; // matches the original value set in css. not very maintainable
+        var delayNav="450"; // we want the nav to delay when its sliding in, but not if its sliding out
+    } else {
+        var cardScale="1";
+        var cardOpacity="1";
+        var navOpacity="0";
+        var navPosition="-172px";
+        var delayNav="0"; // start immediately if its been clicked to fade the thumbs back in
+    }
 
+    //loop through the thumbs and fade them out
         $.each(cardArray, function(i, val) {
-
             setTimeout(function() {
-
-                createNavigationThumb($(val));
-                //console.log(thisElem);
-
-
-            }, (i-1) * 205);
+                fadeCard($(val), cardScale, cardOpacity);
+            }, (i) * 125);
         });
-   };
 
 
+    // fade + slide the nav in or out
+    setTimeout(function() {
+    $('#js-themes-nav').transition({
+            opacity:navOpacity,
+            left:navPosition,
+        }, 350); // animation timing
+    }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately
 
+}; // close fadeAllThumbs
+
+
+loadThemePage=function(whichPage){
+
+
+    loadURL=whichPage.substring(1); //remove the #
+        console.log(loadURL);
+}
+
+
+    // store all the card onjects in an array, we loop through them later to create the sequential animations etc
+    var cards = $('.theme__card');
+    var cardArray = $.makeArray(cards);
 
 
 

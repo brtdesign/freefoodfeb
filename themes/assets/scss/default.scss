@@ -23,6 +23,7 @@ Local Variables
 $lime-green:#D5DC31;
 $dark-green:#42A058;
 $slate-grey:#23262a;
+$sw-red:#ED1941;
 
 // not sure who thought these two shades of green go well together. they look awful. probably one of the 'real' designers. not us pretend web people.
 
@@ -89,9 +90,42 @@ body {
     max-width:960px;
     width:100%;
     margin:auto;
+    background-color:rgba(#fff, 0.5);
+    border:3px dotted $lime-green;
+    border-radius:12px;
 }
 
 
+
+/* ##############################################
+
+Back to themes
+
+###############################################*/
+
+.navigation {
+    font:1.25em 'Sorts Mill Goudy', serif;
+     a{
+         color:$sw-red;
+     }
+}
+
+.js {
+     .navigation {
+
+     }
+}
+
+#js-themes-nav {
+    opacity:0;
+    background:#fff url('../images/svg/green-banner.svg') center right no-repeat;
+    background-size: cover;
+    display:block;
+    width:300px;
+    padding:1em 2em;
+    position:relative; // transit.js needs this
+    left:-172px;
+}
 
 
 /* ##############################################
@@ -106,6 +140,7 @@ Theme 'Cards' layout
     width:95%;
     max-width:600px;
     margin-bottom:2em;
+    text-align:center;
         img {
             width:100%;
         }
@@ -115,7 +150,8 @@ Theme 'Cards' layout
 .theme__holder{
     position:relative;
     width:100%;
-    margin:0;
+    margin-top:3em;
+
 }
 
 .loading {
@@ -131,7 +167,7 @@ Theme 'Cards' layout
         opacity:1;
         transition:opacity 1255ms ease-in-out;
         transition:margin-top 1255ms ease-in-out;
-        box-shadow:1px 1px 3px 1px rgba(#000, 0.45), 0px 0px 96px 18px rgba(#fff, 0.85);
+        box-shadow:1px 1px 3px 1px rgba(#000, 0.35);
         margin: 28px 1.5%;
         background-color:#fff;
         //border:3px dotted $slate-grey;
@@ -187,6 +223,10 @@ Theme 'Cards' layout
             display:block; // force to encapsulate img correctly chrome:40
         }
 
+        &.visited {
+             border:1px solid lighten($sw-red, 0.85);
+             scale:1.1;
+        }
     }
 
 
@@ -208,7 +248,6 @@ Theme 'Cards' layout
             color:$slate-grey;
             text-shadow: 0px 0px 3px lighten($lime-green, 20%);
             text-align:center;
-
             @media screen and (max-width:319px){
                 width:88%;
                 margin-top:12px;
