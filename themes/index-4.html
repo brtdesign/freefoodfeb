@@ -171,6 +171,7 @@ fadeAllThumbs=function(inOrOut){
             setTimeout(function() {
                 fadeCard($(val), cardScale, cardOpacity);
             }, (i+1) * 125);
+            
         });
 
 
@@ -180,18 +181,54 @@ fadeAllThumbs=function(inOrOut){
             opacity:navOpacity,
             left:navPosition,
         }, 350); // animation timing
-    }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately
+    }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately to click
 
 }; // close fadeAllThumbs
 
 
 loadThemePage=function(whichPage){
 
-
-    loadURL=whichPage.substring(1); //remove the #
+    loadURL=whichPage.substring(1); //remove the # in the url
         console.log(loadURL);
+    
+    $('.theme__holder').append('<section id="recipe-holder" class="loading">recipe</section>');
+ 
+    parseRecipe();
 }
 
+
+   parseRecipe = function(recipeName){
+
+           // create a holder with loading text. Create this here so we can have anice loading function
+           $('#results').append('<section class="fff-panel loading" id="json-'+recipeName+'">loading&hellip;</section>');
+           recipeURL='json/recipes/' + recipeName + '.json';
+
+                $.ajax({
+                    url: recipeURL, // IE7 wants it to have text/javascript mime
+                    //force to handle it as text
+                    dataType: "text",
+                    success: function(data) {
+                        //data downloaded so we call parseJSON function
+                        //and pass downloaded data
+                        var json = $.parseJSON(data);
+                        //now json variable contains data in json format
+                        //let's display a few items
+                        $('#json-'+recipeName).html('<p class="pre-header">Recipe</p><img src="http://ri.slimmingworld.com/'+json.PageName+'/homepage.jpg"><h1>' + json.Title + '</h1><p>' + json.GlobalIntroduction+'</p>');
+                        $('#json-'+recipeName).removeClass('loading');
+                        $('#json-'+recipeName).addClass('loaded');
+
+//                        //tell masonary we've added something
+                      elem='#json-'+recipeName;
+                      $container.masonry('prepended', $(elem));
+         container.masonry('layout');
+                    },
+
+                    error: function (){
+                        $('#json-'+recipeName).html('<p>error</p>');
+                        $('#json-'+recipeName).del;
+                      }
+                });
+           };
 
     // store all the card onjects in an array, we loop through them later to create the sequential animations etc
     var cards = $('.theme__card');
