@@ -170,7 +170,7 @@ fadeAllThumbs=function(inOrOut){
         $.each(cardArray, function(i, val) {
             setTimeout(function() {
                 fadeCard($(val), cardScale, cardOpacity);
-            }, (i) * 125);
+            }, (i+1) * 125);
         });
 
 
