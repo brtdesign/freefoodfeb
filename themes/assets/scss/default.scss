@@ -349,6 +349,8 @@ border-width: 28px;
 -webkit-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
 -o-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
 border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
+    
+    border-image-slice: 100%;
 
 }
  .secondary-header {

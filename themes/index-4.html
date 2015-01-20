@@ -240,10 +240,9 @@ loadThemePage=function(whichPage){
    // Create a holder with loading text. Create this here so we can have a nice loading function.
    // $('#results').append('<section class="fff-panel loading" id="json-'+whichPage+'">loading&hellip;</section>');
 
-    var pageToLoad=whichPage + ' .menu';
+   var pageToLoad=whichPage + ' .menu'; // just traget the menu element
 
-$('.theme__holder').append('<div class="menu__holder"></div>'); // this will get deleted when we dont need it
-
+   $('.theme__holder').append('<div class="menu__holder"></div>'); // this will get deleted when we dont need it
 
    $('.menu__holder').load(pageToLoad, function(){
             $('.menu__card__header').arctext({radius: 720});
@@ -251,7 +250,10 @@ $('.theme__holder').append('<div class="menu__holder"></div>'); // this will get
                 opacity:1,
                 visibility:'visible',
                 rotate:'-3deg',
-            }, 320)
+            }, 320);
+            
+            // set up the events listeners 
+            recipeClickEvents();
     });
 };
 
@@ -266,16 +268,36 @@ removeThemePage=function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
         fadeAllThumbs('in');
     });
-
-
-
 }
-
-
 
 /* ######################################################
 
-Define the array for the them cards - doesnt seem to work on $ready
+Listener events for recipes
+Needs to be called when the menu load completes
+
+#######################################################*/
+recipeClickEvents=function(){
+        $('.recipe-loader').click(function(event){
+            event.preventDefault();
+            var pageToLoad=$(this).attr('href');
+          
+            animateMenu(pageToLoad);
+        });
+    };
+
+animateMenu=function(pageToLoad){
+    $('.menu').transition({
+           scale:0.65,
+        //position:'absolute',
+            margin:0,
+            rotate:'1deg'
+        }, 255, function(){
+              console.log(pageToLoad);
+    });
+}
+/* ######################################################
+
+Define the array for the theme cards - doesnt seem to work on $ready
 
 #######################################################*/
 
