@@ -29,14 +29,14 @@
                   </a>
               </section>
               <section class="theme__card theme__card--two"><h1 class="theme__card__header">Fakeaway treat night</h1>
-                  <a href="#slim-with-me" class="theme__card__link">
+                  <a href="menus/fakeaway.html" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb2.jpg" class="theme__card__image">
 
                   </a>
               </section>
               <section class="theme__card theme__card--three"><h1 class="theme__card__header">hangover party</h1>
-                  <a href="#slim-with-me" class="theme__card__link">
+                  <a href="menus/hangover.html" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb3.jpg" class="theme__card__image">
 
@@ -193,7 +193,7 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
         var cardOpacity="0";
         var navOpacity="1";
         var navPosition="-16px"; // matches the original value set in css. not very maintainable
-        var delayNav="1850"; // we want the nav to delay when its sliding in, but not if its sliding out
+        var delayNav="1050"; // we want the nav to delay when its sliding in, but not if its sliding out
     } else {
         var cardScale="1";
         var cardOpacity="1";
@@ -216,10 +216,6 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
             }
 
             }, (i+1) * 125);
-
-            // check if were at the last card
-            console.log('i:'+i, 'num cards:'+cardArray.length);
-
 
         });
 
@@ -255,14 +251,13 @@ $('.theme__holder').append('<div class="menu__holder"></div>'); // this will get
                 opacity:1,
                 visibility:'visible',
                 rotate:'-3deg',
-            }, 550)
+            }, 320)
     });
 };
 
 
 
 removeThemePage=function(){
-
     $('.menu').transition({
         opacity:0,
         visibility:'hidden',

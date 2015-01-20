@@ -24,6 +24,7 @@ $lime-green:#D5DC31;
 $dark-green:#42A058;
 $slate-grey:#23262a;
 $sw-red:#ED1941;
+$menu-red:#EC1C25;
 
 // not sure who thought these two shades of green go well together. they look awful. probably one of the 'real' designers. not us pretend web people.
 
@@ -90,9 +91,9 @@ body {
     max-width:960px;
     width:100%;
     margin:auto;
-    background-color:rgba(#fff, 0.5);
-    border:3px dotted $lime-green;
-    border-radius:12px;
+//    background-color:rgba(#fff, 0.5);
+//    border:3px dotted $lime-green;
+//    border-radius:12px;
 }
 
 
@@ -240,7 +241,7 @@ Theme 'Cards' layout
             left:0;
             right:0;
             background:transparent url(../images/svg/green-header.svg) center center no-repeat;
-            background-size: cover;
+            background-size: contain;
             font-family:harabarahanditalic;
             font-size:1.5em;
             line-height:1.95;
@@ -271,21 +272,87 @@ Menu 'Cards' layout
     .menu {
         opacity: 0;
         visibility:hidden; // we fade this in after load();
-        width:50%;
-        outline:1px solid #f00;
-        margin:auto;
+
     }
 }
-     .menu__card__header {
-        position:relative;
-        top:0;
-         max-width:100%;
+ .menu__card__header {
+    color:#fff;
+    height:4.75em;
+    width:120%;
+    max-width:120%;
+    margin:0 -10%;
+    padding-top:18px;
+    top:-52px;
+    background:transparent url(../images/svg/red-banner.svg) center center no-repeat;
+    background-size: contain;
+ }
 
-     }
+.menu {
+     //width:44%;
+    width:440px;
+     border:2em solid $menu-red;
+     margin:auto;
+     border-radius:3px;
+     box-shadow: 1px 1px 2px 3px rgba($slate-grey, 0.55);
+     background-color:#fff;
+}
+
+/*ul*/ .menu__card__dishes, .tagline {
+    font:1.65em/1.2 'Sorts Mill Goudy', serif;
+    color:$slate-grey;
+    list-style:none;
+    text-align:center;
+    margin:2em 01em 1em 1em;
+    padding:0.5em;
+    border:3px dotted  lighten($slate-grey, 80%);
+    border-radius:3px;
+         li {
+            padding:0 0 1.5em 0;
+            margin:1em 0 0 0;
+             }
+ }
+
+.tagline {
+    border:none;
+    color:$sw-red;
+    font-size:1.25em;
+    letter-spacing:-1px;
+
+}
 
 
+/* #################
+
+Valentines
+
+################# */
+.menu--valentines {
+        .menu__card__dishes {
+            li {
+
+            }
+        }
+
+        .tagline {
+            margin-top:0;
+              padding-top:2.5em;
+              background:transparent url(../images/for-processing/heart-divider.gif) center top no-repeat;
+        }
+    }
+
+
+
+.menu.menu--hangover {
+    border-style: dotted;
+border-width: 28px;
+-moz-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
+-webkit-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
+-o-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
+border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
+
+}
  .secondary-header {
- font-family: 'Sorts Mill Goudy', serif;
+     font-family: 'Sorts Mill Goudy', serif;
  }
 
 //}
