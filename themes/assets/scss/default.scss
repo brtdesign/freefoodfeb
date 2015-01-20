@@ -118,7 +118,7 @@ Back to themes
 
 #js-themes-nav {
     opacity:0;
-    background:#fff url('../images/svg/green-banner.svg') center right no-repeat;
+    background:transparent url('../images/svg/green-banner.svg') center right no-repeat;
     background-size: cover;
     display:block;
     width:300px;
@@ -229,8 +229,7 @@ Theme 'Cards' layout
         }
     }
 
-
-        .theme__card__header {
+        .theme__card__header, .menu__card__header {
             width:100%;
             max-width:288px;
             padding:3px 10px 4px 10px;
@@ -256,15 +255,37 @@ Theme 'Cards' layout
 
         .theme__card__image {
             width:100%;
+            height:100%; // just trying this so we dont need imagesLoaded.js
             border-radius:4px;
             box-shadow: inset 0px 0px 5px 9px rgba(0,0,0,0.75);
         }
 
 
+/* ##############################################
+
+Menu 'Cards' layout
+
+###############################################*/
+
+.theme__holder {
+    .menu {
+        opacity: 0;
+        visibility:hidden; // we fade this in after load();
+        width:50%;
+        outline:1px solid #f00;
+        margin:auto;
+    }
+}
+     .menu__card__header {
+        position:relative;
+        top:0;
+         max-width:100%;
+
+     }
+
 
  .secondary-header {
  font-family: 'Sorts Mill Goudy', serif;
-
  }
 
 //}

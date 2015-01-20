@@ -24,7 +24,7 @@
 
             <div class="theme__holder loading">
               <section class="theme__card theme__card--one"><h1 class="theme__card__header">come slim with me</h1>
-                  <a href="#slim-with-me" class="theme__card__link">
+                  <a href="menus/valentines.html" class="theme__card__link">
                       <img src="assets/images/invites/thumb1.jpg" class="theme__card__image">
                   </a>
               </section>
@@ -43,7 +43,7 @@
                   </a>
               </section>
               <section class="theme__card theme__card--four"><h1 class="theme__card__header">Valentines dinner</h1>
-                  <a href="#slim-with-me" class="theme__card__link">
+                  <a href="valentines.html" class="theme__card__link">
 
                       <img src="assets/images/invites/thumb4.jpg" class="theme__card__image">
 
@@ -79,14 +79,11 @@
               </section>
               <section class="theme__card theme__card--nine"><h1 class="theme__card__header">theme nine</h1>
                   <a href="#slim-with-me" class="theme__card__link">
-
                       <img src="assets/images/invites/thumb1.jpg" class="theme__card__image">
-
                   </a>
               </section>
               <section class="theme__card theme__card--ten"><h1 class="theme__card__header">theme ten</h1>
                   <a href="#slim-with-me" class="theme__card__link">
-
                       <img src="assets/images/invites/thumb2.jpg" class="theme__card__image">
                   </a>
               </section>
@@ -94,47 +91,82 @@
            </div>
        </div>
    </body>
+   <!-- need to concat these -->
    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
    <script src="assets/js/libs/jquery.arctext.js"></script>
+   <script src="assets/js/libs/imagesloaded.min.js"></script>
    <script src="assets/js/libs/masonry.min.js"></script>
    <script src="assets/js/libs/jquery.transit.min.js"></script>
 
    <script>
-    $(document).ready(function() {
+
+/* ######################################################
+
+Doc ready functions
+
+#######################################################*/
+
+$(document).ready(function() {
        setupMasonary();
        $('.theme__holder').removeClass('loading');
        $('.theme__card__header').arctext({radius: 280});
+
     // click event listener for the individual cards
        themeListener();
 }); // close $ready
 
+/* ######################################################
 
+Instantiate masonary
+
+#######################################################*/
 
 setupMasonary=function(){
    // arrange items using masonary
-        var $container = $('.theme__holder');
+    var $container = $('.theme__holder');
+    $container.imagesLoaded( function() {
         $container.masonry({
           itemSelector: '.theme__card'
+            });
         });
    };
+
+
+
+/* ######################################################
+
+Event listeners for clicks on the thumb cards
+
+#######################################################*/
 
 themeListener = function(){
     // listener on navigation item
     $('#js-themes-nav').click(function(event){
         event.preventDefault();
-        fadeAllThumbs('in');
+        // remove the menu thats showing
+        removeThemePage();
+        // fade in the thumbnails
+
     });
 
     // click event listeners on the theme cards
     $('.theme__card__link').click(function(event){
+        event.preventDefault();
         $(this).addClass('visited');
-        event.preventDefault;
         fadeCard($(this).parent(), '0.5', '0'); // force this one as we want it to dissapear immediately
-        fadeAllThumbs('out'); // can be in or out#
         var pageToLoad=($(this)).attr('href');
-        loadThemePage(pageToLoad);
+        fadeAllThumbs('out', pageToLoad); // can be in or out#
+
+        //load the main theme page, consisting of a menu with links to recipes
     });
 };
+
+
+/* ######################################################
+
+The animations for cards fading in and out
+
+#######################################################*/
 
 // function to animate opacity and scale
 fadeCard = function(elem, cardScale, cardOpacity){
@@ -142,22 +174,26 @@ fadeCard = function(elem, cardScale, cardOpacity){
     scale:cardScale,
     opacity:cardOpacity,
 //    rotateY: '360deg'
-
     },
     275,
     'easeOutSine'
     )
 }
 
+/* ######################################################
 
-fadeAllThumbs=function(inOrOut){
+Fade in or out the theme card thumbs
+
+#######################################################*/
+
+fadeAllThumbs=function(inOrOut, pageToLoad){
     // some basic vars dependent on wether we are going in or out
     if  (inOrOut=='out'){
         var cardScale="0.5";
         var cardOpacity="0";
         var navOpacity="1";
         var navPosition="-16px"; // matches the original value set in css. not very maintainable
-        var delayNav="450"; // we want the nav to delay when its sliding in, but not if its sliding out
+        var delayNav="1850"; // we want the nav to delay when its sliding in, but not if its sliding out
     } else {
         var cardScale="1";
         var cardOpacity="1";
@@ -166,12 +202,25 @@ fadeAllThumbs=function(inOrOut){
         var delayNav="0"; // start immediately if its been clicked to fade the thumbs back in
     }
 
-    //loop through the thumbs and fade them out
+
+    //loop through the thumbs and fade them in or out
         $.each(cardArray, function(i, val) {
             setTimeout(function() {
                 fadeCard($(val), cardScale, cardOpacity);
+
+
+            // if we're on the last card, start to bring in the menu
+            if ((i+1)==cardArray.length && inOrOut=='out'){
+
+               loadThemePage(pageToLoad);
+            }
+
             }, (i+1) * 125);
-            
+
+            // check if were at the last card
+            console.log('i:'+i, 'num cards:'+cardArray.length);
+
+
         });
 
 
@@ -182,59 +231,62 @@ fadeAllThumbs=function(inOrOut){
             left:navPosition,
         }, 350); // animation timing
     }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately to click
+};
 
-}; // close fadeAllThumbs
+/* ######################################################
 
+loadThemePage: main theme page with menu and link to recipes
+
+#######################################################*/
 
 loadThemePage=function(whichPage){
 
-    loadURL=whichPage.substring(1); //remove the # in the url
-        console.log(loadURL);
-    
-    $('.theme__holder').append('<section id="recipe-holder" class="loading">recipe</section>');
- 
-    parseRecipe();
+   // Create a holder with loading text. Create this here so we can have a nice loading function.
+   // $('#results').append('<section class="fff-panel loading" id="json-'+whichPage+'">loading&hellip;</section>');
+
+    var pageToLoad=whichPage + ' .menu';
+
+$('.theme__holder').append('<div class="menu__holder"></div>'); // this will get deleted when we dont need it
+
+
+   $('.menu__holder').load(pageToLoad, function(){
+            $('.menu__card__header').arctext({radius: 720});
+            $('.menu').transition({
+                opacity:1,
+                visibility:'visible',
+                rotate:'-3deg',
+            }, 550)
+    });
+};
+
+
+
+removeThemePage=function(){
+
+    $('.menu').transition({
+        opacity:0,
+        visibility:'hidden',
+         rotate:'3deg',
+    }, 225, function(){
+         $('.menu__holder').remove(); // delete the holder, it gets recreated
+        fadeAllThumbs('in');
+    });
+
+
+
 }
 
 
-   parseRecipe = function(recipeName){
 
-           // create a holder with loading text. Create this here so we can have anice loading function
-           $('#results').append('<section class="fff-panel loading" id="json-'+recipeName+'">loading&hellip;</section>');
-           recipeURL='json/recipes/' + recipeName + '.json';
+/* ######################################################
 
-                $.ajax({
-                    url: recipeURL, // IE7 wants it to have text/javascript mime
-                    //force to handle it as text
-                    dataType: "text",
-                    success: function(data) {
-                        //data downloaded so we call parseJSON function
-                        //and pass downloaded data
-                        var json = $.parseJSON(data);
-                        //now json variable contains data in json format
-                        //let's display a few items
-                        $('#json-'+recipeName).html('<p class="pre-header">Recipe</p><img src="http://ri.slimmingworld.com/'+json.PageName+'/homepage.jpg"><h1>' + json.Title + '</h1><p>' + json.GlobalIntroduction+'</p>');
-                        $('#json-'+recipeName).removeClass('loading');
-                        $('#json-'+recipeName).addClass('loaded');
+Define the array for the them cards - doesnt seem to work on $ready
 
-//                        //tell masonary we've added something
-                      elem='#json-'+recipeName;
-                      $container.masonry('prepended', $(elem));
-         container.masonry('layout');
-                    },
-
-                    error: function (){
-                        $('#json-'+recipeName).html('<p>error</p>');
-                        $('#json-'+recipeName).del;
-                      }
-                });
-           };
+#######################################################*/
 
     // store all the card onjects in an array, we loop through them later to create the sequential animations etc
     var cards = $('.theme__card');
     var cardArray = $.makeArray(cards);
-
-
 
    </script>
 </html>
