@@ -1104,6 +1104,7 @@ Menu 'Cards' layout
   width: 60%;
   clear: none;
   opacity: 0;
+  outline: 1px solid #f00;
 }
 
 .recipe__holder h1 {

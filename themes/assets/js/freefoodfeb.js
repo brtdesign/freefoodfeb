@@ -205,7 +205,8 @@ loadRecipe=function(pageToLoad){
 
             if ($('.recipe__holder')) { // check if one exisits...
                   $('.recipe__holder').transition({ //... and remove it if it does
-                        opacity:0 //fade out
+                        opacity:0, //fade out
+                        top:'+40px'
                   }, 1355, function(){
                       $(this).remove(); // delete
                   })
@@ -214,7 +215,7 @@ loadRecipe=function(pageToLoad){
 
             $('.menu__holder').after('<div class="recipe__holder"></div>');
 
-            $('.recipe__holder').append('<img src="../assets/images/ajaxloader.gif" class="loader">');
+            $('.recipe__holder').append('<img src="../themes/assets/images/ajaxloader.gif" class="loader">');
 
             loadFragment=pageToLoad + ' #main'; // The quotes must have space character at the start.
 
