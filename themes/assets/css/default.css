@@ -983,11 +983,11 @@ Theme 'Cards' layout
   width: 30.3%;
   float: left;
 }
-.theme__card--two h1 span:first-child {
-  margin-right: -5px;
+.theme__card--fakeaway h1 span:first-child, .theme__card--teaparty h1 span:first-child {
+  margin-right: -7px;
 }
-.theme__card--four h1 span:first-child {
-  margin-right: -5px;
+.theme__card--pursefriendly h1 span:first-child, .theme__card--valentines h1 span:first-child, .theme__card--pancakes h1 span:first-child {
+  margin-right: -3px;
 }
 @media screen and (max-width: 539px) {
   .theme__card {
@@ -1066,12 +1066,14 @@ Menu 'Cards' layout
 }
 
 .menu {
-  width: 440px;
+  position: absolute;
+  max-width: 440px;
   border: 2em solid #EC1C25;
-  margin: auto;
   border-radius: 3px;
   box-shadow: 1px 1px 2px 3px rgba(35, 38, 42, 0.55);
   background-color: #fff;
+  margin: auto;
+  transform-origin: 0% 0%;
 }
 
 /*ul*/
@@ -1080,7 +1082,7 @@ Menu 'Cards' layout
   color: #23262a;
   list-style: none;
   text-align: center;
-  margin: 2em 01em 1em 1em;
+  margin: 2em 1em 1em 1em;
   padding: 0.5em;
   border: 3px dotted #f1f2f4;
   border-radius: 3px;
@@ -1097,6 +1099,17 @@ Menu 'Cards' layout
   letter-spacing: -1px;
 }
 
+.recipe__holder {
+  float: right;
+  width: 60%;
+  clear: none;
+  opacity: 0;
+}
+
+.recipe__holder h1 {
+  background: none !important;
+}
+
 /* #################
 
 Valentines
@@ -1109,12 +1122,13 @@ Valentines
 }
 
 .menu.menu--hangover {
-  border-style: dotted;
-  border-width: 28px;
-  -moz-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
-  -webkit-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
-  -o-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
-  border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
+  border-color: #6E88A8;
+  border-style: solid;
+  border-width: 30px;
+  -moz-border-image: url(../images/for-processing/bluechecks.gif) 30 round;
+  -webkit-border-image: url(../images/for-processing/bluechecks.gif) 30 round;
+  -o-border-image: url(../images/for-processing/bluechecks.gif) 30 round;
+  border-image: url(../images/for-processing/bluechecks.gif) 30 round;
 }
 
 .secondary-header {

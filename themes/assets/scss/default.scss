@@ -179,35 +179,17 @@ Theme 'Cards' layout
         float:left;
         ///padding-top:66%; // gives fluid height in proportion to the image
 
-
-
-
-        &:hover {
-
-            }
-        &--one {
-
-        }
-
-        &--two {
-
+        &--fakeaway, &--teaparty {
             & h1 span:first-child {
-                margin-right:-5px; //  kerning by selecting the first span that the arctext.js creates
+                margin-right:-7px; //  kerning by selecting the first span that the arctext.js creates
             }
         }
-        &--three {
 
-        }
-
-        &--four {
+        &--pursefriendly, &--valentines, &--pancakes {
             & h1 span:first-child {
-                margin-right:-5px; //  kerning by selecting the first span that the arctext.js creates
+                margin-right:-3px; //  kerning by selecting the first span that the arctext.js creates
             }
         }
-
-       &--five {
-
-       }
 
          @media screen and (max-width:539px){
             width:96%;
@@ -287,14 +269,16 @@ Menu 'Cards' layout
     background-size: contain;
  }
 
+
 .menu {
-     //width:44%;
-    width:440px;
+     position:absolute;
+     max-width:440px;
      border:2em solid $menu-red;
-     margin:auto;
      border-radius:3px;
      box-shadow: 1px 1px 2px 3px rgba($slate-grey, 0.55);
      background-color:#fff;
+     margin:auto;
+     transform-origin: 0% 0%; // used by transit.js to scale
 }
 
 /*ul*/ .menu__card__dishes, .tagline {
@@ -302,7 +286,7 @@ Menu 'Cards' layout
     color:$slate-grey;
     list-style:none;
     text-align:center;
-    margin:2em 01em 1em 1em;
+    margin:2em 1em 1em 1em;
     padding:0.5em;
     border:3px dotted  lighten($slate-grey, 80%);
     border-radius:3px;
@@ -310,15 +294,28 @@ Menu 'Cards' layout
             padding:0 0 1.5em 0;
             margin:1em 0 0 0;
              }
- }
+         }
 
 .tagline {
     border:none;
     color:$sw-red;
     font-size:1.25em;
     letter-spacing:-1px;
-
 }
+
+// appended when we $.load
+.recipe__holder {
+    float:right;
+    width:60%;
+    clear:none;
+    opacity:0;
+}
+
+.recipe__holder {
+        h1 {
+            background:none !important; // this is set inline
+        }
+    }
 
 
 /* #################
@@ -326,6 +323,7 @@ Menu 'Cards' layout
 Valentines
 
 ################# */
+
 .menu--valentines {
         .menu__card__dishes {
             li {
@@ -343,16 +341,16 @@ Valentines
 
 
 .menu.menu--hangover {
-    border-style: dotted;
-border-width: 28px;
--moz-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
--webkit-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
--o-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
-border-image: url(../images/for-processing/bluechecks.gif) 41 27 27 repeat;
-    
-    border-image-slice: 100%;
-
+    border-color:#6E88A8;
+    border-style: solid;
+    border-width: 30px; // this is all a bit hacky
+    -moz-border-image: url(../images/for-processing/bluechecks.gif) 30  round;
+    -webkit-border-image: url(../images/for-processing/bluechecks.gif) 30 round;
+    -o-border-image: url(../images/for-processing/bluechecks.gif) 30  round;
+    border-image: url(../images/for-processing/bluechecks.gif) 30 round;
 }
+
+
  .secondary-header {
      font-family: 'Sorts Mill Goudy', serif;
  }
