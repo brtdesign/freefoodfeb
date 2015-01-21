@@ -93,7 +93,7 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
         var cardOpacity="0";
         var navOpacity="1";
         var navPosition="-16px"; // matches the original value set in css. not very maintainable
-        var delayNav="1050"; // we want the nav to delay when its sliding in, but not if its sliding out
+        var delayNav="1500"; // we want the nav to delay when its sliding in, but not if its sliding out
     } else {
         var cardScale="1";
         var cardOpacity="1";
@@ -151,7 +151,7 @@ loadThemePage=function(whichPage){
                 left:'240px',
                 visibility:'visible',
                 rotate:'-3deg',
-            }, 320);
+            }, 450);
 
             // set up the events listeners
             recipeClickEvents();
@@ -192,7 +192,7 @@ animateMenu=function(pageToLoad){
            scale:0.65,
         //position:'absolute',
             left:0,
-            rotate:'1deg'
+            rotate:'2deg'
         }, 255, function(){
 
         loadRecipe(pageToLoad);
@@ -230,7 +230,18 @@ parseRecipe=function(){
     $('.recipe__holder').transition({
         opacity:1,
         left:'+40px'
-    }, 700)
+    }, 250)
+}
+
+removeRecipe=function(){
+     $('.recipe__holder').transition({
+        opacity:0,
+        left:'-40px'
+    }, 2150, function(){
+         
+         $('.recipe__holder').remove;
+     
+     })
 }
 /* ######################################################
 
