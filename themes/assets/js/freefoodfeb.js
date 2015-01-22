@@ -102,6 +102,8 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
         var delayNav="0"; // start immediately if its been clicked to fade the thumbs back in
     }
 
+    
+
 
     //loop through the thumbs and fade them in or out
         $.each(cardArray, function(i, val) {
@@ -111,7 +113,6 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
 
             // if we're on the last card, start to bring in the menu
             if ((i+1)==cardArray.length && inOrOut=='out'){
-
                loadThemePage(pageToLoad);
             }
 
@@ -119,14 +120,14 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
 
         });
 
-
-    // fade + slide the nav in or out
+      // fade + slide the nav in or out
     setTimeout(function() {
     $('#js-themes-nav').transition({
             opacity:navOpacity,
             left:navPosition,
-        }, 350); // animation timing
+        }, 500); // animation timing
     }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately to click
+  
 };
 
 /* ######################################################
@@ -163,7 +164,7 @@ loadThemePage=function(whichPage){
 
 removeThemePage=function(){
     $('.menu').transition({
-        opacity:0.2,
+        opacity:0,
         visibility:'hidden',
          rotate:'3deg',
     }, 225, function(){
@@ -189,15 +190,13 @@ recipeClickEvents=function(){
     };
 
 animateMenu=function(pageToLoad){
-
     $('.menu').transition({
-           scale:0.65,
+           scale:0.75,
         //position:'absolute',
             left:0,
             rotate:'2deg'
         }, 255, function(){
         loadRecipe(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
-
     });
 }
 
@@ -242,15 +241,16 @@ removeRecipe=function(){
         left:'-4px'
     }, 250, function(){
          $('.recipe__holder').remove();
-         $('.recipe--image').remove();
      });
+    
+    $('.recipe--image').remove();
 
-//
+
 //    $('.recipe--image').transition({
 //        opacity:0
 //
 //    }, 250, function(){
-//         $('.recipe--image').remove();
+//         $('.recipe--image').del();
 //    })
 }
 
@@ -264,13 +264,9 @@ getRecipeImage=function(path){
 
     // get an image equivilent to the filename
 
-    console.log('get pic ', path);
-
-    var fileNameIndex=path.lastIndexOf("/")+1; // count on the last slash
+    var fileNameIndex=path.lastIndexOf("/")+1; // count to the last slash
     var fileName=path.substr(fileNameIndex); // strip everything before the character we just counted to
-    fileName=fileName.replace('.aspx', '.png'); // change the extention to jpg
-
-    console.log(fileName);
+    fileName=fileName.replace('.aspx', '.png'); // change the extension to jpg
 
     // prepending is easier to deal with stacking order/z-index
     $('body').prepend('<img src="../themes/assets/images/recipes/'+fileName+'" class="recipe--image">');
@@ -278,9 +274,7 @@ getRecipeImage=function(path){
 
     $('.recipe--image').transition({
         opacity:1
-    });
-
-
+    }, 1000);
 }
 
 
