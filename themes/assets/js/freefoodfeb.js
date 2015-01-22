@@ -156,18 +156,21 @@ loadThemePage=function(whichPage){
             // set up the events listeners
             recipeClickEvents();
     });
+            toggleFooter();
 };
 
 
 
 removeThemePage=function(){
     $('.menu').transition({
-        opacity:0,
+        opacity:0.2,
         visibility:'hidden',
          rotate:'3deg',
     }, 225, function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
         fadeAllThumbs('in');
+        toggleFooter();
+        removeRecipe();
     });
 }
 
@@ -181,8 +184,7 @@ recipeClickEvents=function(){
         $('.recipe-loader').click(function(event){
             event.preventDefault();
             var pageToLoad=$(this).attr('href');
-
-            animateMenu(pageToLoad);
+            animateMenu(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
         });
     };
 
@@ -194,19 +196,17 @@ animateMenu=function(pageToLoad){
             left:0,
             rotate:'2deg'
         }, 255, function(){
-
-        loadRecipe(pageToLoad);
+        loadRecipe(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
 
     });
 }
 
 loadRecipe=function(pageToLoad){
 
-
             if ($('.recipe__holder')) { // check if one exisits...
                   $('.recipe__holder').transition({ //... and remove it if it does
                         opacity:0, //fade out
-                        top:'+40px'
+                        top:'+140px'
                   }, 1355, function(){
                       $(this).remove(); // delete
                   })
@@ -214,34 +214,99 @@ loadRecipe=function(pageToLoad){
 
 
             $('.menu__holder').after('<div class="recipe__holder"></div>');
-
             $('.recipe__holder').append('<img src="../themes/assets/images/ajaxloader.gif" class="loader">');
-
             loadFragment=pageToLoad + ' #main'; // The quotes must have space character at the start.
 
-            $('.recipe__holder').load(loadFragment, function(){
-                  parseRecipe();
+            $('.recipe__holder').load(loadFragment, function( response, status, xhr ){
+
+                 showRecipe();
+                 getRecipeImage(pageToLoad);
+
             });
+
         }
 
+// need to strip the img tag from the html rather than hiding it in CSS
 
-
-parseRecipe=function(){
+showRecipe=function( response, status, xhr ){
+    console.log( status, xhr );
     $('.recipe__holder').transition({
         opacity:1,
-        left:'+40px'
+        top:'-102px'
     }, 250)
 }
 
 removeRecipe=function(){
      $('.recipe__holder').transition({
         opacity:0,
-        left:'-40px'
-    }, 2150, function(){
-         
-         $('.recipe__holder').remove;
-     
-     })
+        left:'-4px'
+    }, 250, function(){
+         $('.recipe__holder').remove();
+         $('.recipe--image').remove();
+     });
+
+//
+//    $('.recipe--image').transition({
+//        opacity:0
+//
+//    }, 250, function(){
+//         $('.recipe--image').remove();
+//    })
+}
+
+/* #############################################
+
+GET CUSTOM RECIPE IMAGES
+
+############################################## */
+
+getRecipeImage=function(path){
+
+    // get an image equivilent to the filename
+
+    console.log('get pic ', path);
+
+    var fileNameIndex=path.lastIndexOf("/")+1; // count on the last slash
+    var fileName=path.substr(fileNameIndex); // strip everything before the character we just counted to
+    fileName=fileName.replace('.aspx', '.png'); // change the extention to jpg
+
+    console.log(fileName);
+
+    // prepending is easier to deal with stacking order/z-index
+    $('body').prepend('<img src="../themes/assets/images/recipes/'+fileName+'" class="recipe--image">');
+
+
+    $('.recipe--image').transition({
+        opacity:1
+    });
+
+
+}
+
+
+/* ######################################################
+
+Define the array for the theme cards - doesnt seem to work on $ready
+
+#######################################################*/
+
+var footerShowing=false; // set this as a var so we can just call toggleFooter without worrying about its current state
+
+toggleFooter = function(){
+    if (footerShowing) {
+        $('.theme--supplemental').transition({
+           bottom:'-200px'
+        });
+        footerShowing=false;
+    }
+    else {
+       setTimeout(function() {
+        $('.theme--supplemental').transition({
+            bottom:0
+        });
+       }, 1200);
+        footerShowing=true;
+    }
 }
 /* ######################################################
 

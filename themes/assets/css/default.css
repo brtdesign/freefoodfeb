@@ -912,6 +912,7 @@ html {
 }
 body {
   padding: 10px;
+  padding-bottom: 200px;
 }
 
 .wrapper {
@@ -919,6 +920,30 @@ body {
   max-width: 960px;
   width: 100%;
   margin: auto;
+}
+
+/* ##############################################
+
+Footer with party bag info etc
+
+###############################################*/
+/* footer */
+.theme--supplemental {
+  position: absolute;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -120px;
+  background-color: rgba(24, 23, 22, 0.9);
+  text-align: center;
+  padding: 1em;
+  border-top: 1px solid #333;
+  box-shadow: 0 -3px 3px rgba(35, 38, 42, 0.5);
+}
+.theme--supplemental p {
+  color: #fff;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 /* ##############################################
@@ -953,7 +978,6 @@ Theme 'Cards' layout
   margin: auto;
   width: 95%;
   max-width: 600px;
-  margin-bottom: 2em;
   text-align: center;
 }
 .fff-header img {
@@ -1070,7 +1094,7 @@ Menu 'Cards' layout
   max-width: 440px;
   border: 2em solid #EC1C25;
   border-radius: 3px;
-  box-shadow: 1px 1px 2px 3px rgba(35, 38, 42, 0.55);
+  box-shadow: 1px 1px 12px 6px rgba(35, 38, 42, 0.45);
   background-color: #fff;
   margin: auto;
   transform-origin: 0% 0%;
@@ -1097,18 +1121,6 @@ Menu 'Cards' layout
   color: #ED1941;
   font-size: 1.25em;
   letter-spacing: -1px;
-}
-
-.recipe__holder {
-  float: right;
-  width: 60%;
-  clear: none;
-  opacity: 0;
-  outline: 1px solid #f00;
-}
-
-.recipe__holder h1 {
-  background: none !important;
 }
 
 /* #################
@@ -1142,6 +1154,84 @@ Valentines
   border-radius: 2px;
   width: 100%;
   float: left;
+}
+
+/* ##################################################
+
+Recipes
+
+ ################################################## */
+.loader {
+  margin: 3em auto;
+  display: block;
+  background-color: #f00;
+}
+
+.recipe__holder {
+  float: right;
+  width: 60%;
+  clear: none;
+  opacity: 0;
+  position: relative;
+  overflow: auto;
+}
+.recipe__holder h1 {
+  background: none !important;
+  font: 2.25em/1.1 'Sorts Mill Goudy', serif;
+}
+.recipe__holder h2 {
+  font: 1.75em/1.1 'Sorts Mill Goudy', serif;
+}
+
+.recipe__holder {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 2em;
+  box-shadow: 2px 2px 18px rgba(35, 38, 42, 0.5);
+  filter: blur(20px);
+}
+.recipe__holder .panel {
+  border: 1px solid #e5e0e0;
+  background: rgba(229, 227, 226, 0.5);
+  margin-bottom: 0.65em;
+  padding: 0.5em;
+  border-radius: 0 0 4px 4px;
+}
+.recipe__holder .panel ul {
+  list-style: none;
+  font-size: 90%;
+  margin-bottom: 0;
+}
+.recipe__holder .panel li {
+  display: inline-block;
+  margin-right: 1em;
+  min-width: 40%;
+  white-space: nowrap;
+  padding-left: 26px;
+  background: transparent url(http://www.slimmingworld.com/assets/images/ui-elements/recipe-icons.png) 0px 0px no-repeat;
+}
+.recipe__holder .panel .serves-title {
+  background-position: 0px -49px;
+}
+.recipe__holder .panel .syns {
+  white-space: nowrap;
+  background-position: 0px -104px;
+}
+.recipe__holder .panel .syns ul {
+  display: inline;
+  clear: none;
+  font-weight: bold;
+}
+
+.recipe--image {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  opacity: 0;
+}
+
+.printCTA, .ctasignup, .recipe__holder img {
+  display: none;
 }
 
 /*# sourceMappingURL=default.css.map */

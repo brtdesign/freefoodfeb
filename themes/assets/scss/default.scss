@@ -84,18 +84,39 @@ $breakpoints: 320 768 1280 1920; // used as the actual breakpoint in px, and is 
 
 body {
     padding:$gutter/2;
-
+    padding-bottom:200px; // to allow the footer to have position fixed
 }
+
 .wrapper {
     position:relative;
     max-width:960px;
     width:100%;
     margin:auto;
-//    background-color:rgba(#fff, 0.5);
-//    border:3px dotted $lime-green;
-//    border-radius:12px;
 }
 
+/* ##############################################
+
+Footer with party bag info etc
+
+###############################################*/
+
+/* footer */ .theme--supplemental {
+    position:absolute; //for browsers that dont 'get' fixed. this may or may not work. probably not.
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:-120px; // this is hidden then slides in to place
+    background-color:rgba(#181716, 0.9);
+    text-align:center;
+    padding:1em;
+    border-top:1px solid #333;
+    box-shadow: 0 -3px 3px rgba($slate-grey, 0.5);
+     p {
+         color:#fff;
+         margin-bottom:0;
+         padding:0;
+     }
+}
 
 
 /* ##############################################
@@ -111,11 +132,7 @@ Back to themes
      }
 }
 
-.js {
-     .navigation {
 
-     }
-}
 
 #js-themes-nav {
     opacity:0;
@@ -140,7 +157,6 @@ Theme 'Cards' layout
     margin:auto;
     width:95%;
     max-width:600px;
-    margin-bottom:2em;
     text-align:center;
         img {
             width:100%;
@@ -161,8 +177,6 @@ Theme 'Cards' layout
 
     }
 }
-
-
 
     .theme__card {
         opacity:1;
@@ -223,7 +237,7 @@ Theme 'Cards' layout
             left:0;
             right:0;
             background:transparent url(../images/svg/green-header.svg) center center no-repeat;
-            background-size: contain;
+            background-size: contain; // so we never crop the bg
             font-family:harabarahanditalic;
             font-size:1.5em;
             line-height:1.95;
@@ -254,7 +268,6 @@ Menu 'Cards' layout
     .menu {
         opacity: 0;
         visibility:hidden; // we fade this in after load();
-
     }
 }
  .menu__card__header {
@@ -275,7 +288,7 @@ Menu 'Cards' layout
      max-width:440px;
      border:2em solid $menu-red;
      border-radius:3px;
-     box-shadow: 1px 1px 2px 3px rgba($slate-grey, 0.55);
+     box-shadow: 1px 1px 12px 6px rgba($slate-grey, 0.45);
      background-color:#fff;
      margin:auto;
      transform-origin: 0% 0%; // used by transit.js to scale
@@ -303,20 +316,7 @@ Menu 'Cards' layout
     letter-spacing:-1px;
 }
 
-// appended when we $.load
-.recipe__holder {
-    float:right;
-    width:60%;
-    clear:none;
-    opacity:0;
-    outline:1px solid #f00;
-}
 
-.recipe__holder {
-        h1 {
-            background:none !important; // this is set inline
-        }
-    }
 
 
 /* #################
@@ -326,18 +326,12 @@ Valentines
 ################# */
 
 .menu--valentines {
-        .menu__card__dishes {
-            li {
-
+            .tagline {
+                  margin-top:0;
+                  padding-top:2.5em;
+                  background:transparent url(../images/for-processing/heart-divider.gif) center top no-repeat;
             }
         }
-
-        .tagline {
-            margin-top:0;
-              padding-top:2.5em;
-              background:transparent url(../images/for-processing/heart-divider.gif) center top no-repeat;
-        }
-    }
 
 
 
@@ -351,7 +345,6 @@ Valentines
     border-image: url(../images/for-processing/bluechecks.gif) 30 round;
 }
 
-
  .secondary-header {
      font-family: 'Sorts Mill Goudy', serif;
  }
@@ -364,6 +357,98 @@ Valentines
     border-radius:2px;
     width:100%;
     float:left;
+}
+
+/* ##################################################
+
+Recipes
+
+ ################################################## */
+
+
+
+.loader {
+     margin:3em auto;
+     display:block;
+     background-color:#f00; // debug
+}
+
+// appended when we $.load
+.recipe__holder {
+    float:right;
+    width:60%;
+    clear:none;
+    opacity:0;
+    position:relative;
+    overflow:auto;
+    //max-height:600px;
+            h1 {
+            background:none !important; // this is set inline
+            font: 2.25em/1.1 'Sorts Mill Goudy', serif;
+        }
+
+            h2 {
+            font: 1.75em/1.1 'Sorts Mill Goudy', serif;
+            }
+}
+
+
+.recipe__holder {
+    background-color:rgba(#fff, 0.75);
+    padding:2em;
+    box-shadow:2px 2px 18px rgba($slate-grey, 0.5);
+     filter: blur(20px);
+
+    .panel {
+    border: 1px solid #e5e0e0;
+    background: rgba(#e5e3e2, 0.5);
+    margin-bottom: 0.65em;
+    padding:0.5em;
+    border-radius: 0 0 4px 4px;
+    ul {
+        list-style:none;
+        font-size:90%;
+        margin-bottom:0;
+    }
+    li {
+        display:inline-block;
+        margin-right:1em;
+        min-width:40%;
+        white-space:nowrap;
+        padding-left: 26px;
+        background: transparent url(http://www.slimmingworld.com/assets/images/ui-elements/recipe-icons.png) 0px 0px no-repeat;
+    }
+    .serves-title {
+        background-position:0px -49px;
+    }
+
+    .syns {
+        white-space:nowrap;
+        background-position:0px -104px;
+
+        ul {
+            display:inline;
+            clear:none;
+            font-weight:bold;
+            }
+        }
+    }
+}
+
+// massive images that get loaded with recipes. may not be needed
+.recipe--image {
+    position:fixed;
+    bottom:0;
+    right:0;
+    z-index:0;
+    opacity:0;
+
+}
+
+
+// hack hack as we are getting more html back than we need, and dont have time to get JSON on the case instead
+.printCTA, .ctasignup, .recipe__holder img  { // need to strip the images out of this
+   display:none;
 }
 
 
