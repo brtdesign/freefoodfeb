@@ -102,7 +102,13 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
         var delayNav="0"; // start immediately if its been clicked to fade the thumbs back in
     }
 
-    
+      // fade + slide the nav in or out
+    setTimeout(function() {
+    $('#js-themes-nav').transition({
+            opacity:navOpacity,
+            left:navPosition,
+        }, 350); // animation timing
+    }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately to click
 
 
     //loop through the thumbs and fade them in or out
@@ -120,14 +126,8 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
 
         });
 
-      // fade + slide the nav in or out
-    setTimeout(function() {
-    $('#js-themes-nav').transition({
-            opacity:navOpacity,
-            left:navPosition,
-        }, 500); // animation timing
-    }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately to click
-  
+
+
 };
 
 /* ######################################################
@@ -137,7 +137,6 @@ loadThemePage: main theme page with menu and link to recipes
 #######################################################*/
 
 loadThemePage=function(whichPage){
-
    // Create a holder with loading text. Create this here so we can have a nice loading function.
    // $('#results').append('<section class="fff-panel loading" id="json-'+whichPage+'">loading&hellip;</section>');
 
@@ -149,15 +148,16 @@ loadThemePage=function(whichPage){
             $('.menu__card__header').arctext({radius: 720});
             $('.menu').transition({
                 opacity:1,
-                left:'240px',
                 visibility:'visible',
                 rotate:'-3deg',
             }, 450);
 
             // set up the events listeners
             recipeClickEvents();
+            getRecipeImage(whichPage);
     });
             toggleFooter();
+
 };
 
 
@@ -190,11 +190,16 @@ recipeClickEvents=function(){
     };
 
 animateMenu=function(pageToLoad){
+
+    $('.menu__holder').transition({
+        left:0 // the holder is used to set an abolute position on the intial menu view.
+    },255);
+
     $('.menu').transition({
            scale:0.75,
-        //position:'absolute',
-            left:0,
-            rotate:'2deg'
+           left:-40,
+           top:0,
+           rotate:'4deg'
         }, 255, function(){
         loadRecipe(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
     });
@@ -205,7 +210,7 @@ loadRecipe=function(pageToLoad){
             if ($('.recipe__holder')) { // check if one exisits...
                   $('.recipe__holder').transition({ //... and remove it if it does
                         opacity:0, //fade out
-                        top:'+140px'
+
                   }, 1355, function(){
                       $(this).remove(); // delete
                   })
@@ -217,9 +222,8 @@ loadRecipe=function(pageToLoad){
             loadFragment=pageToLoad + ' #main'; // The quotes must have space character at the start.
 
             $('.recipe__holder').load(loadFragment, function( response, status, xhr ){
-
                  showRecipe();
-                 getRecipeImage(pageToLoad);
+
 
             });
 
@@ -230,11 +234,12 @@ loadRecipe=function(pageToLoad){
 showRecipe=function( response, status, xhr ){
     console.log( status, xhr );
     $('.recipe__holder').transition({
-        opacity:1,
-        top:'-102px'
+        opacity:1
     }, 250)
 }
 
+
+//// called when we go back to theme cards [age]
 removeRecipe=function(){
      $('.recipe__holder').transition({
         opacity:0,
@@ -242,21 +247,15 @@ removeRecipe=function(){
     }, 250, function(){
          $('.recipe__holder').remove();
      });
-    
+
     $('.recipe--image').remove();
 
-
-//    $('.recipe--image').transition({
-//        opacity:0
-//
-//    }, 250, function(){
-//         $('.recipe--image').del();
-//    })
 }
 
 /* #############################################
 
-GET CUSTOM RECIPE IMAGES
+GET CUSTOM RECIPE IMAGES. Called when we load in the menus.
+Created as 24 bit png's and crushed with tinypng
 
 ############################################## */
 
@@ -266,7 +265,7 @@ getRecipeImage=function(path){
 
     var fileNameIndex=path.lastIndexOf("/")+1; // count to the last slash
     var fileName=path.substr(fileNameIndex); // strip everything before the character we just counted to
-    fileName=fileName.replace('.aspx', '.png'); // change the extension to jpg
+    fileName=fileName.replace('.html', '.png'); // change the extension to jpg/png
 
     // prepending is easier to deal with stacking order/z-index
     $('body').prepend('<img src="../themes/assets/images/recipes/'+fileName+'" class="recipe--image">');
@@ -274,15 +273,15 @@ getRecipeImage=function(path){
 
     $('.recipe--image').transition({
         opacity:1
-    }, 1000);
+    }, 800);
 }
 
 
 /* ######################################################
 
-Define the array for the theme cards - doesnt seem to work on $ready
+toggle the footer on and off
 
-#######################################################*/
+####################################################### */
 
 var footerShowing=false; // set this as a var so we can just call toggleFooter without worrying about its current state
 
@@ -302,6 +301,22 @@ toggleFooter = function(){
         footerShowing=true;
     }
 }
+
+
+/* ######################################################
+
+toggle the header states
+
+####################################################### */
+
+var headerMaxed=true;
+
+toggleHeader = function (){
+     console.log('toggle header');
+}
+
+
+
 /* ######################################################
 
 Define the array for the theme cards - doesnt seem to work on $ready

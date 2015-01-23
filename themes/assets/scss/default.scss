@@ -59,7 +59,7 @@ html {
     background-attachment:fixed;
     min-height:100%;
    @media screen and (min-width:520px) {
-       box-shadow: inset 0px 0px 64px 0px rgba(0, 0, 0, 0.95);
+       box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
    }
 }
 
@@ -103,12 +103,13 @@ Footer with party bag info etc
 /* footer */ .theme--supplemental {
     position:absolute; //for browsers that dont 'get' fixed. this may or may not work. probably not.
     position:fixed;
+    z-index:999;
     left:0;
     right:0;
     bottom:-120px; // this is hidden then slides in to place
     background-color:rgba(#181716, 0.9);
     text-align:center;
-    padding:1em;
+    padding:0.5em 1em;
     border-top:1px solid #333;
     box-shadow: 0 -3px 3px rgba($slate-grey, 0.5);
      p {
@@ -116,8 +117,18 @@ Footer with party bag info etc
          margin-bottom:0;
          padding:0;
      }
+
+    .btn {
+        margin:0;
+    }
 }
 
+
+.logo {
+    position:absolute;
+    left:10px;
+    top:10px;
+}
 
 /* ##############################################
 
@@ -168,7 +179,6 @@ Theme 'Cards' layout
     position:relative;
     width:100%;
     margin-top:3em;
-
 }
 
 .loading {
@@ -265,99 +275,14 @@ Menu 'Cards' layout
 ###############################################*/
 
 .theme__holder {
+    outline:1px solid #f00;
+    position:relative;
     .menu {
         opacity: 0;
         visibility:hidden; // we fade this in after load();
     }
 }
- .menu__card__header {
-    color:#fff;
-    height:4.75em;
-    width:120%;
-    max-width:120%;
-    margin:0 -10%;
-    padding-top:18px;
-    top:-52px;
-    background:transparent url(../images/svg/red-banner.svg) center center no-repeat;
-    background-size: contain;
- }
 
-
-.menu {
-     position:absolute;
-     max-width:440px;
-     border:2em solid $menu-red;
-     border-radius:3px;
-     box-shadow: 1px 1px 12px 6px rgba($slate-grey, 0.45);
-     background-color:#fff;
-     margin:auto;
-     transform-origin: 0% 0%; // used by transit.js to scale
-}
-
-/*ul*/ .menu__card__dishes, .tagline {
-    font:1.65em/1.2 'Sorts Mill Goudy', serif;
-    color:$slate-grey;
-    list-style:none;
-    text-align:center;
-    margin:2em 1em 1em 1em;
-    padding:0.5em;
-    border:3px dotted  lighten($slate-grey, 80%);
-    border-radius:3px;
-         li {
-            padding:0 0 1.5em 0;
-            margin:1em 0 0 0;
-             }
-         }
-
-.tagline {
-    border:none;
-    color:$sw-red;
-    font-size:1.25em;
-    letter-spacing:-1px;
-}
-
-
-
-
-/* #################
-
-Valentines
-
-################# */
-
-.menu--valentines {
-            .tagline {
-                  margin-top:0;
-                  padding-top:2.5em;
-                  background:transparent url(../images/for-processing/heart-divider.gif) center top no-repeat;
-            }
-        }
-
-
-
-.menu.menu--hangover {
-    border-color:#6E88A8;
-    border-style: solid;
-    border-width: 30px; // this is all a bit hacky
-    -moz-border-image: url(../images/for-processing/bluechecks.gif) 30  round;
-    -webkit-border-image: url(../images/for-processing/bluechecks.gif) 30 round;
-    -o-border-image: url(../images/for-processing/bluechecks.gif) 30  round;
-    border-image: url(../images/for-processing/bluechecks.gif) 30 round;
-}
-
- .secondary-header {
-     font-family: 'Sorts Mill Goudy', serif;
- }
-
-//}
-
-.fff-panel {
-    padding:$gutter/2;
-    margin:$gutter/2;
-    border-radius:2px;
-    width:100%;
-    float:left;
-}
 
 /* ##################################################
 
@@ -438,11 +363,10 @@ Recipes
 // massive images that get loaded with recipes. may not be needed
 .recipe--image {
     position:fixed;
-    bottom:0;
-    right:0;
+    bottom:0px;
+    left:0;
     z-index:0;
     opacity:0;
-
 }
 
 
@@ -452,3 +376,16 @@ Recipes
 }
 
 
+ .secondary-header {
+     font-family: 'Sorts Mill Goudy', serif;
+ }
+
+//}
+
+.fff-panel {
+    padding:$gutter/2;
+    margin:$gutter/2;
+    border-radius:2px;
+    width:100%;
+    float:left;
+}

@@ -1,0 +1,118 @@
+/* #####################################################
+
+Local Variables
+
+###################################################### */
+/*#################
+Basic setup
+###################*/
+.menu__holder {
+  max-width: 560px;
+  position: absolute;
+  left: 50%;
+}
+.menu__holder .menu {
+  left: -50%;
+}
+
+.menu {
+  max-width: 560px;
+  position: relative;
+  z-index: 999;
+  border-radius: 1px;
+  box-shadow: 1px 1px 12px 6px rgba(35, 38, 42, 0.45);
+  -webkit-transform-origin: 0% 0%;
+      -ms-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+}
+.menu ul {
+  background-color: #fff;
+}
+
+/*ul*/
+.menu__card__dishes, .tagline {
+  font: 1.65em/1.2 'Sorts Mill Goudy', serif;
+  color: #23262a;
+  list-style: none;
+  text-align: center;
+  margin: 2em 1em 1em 1em;
+  padding: 1.5em;
+  border: 3px dotted #f1f2f4;
+  border-radius: 3px;
+}
+.menu__card__dishes li, .tagline li {
+  padding: 0 0 1.5em 0;
+  margin: 1em 0 0 0;
+}
+
+.tagline {
+  border: none;
+  color: #ED1941;
+  font-size: 1.25em;
+  letter-spacing: -1px;
+}
+
+.menu__card__header {
+  color: #fff;
+  height: 5.5em;
+  width: 120%;
+  max-width: 120%;
+  margin: 0 -10%;
+  padding-top: 1em;
+  top: -58px;
+  background: transparent url(../images/svg/red-banner.svg) center center no-repeat;
+  background-size: contain;
+  text-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+  margin-top: 0;
+  padding-top: 2.5em;
+  background: transparent url(../images/for-processing/heart-divider.gif) center top no-repeat;
+}
+
+/* #################
+
+Chinese
+
+################# */
+.menu.menu--chinese {
+  background: #F8EEDE url(../images/recipes/chinese-border.gif) center center repeat;
+  padding: 2em;
+  box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.55), 1px 1px 12px 6px rgba(35, 38, 42, 0.25);
+}
+.menu.menu--chinese .inner {
+  padding: 2em;
+  outline: 12px solid rgba(35, 38, 42, 0.2);
+  background: #fff url(../images/recipes/chinese-flowers.jpg) bottom left no-repeat;
+  box-shadow: 3px 3px 2em 0px rgba(51, 51, 51, 0.75);
+  margin-top: -6px;
+}
+.menu.menu--chinese ul {
+  border-color: #7C3136;
+  border-top: 0;
+  padding-top: 102px;
+  margin: -12px 0 0;
+  background: transparent url(../images/recipes/chinese-bird.gif) top 22px right 22px no-repeat;
+}
+.menu.menu--chinese a {
+  color: #7C3136;
+}
+
+/* #################
+
+Valentines
+
+################# */
+/* #################
+
+Hangover
+
+################# */
+.menu.menu--hangover {
+  border-color: #6E88A8;
+  border-style: solid;
+  border-width: 30px;
+  -webkit-border-image: url(../images/for-processing/bluechecks.gif) 30 round;
+  border-image: url(../images/for-processing/bluechecks.gif) 30 round;
+}
