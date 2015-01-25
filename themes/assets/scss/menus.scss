@@ -325,3 +325,99 @@ $dark-blue:#275CAD;
         }
     }
 }
+
+
+
+/* #################
+
+Fakeaway around the world 
+
+################# */
+$fakeaway-world-sandy:#F7CB93;
+$fakeaway-world-darker:#CEAE86;
+.menu.menu--around-world {
+    background: #fefcea;
+    background: -moz-linear-gradient(-45deg,  #fefcea 0%, $fakeaway-world-sandy 70%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#fefcea), color-stop(70%,$fakeaway-world-sandy));
+    background: -webkit-linear-gradient(-45deg,  #fefcea 0%,$fakeaway-world-sandy 70%);
+    background: -o-linear-gradient(-45deg,  #fefcea 0%,$fakeaway-world-sandy 70%);
+    background: -ms-linear-gradient(-45deg,  #fefcea 0%,$fakeaway-world-sandy 70%);
+    background: linear-gradient(135deg,  #fefcea 0%,$fakeaway-world-sandy 70%);
+   
+
+    .inner {
+        padding:6px;
+        //border:1px solid $fakeaway-world-darker;
+        //border-radius:55px;
+        position:relative;
+        overflow:hidden;
+         &:after, &:before {
+            content:'';
+            position:absolute;
+            right:-48px;
+            bottom:-48px;
+            //border:3px solid  #EBBDBC; 
+            border:1px solid $fakeaway-world-darker;
+            width:96px;
+            height:96px;
+            border-radius:48px;
+            background-color:$fakeaway-world-sandy;
+            box-shadow: -6px -6px 0px #fff;
+        }
+        &:before {
+            right:auto;
+            left:-48px;
+            z-index:9999;
+            box-shadow: 6px -6px 0px #fff;
+            background-color:#F9D8AA;
+        }
+    }
+    
+    .menu__card__dishes {
+       border:3px solid  #EBBDBC; 
+        background:#fff url(http://placehold.it/75x75) left center repeat;
+       // border-radius:48px;
+        color:#ccc;  
+        position:relative;
+        overflow:hidden;
+         &:after, &:before {
+           content: '';
+            position: absolute;
+            right: -54px;
+            bottom: -54px;
+            border: 3px solid #EBBDBC;
+            width: 102px;
+            height: 102px;
+            border-radius: 70px;
+            background-color: #fff;
+        }
+        
+        &:before {
+            right:auto;
+            left:-54px;
+        }
+        
+        
+        
+  }
+        
+    a{
+            color:$sw-red;    
+    }
+   
+    .tagline {
+        color:$fakeaway-world-darker;  
+        margin-top:3em;
+    }
+    
+        .divider:after {
+            content:'';
+        }
+    
+    li {
+        padding-bottom:0;
+    }
+    
+
+    
+}
