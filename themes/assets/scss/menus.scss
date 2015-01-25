@@ -11,152 +11,236 @@ $sw-red:#ED1941;
 $menu-red:#EC1C25;
 
 
+/*###############################################################
+
+add to primary css
+
+*/
+
+.recipe--image {
+right:0;
+left:auto;
+}
+
+.recipe--image {
+ z-index:9999 !important;    
+}
+
+.recipe__holder {
+  z-index:99990 !important;      
+}
+
+footer {
+ z-index:99999 !important;    
+}
+
+.kern {
+margin-right:-3px;    
+}
 /*#################
 Basic setup
 ###################*/
 
-
-
 .menu__holder {
     max-width:560px;
-    position:absolute; // we position with this so we can get the menu absolute centre (with relative -50% below). We animate the position of this
-    left:50%;
-    .menu {
-     left:-50%; // specifically nested like this for dev/no js purposes - we dont want it (-50%) when its standalone.html
-    }
+    position:absolute; // we position with this so we can get the menu absolute centre (with 
 }
 
 .menu {
-    max-width:560px;
+     max-width:540px;
      position:relative;
      z-index:999;
-     //border:2.25em solid $menu-red;
+     padding:2.5em;
      border-radius:1px;
-     box-shadow: 1px 1px 12px 6px rgba($slate-grey, 0.45);
+     box-shadow: 1px 1px 18px 6px rgba($slate-grey, 0.35);
      transform-origin: 0% 0%; // used by transit.js to scale
-
-    ul {
-      background-color:#fff;
-    }
-
-    &:after, &:before {
-//
-//  z-index: -1;
-//  position: absolute;
-//  content: "";
-//  bottom: 15px;
-//  left: 10px;
-//  width: 50%;
-//  top: 80%;
-//  max-width:300px;
-//  background: #777;
-//  -webkit-box-shadow: 0 15px 10px #777;
-//  -moz-box-shadow: 0 15px 10px #777;
-//  box-shadow: 0 15px 10px #777;
-//  -webkit-transform: rotate(-3deg);
-//  -moz-transform: rotate(-3deg);
-//  -o-transform: rotate(-3deg);
-//  -ms-transform: rotate(-3deg);
-//  transform: rotate(-3deg);
+    
+//    &:hover {
+//        & a {
+//            //border-bottom: 1px solid currentColor;
+//            text-decoration:underline;
+//            //background-color:#ccc;
+//        }
 //    }
-//
-//    &:after {
-//  -webkit-transform: rotate(3deg);
-//  -moz-transform: rotate(3deg);
-//  -o-transform: rotate(3deg);
-//  -ms-transform: rotate(3deg);
-//  transform: rotate(3deg);
-//  right: 10px;
-//  left: auto;
-    }
-
-    &:before {
-
-    }
 }
 
+
+
+
+.menu__card__dishes {
+ margin:0;   
+ position:relative;
+    a {
+        width:100%;
+        display:block;
+    }
+     a:hover {
+         text-decoration:underline;
+     }
+    a:visited {
+        opacity:0.5;
+    }
+}
 /*ul*/ .menu__card__dishes, .tagline {
-    font:1.65em/1.2 'Sorts Mill Goudy', serif;
+    background-color:#fff;
+    font:1.45em/1.2 'Sorts Mill Goudy', serif;
     color:$slate-grey;
     list-style:none;
     text-align:center;
-    margin:2em 1em 1em 1em;
-    padding:1.5em;
+    padding:1.754em;
     border:3px dotted  lighten($slate-grey, 80%);
     border-radius:3px;
          li {
             padding:0 0 1.5em 0;
-            margin:1em 0 0 0;
+             margin-top:1em;
              }
          }
 
 .tagline {
     border:none;
-    color:$sw-red;
-    font-size:1.25em;
+    font-size:90%;
     letter-spacing:-1px;
+    font-style:italic; // we should bring this in 
 }
-
-
-
-
 
  .menu__card__header {
     color:#fff;
-    height:5.5em;
+    height:5.85em;
     width:120%;
     max-width:120%;
     margin:0 -10%;
     padding-top:1em;
-    top:-58px;
+   // top:-52px;
+     z-index: 999999999;
     background:transparent url(../images/svg/red-banner.svg) center center no-repeat;
     background-size: contain;
-    text-shadow: 0px 0px 1px 1px rgba(#000, 0.2);
+    text-shadow: 0px 2px 1px rgba(#000, 0.1);
  }
 
-    .tagline {
-          margin-top:0;
-          padding-top:2.5em;
-          background:transparent url(../images/for-processing/heart-divider.gif) center top no-repeat;
+
+  .inner {
+      padding:2em;   
+      background-color:#fff;
+//      box-shadow:3px 3px 2em 0px rgba(#333, 0.25);
+}
+
+
+.divider {
+ padding-bottom:1em;
+ position:relative;
+ margin-bottom:1.5em;
+    &:after {
+        content:'~';
+        font-family:serif;
+        width:100%;
+        display:block;
+        font-size:1.5em;
+        line-height:0;
+        color:lighten($slate-grey, 50%);
+        position:absolute;
+        bottom:0;
+        left:0;
     }
+}
+
 
 
 /* #################
 
-Chinese
+Chinese 
 
 ################# */
 
 $menu-chinese:#7C3136;
-
-.menu.menu--chinese {
+$darker-chinese:#E4BA87;
+.menu--chinese {
     background:#F8EEDE url(../images/recipes/chinese-border.gif) center center repeat;
-    padding:2em;
     box-shadow:inset 0 0 3px rgba(#333, 0.55), 1px 1px 12px 6px rgba($slate-grey, 0.25);
     .inner {
-        padding:2em;
-        outline:12px solid rgba($slate-grey, 0.2);
+        outline:12px solid rgba($slate-grey, 0.15);
         background:#fff  url(../images/recipes/chinese-flowers.jpg) bottom left no-repeat;
-        box-shadow:3px 3px 2em 0px rgba(#333, 0.75);
+        box-shadow:3px 3px 2em 0px rgba($slate-grey, 0.55);
         margin-top:-6px;
     }
 
     ul {
         border-color:$menu-chinese;
         border-top:0;
-        padding-top:102px;
+        padding-top:72px;
         margin:-12px 0 0 ;//ten up to the header
         background:transparent url(../images/recipes/chinese-bird.gif) top 22px right 22px no-repeat;
     }
+    
+    li {
+     padding-bottom:0em;
+
+    }
+    
+    .divider {
+     padding-bottom:1.5em;   
+    }
+    
+  
 
     a {
         color:$menu-chinese;
     }
 
-
-
+// kern the captial 'F'
+    .char9 {
+     margin-right:-5px;   
+    }
 }
 
+/* #################
+
+Dinners
+
+################# */
+$dinner-sand:darken(#D2AB66, 10%);
+$dinner-yellow:#FBB020;
+
+.menu--dinner {
+    background:#F8EEDE url(../images/recipes/chinese-border.gif) center center repeat;
+    box-shadow:inset 0 0 3px rgba(#333, 0.55), 1px 1px 12px 6px rgba($slate-grey, 0.25);
+    
+        .menu__card__dishes {
+            border:1px solid $dinner-sand;
+            margin:1.25em;
+            margin-top:2.5em;
+            padding-top:5em;
+            background:#fff url(http://placehold.it/200x100) top 18px center no-repeat;
+            box-shadow: 0 0 1em 0px  $dinner-sand;
+        }
+    
+        li:after {
+            color:lighten($dinner-sand, 20%);  
+        }
+         a{
+         color:$dinner-sand;   
+        }
+    
+        .tagline {
+             color:$dinner-yellow;
+                //position:relative;
+            
+            &:after, &:before {
+                content:'';
+                position:absolute;
+                right:0;
+                bottom:0;
+                display:block;
+                width:72px;
+                height:72px;
+                background:#fff url(http://placehold.it/72x72) center center no-repeat;
+            }
+            
+            &:before {
+                left:0;
+                right:auto;
+            }
+        }
+}
 
 
 /* #################
@@ -165,7 +249,18 @@ Valentines
 
 ################# */
 
-//inherits defualts
+.menu--valentines {
+    
+    background-color:$menu-red;
+    
+    .tagline {
+          margin-top:0;
+          padding-top:2.5em;
+          background:transparent url(../images/for-processing/heart-divider.gif) center top no-repeat;
+    }
+    
+}
+
 
 /* #################
 
@@ -183,3 +278,50 @@ Hangover
     border-image: url(../images/for-processing/bluechecks.gif) 30 round;
 }
 
+
+/* #################
+
+Tea party
+################# */
+$mint-green:#B8DEC4;
+$light-blue:#AAB7DC;
+$dark-blue:#275CAD;
+
+
+
+.menu.menu--tea-party {
+    background:#B8DEC4 url(../images/recipes/dots.png) center center repeat; // -dark, -dark-med
+    
+    .inner {
+     padding:0.65em;
+        border:1px solid darken($mint-green, 10%);
+    }
+    
+    .menu__card__dishes {
+        margin-top:-2em;
+        border:6px solid  $light-blue;  
+        background:#fff url(../images/recipes/tpot.gif) right 12px bottom 12px no-repeat;
+        
+        li {
+             padding-bottom:0;
+            color:#ccc;
+        }
+        
+        .subheader {
+            color:$dark-blue;
+            font-style:italic;
+        }
+        
+        .divider {
+         padding-bottom:1.5em;   
+            
+            &:after {
+                color:$dark-blue;
+            }
+        }
+        
+        a {
+         color:$light-blue;   
+        }
+    }
+}

@@ -165,13 +165,15 @@ loadThemePage=function(whichPage){
 removeThemePage=function(){
     $('.menu').transition({
         opacity:0,
+        scale:1,
+        left:120,
         visibility:'hidden',
-         rotate:'3deg',
-    }, 225, function(){
+         rotate:'-3deg',
+    }, 255, function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
-        fadeAllThumbs('in');
-        toggleFooter();
-        removeRecipe();
+            fadeAllThumbs('in');
+            toggleFooter();
+            removeRecipe();
     });
 }
 
@@ -191,13 +193,9 @@ recipeClickEvents=function(){
 
 animateMenu=function(pageToLoad){
 
-    $('.menu__holder').transition({
-        left:0 // the holder is used to set an abolute position on the intial menu view.
-    },255);
-
     $('.menu').transition({
-           scale:0.75,
-           left:-40,
+           scale:0.65,
+           left:0,
            top:0,
            rotate:'4deg'
         }, 255, function(){
@@ -211,7 +209,7 @@ loadRecipe=function(pageToLoad){
                   $('.recipe__holder').transition({ //... and remove it if it does
                         opacity:0, //fade out
 
-                  }, 1355, function(){
+                  }, 255, function(){
                       $(this).remove(); // delete
                   })
             } // end if
@@ -223,8 +221,6 @@ loadRecipe=function(pageToLoad){
 
             $('.recipe__holder').load(loadFragment, function( response, status, xhr ){
                  showRecipe();
-
-
             });
 
         }
@@ -270,10 +266,13 @@ getRecipeImage=function(path){
     // prepending is easier to deal with stacking order/z-index
     $('body').prepend('<img src="../themes/assets/images/recipes/'+fileName+'" class="recipe--image">');
 
-
-    $('.recipe--image').transition({
+// image loaded?
+      setTimeout(function() {
+            $('.recipe--image').transition({
         opacity:1
-    }, 800);
+    }, 255);
+       }, 255);
+    
 }
 
 

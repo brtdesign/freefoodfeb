@@ -1165,7 +1165,7 @@ Recipes
   opacity: 0;
 }
 
-.printCTA, .ctasignup, .recipe__holder img {
+.printCTA, .ctasignup{
   display: none;
 }
 
