@@ -626,6 +626,7 @@ Sunday lunch
 
 $sunday-yellow:#F89B1C;
 $sunday-sand:#cabda7;
+$sunday-brown:#894E41;
 
 .menu.menu--sunday {
     background:$sunday-sand url(../images/recipes/hessian.gif) top left repeat;
@@ -641,5 +642,20 @@ $sunday-sand:#cabda7;
 
     .divider {
         padding-bottom:1.5em;
+    }
+    
+    .inner {
+        padding:10px;
+    }
+    
+    .menu__card__dishes {
+        border:2px solid $sunday-brown;
+        padding-top:4.5em;
+        background:transparent url(http://placehold.it/120x60) top 24px center no-repeat;
+    }
+    
+    .tagline {
+        margin-top:3em;
+        color:$sunday-brown;
     }
 }
