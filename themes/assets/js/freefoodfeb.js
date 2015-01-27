@@ -231,7 +231,7 @@ loadRecipe=function(pageToLoad){
 
 
             $('.menu__holder').after('<div class="recipe__holder"></div>');
-            $('.recipe__holder').append('<b class="close-recipe">close</b>');
+            $('.recipe__holder').before('<b class="close-recipe">close</b>');
             $('.recipe__holder').append('<img src="../themes/assets/images/ajaxloader.gif" class="loader">');
             loadFragment=pageToLoad + ' #main'; // The quotes must have space character at the start.
 
