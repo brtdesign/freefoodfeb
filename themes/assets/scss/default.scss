@@ -199,7 +199,7 @@ Theme 'Cards' layout
 
     .theme__card {
         opacity:1;
-        box-shadow:1px 1px 3px 1px rgba(#000, 0.35);
+        box-shadow:1px 1px 8px 1px rgba(#000, 0.35);
         margin: 12px 1.5%;
       border:1px solid $lime-green;
         border-radius:6px;
@@ -210,6 +210,10 @@ Theme 'Cards' layout
 
         &:hover {
             margin-top:4px;
+        }
+
+        img {
+            width:100%;
         }
          @media screen and (max-width:680px){
             width:96%;
@@ -226,7 +230,6 @@ Theme 'Cards' layout
         a {
             line-height:0;
             display:block; // force to encapsulate img correctly chrome:40
-            outline:1px solid #f00;
         }
 
         &.visited {
@@ -237,7 +240,7 @@ Theme 'Cards' layout
 
 
     .theme__card__link {
-        padding:6em 0.5em 0.5em 0.5em;
+        //padding:6em 0.5em 0.5em 0.5em;
     }
 
 
@@ -246,6 +249,7 @@ Theme 'Cards' layout
     background:rgba(#000, 0.75);
     color:#fff;
     padding:0.5em;
+    margin:0;
 
 }
 

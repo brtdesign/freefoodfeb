@@ -11,7 +11,7 @@ $(document).ready(function() {
 
        setupMasonary();
        $('.theme__holder').removeClass('loading');
-       $('.theme__card__header').arctext({radius: 280});
+      // $('.theme__card__header').arctext({radius: 280});
     // click event listener for the individual cards
        themeListener();
 }); // close $ready

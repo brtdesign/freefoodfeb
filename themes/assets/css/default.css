@@ -999,7 +999,7 @@ Theme 'Cards' layout
 
 .theme__card {
   opacity: 1;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
   margin: 12px 1.5%;
   border: 1px solid #D5DC31;
   border-radius: 6px;
@@ -1011,6 +1011,9 @@ Theme 'Cards' layout
 }
 .theme__card:hover {
   margin-top: 4px;
+}
+.theme__card img {
+  width: 100%;
 }
 @media screen and (max-width: 680px) {
   .theme__card {
@@ -1027,15 +1030,10 @@ Theme 'Cards' layout
 .theme__card a {
   line-height: 0;
   display: block;
-  outline: 1px solid #f00;
 }
 .theme__card.visited {
   border: 1px solid #ed1d44;
   scale: 1.1;
-}
-
-.theme__card__link {
-  padding: 6em 0.5em 0.5em 0.5em;
 }
 
 .theme__card__header {
@@ -1043,6 +1041,7 @@ Theme 'Cards' layout
   background: rgba(0, 0, 0, 0.75);
   color: #fff;
   padding: 0.5em;
+  margin: 0;
 }
 
 /* ##############################################
