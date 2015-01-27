@@ -206,7 +206,7 @@ animateMenu=function(pageToLoad){
            left:0,
            top:0,
            rotate:'4deg',
-            filter:'blur(2px)'
+            filter:'blur(7px)'
         }, 255, function(){
         loadRecipe(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
     });

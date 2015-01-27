@@ -277,12 +277,13 @@ Recipes
 .loader {
      margin:3em auto;
      display:block;
+    outline:1px solid #f00;
 }
 
 // appended when we $.load
 .recipe__holder {
     float:right;
-    width:60%;
+    width:65%;
     clear:none;
     opacity:0;
     position:relative;
@@ -290,7 +291,6 @@ Recipes
     background-color:rgba(#fff, 0.75);
     padding:2em;
     box-shadow:2px 2px 18px rgba($slate-grey, 0.5);
-
 
         h1 {
             background:none !important; // this is set inline
@@ -303,12 +303,12 @@ Recipes
 
     @media screen and (max-width:600px) {
         width:100%;
-        background-color:rgba(#ff0, 0.85);
+        background-color:rgba(#fff, 0.85);
     }
 
     .panel {
         border: 1px solid #e5e0e0;
-        background: rgba(#e5e3e2, 0.5);
+        background: rgba(#e5e3e2, 0.75);
         margin-bottom: 0.65em;
         padding:0.5em;
         border-radius: 0 0 4px 4px;
@@ -354,7 +354,7 @@ Recipes
 
 
 // hack hack as we are getting more html back than we need, and dont have time to get JSON on the case instead
-.printCTA, .ctasignup, .recipe__holder img  { // need to strip the images out of this
+.printCTA, .ctasignup, #recipe-information img { // need to strip the images out of this
    display:none;
 }
 
