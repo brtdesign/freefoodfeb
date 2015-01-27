@@ -85,13 +85,23 @@ $breakpoints: 320 768 1280 1920; // used as the actual breakpoint in px, and is 
 body {
     padding:$gutter/2;
     padding-bottom:200px; // to allow the footer to have position fixed
+
 }
 
 .wrapper {
     position:relative;
     max-width:960px;
-    width:100%;
     margin:auto;
+}
+
+.intro {
+    margin:auto;
+    max-width:$full-width/2;
+
+    p {
+            font-size:125%;
+    }
+
 }
 
 /* ##############################################
@@ -128,11 +138,22 @@ Footer with party bag info etc
     position:absolute;
     left:10px;
     top:10px;
+    width:200px;
+    text-align:center;
+    @media screen and (min-width:$full-width) {
+        position:fixed;
+    }
 }
+
+    .fff-header {
+        width:100%;
+    }
+
+
 
 /* ##############################################
 
-Back to themes
+Back to themes naviagtion
 
 ###############################################*/
 
@@ -164,17 +185,6 @@ Theme 'Cards' layout
 ###############################################*/
 
 
-.fff-header {
-    margin:auto;
-    width:95%;
-    max-width:600px;
-    text-align:center;
-        img {
-            width:100%;
-        }
-    }
-
-
 .theme__holder{
     position:relative;
     width:100%;
@@ -184,50 +194,39 @@ Theme 'Cards' layout
 .loading {
    & .theme__card {
         opacity:0;
-
     }
 }
 
     .theme__card {
         opacity:1;
-        transition:opacity 1255ms ease-in-out;
-        transition:margin-top 1255ms ease-in-out;
         box-shadow:1px 1px 3px 1px rgba(#000, 0.35);
-        margin: 28px 1.5%;
-        background-color:#fff;
-        //border:3px dotted $slate-grey;
-        border:1px solid lighten($slate-grey, 30%);
-        padding:3px;
+        margin: 12px 1.5%;
+      border:1px solid $lime-green;
         border-radius:6px;
         width:30.3%; // set the desktop size as default so we dont have to mess about for IE8
         float:left;
-        ///padding-top:66%; // gives fluid height in proportion to the image
+        transition: all 125ms ease;
+        background:#fff url(../images/invites/fakeaway.jpg) center top no-repeat;
 
-        &--fakeaway, &--teaparty {
-            & h1 span:first-child {
-                margin-right:-7px; //  kerning by selecting the first span that the arctext.js creates
-            }
+        &:hover {
+            margin-top:4px;
         }
-
-        &--pursefriendly, &--valentines, &--pancakes {
-            & h1 span:first-child {
-                margin-right:-3px; //  kerning by selecting the first span that the arctext.js creates
-            }
-        }
-
-         @media screen and (max-width:539px){
+         @media screen and (max-width:680px){
             width:96%;
-            margin:28px 2%;
+            margin:6px 2%;
         }
 
-        @media screen and (min-width:540px) and (max-width:880px){
+        @media screen and (min-width:681px)  and (max-width:1200px) {
             width:46%;
             margin:28px 2%;
         }
 
+
+
         a {
             line-height:0;
             display:block; // force to encapsulate img correctly chrome:40
+            outline:1px solid #f00;
         }
 
         &.visited {
@@ -236,36 +235,19 @@ Theme 'Cards' layout
         }
     }
 
-        .theme__card__header, .menu__card__header {
-            width:100%;
-            max-width:288px;
-            padding:3px 10px 4px 10px;
-            height:3.0em;
-            margin:auto;
-            position:absolute;
-            top:-46px;
-            left:0;
-            right:0;
-            background:transparent url(../images/svg/green-header.svg) center center no-repeat;
-            background-size: contain; // so we never crop the bg
-            font-family:harabarahanditalic;
-            font-size:1.5em;
-            line-height:1.95;
-            color:$slate-grey;
-            text-shadow: 0px 0px 3px lighten($lime-green, 20%);
-            text-align:center;
-            @media screen and (max-width:319px){
-                width:88%;
-                margin-top:12px;
-            }
-        }
 
-        .theme__card__image {
-            width:100%;
-            height:100%; // just trying this so we dont need imagesLoaded.js
-            border-radius:4px;
-            box-shadow: inset 0px 0px 5px 9px rgba(0,0,0,0.75);
-        }
+    .theme__card__link {
+        padding:6em 0.5em 0.5em 0.5em;
+    }
+
+
+.theme__card__header {
+    font-size:90%;
+    background:rgba(#000, 0.75);
+    color:#fff;
+    padding:0.5em;
+
+}
 
 
 /* ##############################################
@@ -275,13 +257,13 @@ Menu 'Cards' layout
 ###############################################*/
 
 .theme__holder {
-    outline:1px solid #f00;
     position:relative;
     .menu {
         opacity: 0;
         visibility:hidden; // we fade this in after load();
     }
 }
+
 
 
 /* ##################################################
@@ -295,7 +277,6 @@ Recipes
 .loader {
      margin:3em auto;
      display:block;
-     background-color:#f00; // debug
 }
 
 // appended when we $.load
@@ -306,30 +287,32 @@ Recipes
     opacity:0;
     position:relative;
     overflow:auto;
-    //max-height:600px;
-            h1 {
+    background-color:rgba(#fff, 0.75);
+    padding:2em;
+    box-shadow:2px 2px 18px rgba($slate-grey, 0.5);
+
+
+        h1 {
             background:none !important; // this is set inline
             font: 2.25em/1.1 'Sorts Mill Goudy', serif;
         }
 
-            h2 {
-            font: 1.75em/1.1 'Sorts Mill Goudy', serif;
-            }
-}
+        h2 {
+        font: 1.75em/1.1 'Sorts Mill Goudy', serif;
+        }
 
-
-.recipe__holder {
-    background-color:rgba(#fff, 0.75);
-    padding:2em;
-    box-shadow:2px 2px 18px rgba($slate-grey, 0.5);
-     filter: blur(20px);
+    @media screen and (max-width:600px) {
+        width:100%;
+        background-color:rgba(#ff0, 0.85);
+    }
 
     .panel {
-    border: 1px solid #e5e0e0;
-    background: rgba(#e5e3e2, 0.5);
-    margin-bottom: 0.65em;
-    padding:0.5em;
-    border-radius: 0 0 4px 4px;
+        border: 1px solid #e5e0e0;
+        background: rgba(#e5e3e2, 0.5);
+        margin-bottom: 0.65em;
+        padding:0.5em;
+        border-radius: 0 0 4px 4px;
+
     ul {
         list-style:none;
         font-size:90%;

@@ -64,14 +64,10 @@ a {
 
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -309,11 +305,8 @@ label {
   /* Saf4+, Chrome */
   background-image: -webkit-linear-gradient(top, #f25d5d, #EF3737);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #f25d5d, #EF3737);
   /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #f25d5d, #EF3737);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #f25d5d, #EF3737);
   /* Opera 11.10+ */
   background-image: linear-gradient(to bottom, #f25d5d, #EF3737);
   background-image: linear-gradient(top, #f25d5d, #EF3737);
@@ -376,11 +369,8 @@ label {
   /* Saf4+, Chrome */
   background-image: -webkit-linear-gradient(top, #78c16c, #5eb54f);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #78c16c, #5eb54f);
   /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #78c16c, #5eb54f);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #78c16c, #5eb54f);
   /* Opera 11.10+ */
   background-image: linear-gradient(to bottom, #78c16c, #5eb54f);
   background-image: linear-gradient(top, #78c16c, #5eb54f);
@@ -443,11 +433,8 @@ label {
   /* Saf4+, Chrome */
   background-image: -webkit-linear-gradient(top, #7792bf, #5b7cb2);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #7792bf, #5b7cb2);
   /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #7792bf, #5b7cb2);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #7792bf, #5b7cb2);
   /* Opera 11.10+ */
   background-image: linear-gradient(to bottom, #7792bf, #5b7cb2);
   background-image: linear-gradient(top, #7792bf, #5b7cb2);
@@ -549,11 +536,8 @@ td .btn, td .btn__secondary {
   /* Saf4+, Chrome */
   background-image: -webkit-linear-gradient(top, white, #fefefe);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, white, #fefefe);
   /* FF3.6 */
-  background-image: -ms-linear-gradient(top, white, #fefefe);
   /* IE10 */
-  background-image: -o-linear-gradient(top, white, #fefefe);
   /* Opera 11.10+ */
   background-image: linear-gradient(to bottom, white, #fefefe);
   background-image: linear-gradient(top, white, #fefefe);
@@ -632,7 +616,8 @@ input, select {
   border: 1px solid #b3b3b3;
   border-radius: 2px;
   box-shadow: none;
-  transition: all 175ms ease-in-out;
+  -webkit-transition: all 175ms ease-in-out;
+          transition: all 175ms ease-in-out;
   line-height: 1.618;
   width: 100%;
   color: #333;
@@ -918,8 +903,15 @@ body {
 .wrapper {
   position: relative;
   max-width: 960px;
-  width: 100%;
   margin: auto;
+}
+
+.intro {
+  margin: auto;
+  max-width: 480px;
+}
+.intro p {
+  font-size: 125%;
 }
 
 /* ##############################################
@@ -954,11 +946,22 @@ Footer with party bag info etc
   position: absolute;
   left: 10px;
   top: 10px;
+  width: 200px;
+  text-align: center;
+}
+@media screen and (min-width: 960px) {
+  .logo {
+    position: fixed;
+  }
+}
+
+.fff-header {
+  width: 100%;
 }
 
 /* ##############################################
 
-Back to themes
+Back to themes naviagtion
 
 ###############################################*/
 .navigation {
@@ -984,16 +987,6 @@ Back to themes
 Theme 'Cards' layout
 
 ###############################################*/
-.fff-header {
-  margin: auto;
-  width: 95%;
-  max-width: 600px;
-  text-align: center;
-}
-.fff-header img {
-  width: 100%;
-}
-
 .theme__holder {
   position: relative;
   width: 100%;
@@ -1006,30 +999,26 @@ Theme 'Cards' layout
 
 .theme__card {
   opacity: 1;
-  transition: opacity 1255ms ease-in-out;
-  transition: margin-top 1255ms ease-in-out;
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.35);
-  margin: 28px 1.5%;
-  background-color: #fff;
-  border: 1px solid #69727d;
-  padding: 3px;
+  margin: 12px 1.5%;
+  border: 1px solid #D5DC31;
   border-radius: 6px;
   width: 30.3%;
   float: left;
+  -webkit-transition: all 125ms ease;
+          transition: all 125ms ease;
+  background: #fff url(../images/invites/fakeaway.jpg) center top no-repeat;
 }
-.theme__card--fakeaway h1 span:first-child, .theme__card--teaparty h1 span:first-child {
-  margin-right: -7px;
+.theme__card:hover {
+  margin-top: 4px;
 }
-.theme__card--pursefriendly h1 span:first-child, .theme__card--valentines h1 span:first-child, .theme__card--pancakes h1 span:first-child {
-  margin-right: -3px;
-}
-@media screen and (max-width: 539px) {
+@media screen and (max-width: 680px) {
   .theme__card {
     width: 96%;
-    margin: 28px 2%;
+    margin: 6px 2%;
   }
 }
-@media screen and (min-width: 540px) and (max-width: 880px) {
+@media screen and (min-width: 681px) and (max-width: 1200px) {
   .theme__card {
     width: 46%;
     margin: 28px 2%;
@@ -1038,43 +1027,22 @@ Theme 'Cards' layout
 .theme__card a {
   line-height: 0;
   display: block;
+  outline: 1px solid #f00;
 }
 .theme__card.visited {
   border: 1px solid #ed1d44;
   scale: 1.1;
 }
 
-.theme__card__header, .menu__card__header {
-  width: 100%;
-  max-width: 288px;
-  padding: 3px 10px 4px 10px;
-  height: 3.0em;
-  margin: auto;
-  position: absolute;
-  top: -46px;
-  left: 0;
-  right: 0;
-  background: transparent url(../images/svg/green-header.svg) center center no-repeat;
-  background-size: contain;
-  font-family: harabarahanditalic;
-  font-size: 1.5em;
-  line-height: 1.95;
-  color: #23262a;
-  text-shadow: 0px 0px 3px #e7eb88;
-  text-align: center;
-}
-@media screen and (max-width: 319px) {
-  .theme__card__header, .menu__card__header {
-    width: 88%;
-    margin-top: 12px;
-  }
+.theme__card__link {
+  padding: 6em 0.5em 0.5em 0.5em;
 }
 
-.theme__card__image {
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  box-shadow: inset 0px 0px 5px 9px rgba(0, 0, 0, 0.75);
+.theme__card__header {
+  font-size: 90%;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 0.5em;
 }
 
 /* ##############################################
@@ -1083,7 +1051,6 @@ Menu 'Cards' layout
 
 ###############################################*/
 .theme__holder {
-  outline: 1px solid #f00;
   position: relative;
 }
 .theme__holder .menu {
@@ -1099,7 +1066,6 @@ Recipes
 .loader {
   margin: 3em auto;
   display: block;
-  background-color: #f00;
 }
 
 .recipe__holder {
@@ -1109,6 +1075,9 @@ Recipes
   opacity: 0;
   position: relative;
   overflow: auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 2em;
+  box-shadow: 2px 2px 18px rgba(35, 38, 42, 0.5);
 }
 .recipe__holder h1 {
   background: none !important;
@@ -1117,12 +1086,11 @@ Recipes
 .recipe__holder h2 {
   font: 1.75em/1.1 'Sorts Mill Goudy', serif;
 }
-
-.recipe__holder {
-  background-color: rgba(255, 255, 255, 0.75);
-  padding: 2em;
-  box-shadow: 2px 2px 18px rgba(35, 38, 42, 0.5);
-  filter: blur(20px);
+@media screen and (max-width: 600px) {
+  .recipe__holder {
+    width: 100%;
+    background-color: rgba(255, 255, 0, 0.85);
+  }
 }
 .recipe__holder .panel {
   border: 1px solid #e5e0e0;
@@ -1165,7 +1133,7 @@ Recipes
   opacity: 0;
 }
 
-.printCTA, .ctasignup{
+.printCTA, .ctasignup, .recipe__holder img {
   display: none;
 }
 

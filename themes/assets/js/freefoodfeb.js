@@ -70,10 +70,19 @@ The animations for cards fading in and out
 
 // function to animate opacity and scale
 fadeCard = function(elem, cardScale, cardOpacity){
+
+    if (cardOpacity==1) {
+        thisBlur='blur(0px)';
+    }
+    else {
+        thisBlur='blur(30px)';
+    }
+
     elem.transition({ // requires transit.js
     scale:cardScale,
     opacity:cardOpacity,
-//    rotateY: '360deg'
+   //rotateY: '15deg',
+    filter:thisBlur
     },
     275,
     'easeOutSine'
@@ -192,12 +201,12 @@ recipeClickEvents=function(){
     };
 
 animateMenu=function(pageToLoad){
-
     $('.menu').transition({
            scale:0.65,
            left:0,
            top:0,
-           rotate:'4deg'
+           rotate:'4deg',
+            filter:'blur(2px)'
         }, 255, function(){
         loadRecipe(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
     });
@@ -272,7 +281,7 @@ getRecipeImage=function(path){
         opacity:1
     }, 255);
        }, 255);
-    
+
 }
 
 
