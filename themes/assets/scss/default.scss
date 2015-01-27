@@ -92,6 +92,7 @@ body {
     position:relative;
     max-width:960px;
     margin:auto;
+    outline:1px solid #f00;
 }
 
 .intro {
@@ -199,28 +200,29 @@ Theme 'Cards' layout
 
     .theme__card {
         opacity:1;
-        box-shadow:1px 1px 8px 1px rgba(#000, 0.35);
+        box-shadow:0px 0px 12px 1px rgba(#000, 0.35);
         margin: 12px 1.5%;
-      border:1px solid $lime-green;
+        border:1px solid $lime-green;
         border-radius:6px;
         width:30.3%; // set the desktop size as default so we dont have to mess about for IE8
         float:left;
         transition: all 125ms ease;
-        background:#fff url(../images/invites/fakeaway.jpg) center top no-repeat;
+        ///background:#fff url(../images/invites/fakeaway.jpg) center top no-repeat;
 
         &:hover {
-            margin-top:4px;
+        margin-top:8px;
+            margin-bottom:16px;
         }
 
         img {
             width:100%;
         }
-         @media screen and (max-width:680px){
+         @media screen and (max-width:480px){
             width:96%;
             margin:6px 2%;
         }
 
-        @media screen and (min-width:681px)  and (max-width:1200px) {
+        @media screen and (min-width:481px)  and (max-width:960px) {
             width:46%;
             margin:28px 2%;
         }
@@ -244,14 +246,25 @@ Theme 'Cards' layout
     }
 
 
-.theme__card__header {
+.theme__card__header, .theme__card__desc {
     font-size:90%;
     background:rgba(#000, 0.75);
     color:#fff;
     padding:0.5em;
     margin:0;
-
 }
+
+.theme__card__header {
+    position:absolute;
+    border:1px solid rgba(#fff, 0.5);
+    top:-4px;
+    left:-4px;
+}
+
+.theme__card__desc {
+    background-color:transparent;
+}
+
 
 
 /* ##############################################
@@ -350,11 +363,13 @@ Recipes
 // massive images that get loaded with recipes. may not be needed
 .recipe--image {
     position:fixed;
-    bottom:0px;
-    left:0;
-    z-index:0;
+    right:0;
+    bottom:0;
     opacity:0;
+     z-index:9999 !important;
 }
+
+
 
 
 // hack hack as we are getting more html back than we need, and dont have time to get JSON on the case instead

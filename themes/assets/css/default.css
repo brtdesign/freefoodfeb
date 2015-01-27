@@ -904,6 +904,7 @@ body {
   position: relative;
   max-width: 960px;
   margin: auto;
+  outline: 1px solid #f00;
 }
 
 .intro {
@@ -999,7 +1000,7 @@ Theme 'Cards' layout
 
 .theme__card {
   opacity: 1;
-  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.35);
   margin: 12px 1.5%;
   border: 1px solid #D5DC31;
   border-radius: 6px;
@@ -1007,21 +1008,21 @@ Theme 'Cards' layout
   float: left;
   -webkit-transition: all 125ms ease;
           transition: all 125ms ease;
-  background: #fff url(../images/invites/fakeaway.jpg) center top no-repeat;
 }
 .theme__card:hover {
-  margin-top: 4px;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 .theme__card img {
   width: 100%;
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 480px) {
   .theme__card {
     width: 96%;
     margin: 6px 2%;
   }
 }
-@media screen and (min-width: 681px) and (max-width: 1200px) {
+@media screen and (min-width: 481px) and (max-width: 960px) {
   .theme__card {
     width: 46%;
     margin: 28px 2%;
@@ -1036,12 +1037,23 @@ Theme 'Cards' layout
   scale: 1.1;
 }
 
-.theme__card__header {
+.theme__card__header, .theme__card__desc {
   font-size: 90%;
   background: rgba(0, 0, 0, 0.75);
   color: #fff;
   padding: 0.5em;
   margin: 0;
+}
+
+.theme__card__header {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  top: -4px;
+  left: -4px;
+}
+
+.theme__card__desc {
+  background-color: transparent;
 }
 
 /* ##############################################
@@ -1127,10 +1139,10 @@ Recipes
 
 .recipe--image {
   position: fixed;
-  bottom: 0px;
-  left: 0;
-  z-index: 0;
+  right: 0;
+  bottom: 0;
   opacity: 0;
+  z-index: 9999 !important;
 }
 
 .printCTA, .ctasignup, #recipe-information img {

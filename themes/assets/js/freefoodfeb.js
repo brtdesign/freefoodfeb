@@ -26,9 +26,11 @@ setupMasonary=function(){
    // arrange items using masonary
     var $container = $('.theme__holder');
     $container.imagesLoaded( function() {
-        $container.masonry({
+        $container.masonry ({
           itemSelector: '.theme__card'
             });
+
+         $container.masonry('bindResize');
         });
    };
 
@@ -273,7 +275,7 @@ getRecipeImage=function(path){
     fileName=fileName.replace('.html', '.png'); // change the extension to jpg/png
 
     // prepending is easier to deal with stacking order/z-index
-    $('body').prepend('<img src="../themes/assets/images/recipes/'+fileName+'" class="recipe--image">');
+    $('.wrapper').prepend('<img src="../themes/assets/images/recipes/menu-pics/'+fileName+'" class="recipe--image">');
 
 // image loaded?
       setTimeout(function() {
