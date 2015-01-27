@@ -74,17 +74,21 @@ The animations for cards fading in and out
 fadeCard = function(elem, cardScale, cardOpacity){
 
     if (cardOpacity==1) {
-        thisBlur='blur(0px)';
+        thisBlur='blur(0px) grayscale(0%)';
+        //thisGrey='grayscale(0%)';
     }
     else {
-        thisBlur='blur(30px)';
+        thisBlur='blur(30px) grayscale(100%)';
+        //thisGrey='grayscale(100%)';
     }
 
     elem.transition({ // requires transit.js
     scale:cardScale,
     opacity:cardOpacity,
    //rotateY: '15deg',
+   // -moz-filter:thisblur,
     filter:thisBlur
+    //filter:thisGrey - break sthe blur
     },
     275,
     'easeOutSine'
@@ -207,8 +211,8 @@ animateMenu=function(pageToLoad){
            scale:0.65,
            left:0,
            top:0,
-           rotate:'4deg',
-            filter:'blur(7px)'
+           rotate:'4deg'
+           // filter:'blur(2px)'
         }, 255, function(){
         loadRecipe(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
     });
@@ -227,19 +231,43 @@ loadRecipe=function(pageToLoad){
 
 
             $('.menu__holder').after('<div class="recipe__holder"></div>');
+            $('.recipe__holder').append('<b class="close-recipe">close</b>');
             $('.recipe__holder').append('<img src="../themes/assets/images/ajaxloader.gif" class="loader">');
             loadFragment=pageToLoad + ' #main'; // The quotes must have space character at the start.
 
             $('.recipe__holder').load(loadFragment, function( response, status, xhr ){
                  showRecipe();
+                 recipeCloseListener();
             });
 
         }
 
+
+recipeCloseListener=function(){
+   $('.close-recipe').click(function(){
+       console.log('recipe click');
+          $('.recipe__holder').transition({ 
+                    opacity:0//fade out
+              }, 125, function(){
+                  $(this).remove(); // delete
+ });
+       
+        $('.menu').transition({
+           scale:1,
+           left:0,
+           top:0,
+           rotate:'-4deg'
+           // filter:'blur(2px)'
+        }, 255);        
+
+       
+       
+           });
+        }
 // need to strip the img tag from the html rather than hiding it in CSS
 
 showRecipe=function( response, status, xhr ){
-    console.log( status, xhr );
+    //console.log( status, xhr );
     $('.recipe__holder').transition({
         opacity:1
     }, 250)

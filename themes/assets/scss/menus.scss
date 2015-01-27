@@ -17,10 +17,32 @@ $non-link-default:#999;
 add to primary css
 
 */
+.theme__card {
+    border-radius:0;
+}
+
+.theme__card__image {
+    padding:3px;
+   
+}
+
+.theme__card__header {
+    top:3px;
+    left:3px;
+    background-image:url(http://www.slimmingworld.com/assets/images/ui-elements/recipe-icons.png);
+    
+    background-repeat:no-repeat;
+    padding-left:24px;
+
+}
 
 .recipe--image {
 right:0;
 left:auto;
+}
+
+.menu:hover {
+    filter:blur(0px);
 }
 
 .recipe--image {
