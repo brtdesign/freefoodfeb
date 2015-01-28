@@ -267,7 +267,7 @@ Theme 'Cards' layout
         box-shadow:0px 0px 12px 1px rgba(#000, 0.35);
         margin: 12px 1.5%;
         border:1px solid $lime-green;
-        border-radius:6px;
+
         width:30.3%; // set the desktop size as default so we dont have to mess about for IE8
         float:left;
         transition: all 125ms ease;
@@ -280,6 +280,8 @@ Theme 'Cards' layout
 
         img {
             width:100%;
+            padding:3px;
+            background-color:#fff;
         }
          @media screen and (max-width:480px){
             width:96%;
@@ -296,14 +298,15 @@ Theme 'Cards' layout
         a {
             line-height:0;
             display:block; // force to encapsulate img correctly chrome:40
-        }
+
 
         &.visited {
-             border:1px solid lighten($sw-red, 0.85);
-             scale:1.1;
+            .theme__card__image {
+                background-color:$lime-green;
+            }
         }
     }
-
+}
 
     .theme__card__link {
         //padding:6em 0.5em 0.5em 0.5em;

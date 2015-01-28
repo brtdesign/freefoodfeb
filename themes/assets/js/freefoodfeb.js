@@ -61,7 +61,7 @@ themeListener = function(){
         var pageToLoad=($(this)).attr('href');
         fadeAllThumbs('out', pageToLoad); // can be in or out
 
-        //store the one wevbe picked as loadedMenu var. It gets appended to the query string when the menu slides in.
+        //store the one weve picked as loadedMenu var. It gets appended to the query string when the menu slides in.
 
         loadedMenu=$(this).attr('data-val-menu_id');
 
@@ -269,14 +269,8 @@ recipeCloseListener=function(){
            rotate:'-4deg'
            // filter:'blur(2px)'
         }, 255);
-
-
-
-           });
-
-
-
-        }
+    });
+}
 // need to strip the img tag from the html rather than hiding it in CSS
 
 showRecipe=function( response, status, xhr ){
@@ -297,7 +291,6 @@ removeRecipe=function(){
      });
 
     $('.recipe--image').remove();
-
 }
 
 /* #############################################
@@ -355,6 +348,7 @@ toggleFooter = function(){
 
 
 var footerExpanded=false;
+
 $('.theme--supplemental').find('.header').click(function(event){
      if (!footerExpanded) {
             $('.theme--supplemental').transition({
@@ -368,6 +362,17 @@ $('.theme--supplemental').find('.header').click(function(event){
             });
          footerExpanded=false;
          }
+
+
+    var currentUrl = $('.theme--supplemental').find('a.btn').attr('href');
+
+     // remove query string
+        currentUrl=currentUrl.split("?")[0];
+     // gets stored as a global var when we click a card
+        currentUrl += '?id=' + loadedMenu;
+
+        $('.theme--supplemental').find('a.btn').attr('href', currentUrl);
+
     });
 
 

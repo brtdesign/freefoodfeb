@@ -1066,7 +1066,6 @@ Theme 'Cards' layout
   box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.35);
   margin: 12px 1.5%;
   border: 1px solid #D5DC31;
-  border-radius: 6px;
   width: 30.3%;
   float: left;
   -webkit-transition: all 125ms ease;
@@ -1078,6 +1077,8 @@ Theme 'Cards' layout
 }
 .theme__card img {
   width: 100%;
+  padding: 3px;
+  background-color: #fff;
 }
 @media screen and (max-width: 480px) {
   .theme__card {
@@ -1095,9 +1096,8 @@ Theme 'Cards' layout
   line-height: 0;
   display: block;
 }
-.theme__card.visited {
-  border: 1px solid #ed1d44;
-  scale: 1.1;
+.theme__card a.visited .theme__card__image {
+  background-color: #D5DC31;
 }
 
 .theme__card__header, .theme__card__desc {
