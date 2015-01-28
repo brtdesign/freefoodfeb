@@ -62,12 +62,11 @@ themeListener = function(){
         fadeAllThumbs('out', pageToLoad); // can be in or out
 
         //store the one weve picked as loadedMenu var. It gets appended to the query string when the menu slides in.
-
+getRecipeImage(pageToLoad);
         loadedMenu=$(this).attr('data-val-menu_id');
 
         //scrollToTop
         //load the main theme page, consisting of a menu with links to recipes
-
     });
 };
 
@@ -175,7 +174,7 @@ loadThemePage=function(whichPage){
 
             // set up the events listeners
             recipeClickEvents();
-            getRecipeImage(whichPage);
+            //getRecipeImage(whichPage);
     });
             toggleFooter();
 };
@@ -186,9 +185,9 @@ removeThemePage=function(){
     $('.menu').transition({
         opacity:0,
         scale:1,
-        left:120,
-        visibility:'hidden',
+        //left:120,
          rotate:'-3deg',
+        filter:'blur(30px)'
     }, 255, function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
             fadeAllThumbs('in');
@@ -252,14 +251,15 @@ recipeCloseListener=function(){
    $('.close-recipe').click(function(){
 
           $('.recipe__holder').transition({
-                    opacity:0//fade out
-              }, 125, function(){
+                    opacity:0,//fade out
+                    //filter:'blur(15px)'
+              }, 255, function(){
                   $(this).remove(); // delete
          });
 
          $('.close-recipe').transition({
                     opacity:0//fade out
-              }, 125, function(){
+              }, 255, function(){
                   $(this).remove(); // delete
          });
 
@@ -276,10 +276,14 @@ recipeCloseListener=function(){
 // need to strip the img tag from the html rather than hiding it in CSS
 
 showRecipe=function( response, status, xhr ){
+    $('.recipe__holder').css({
+        filter:'blur(15px)'
+    })
     //console.log( status, xhr );
     $('.recipe__holder').transition({
-        opacity:1
-    }, 250)
+        opacity:1,
+        filter:'blur(0px)'
+    }, 455)
 }
 
 
@@ -287,12 +291,21 @@ showRecipe=function( response, status, xhr ){
 removeRecipe=function(){
      $('.recipe__holder').transition({
         opacity:0,
-        left:'-4px'
+          filter:'blur(15px)'
+       // left:'-4px'
     }, 250, function(){
          $('.recipe__holder').remove();
      });
 
-    $('.recipe--image').remove();
+    
+         $('.theme-bg').transition({
+        opacity:0
+       
+       // left:'-4px'
+    }, 650, function(){
+          $('.theme-bg').remove();
+     });
+   
 }
 
 /* #############################################
@@ -308,16 +321,18 @@ getRecipeImage=function(path){
 
     var fileNameIndex=path.lastIndexOf("/")+1; // count to the last slash
     var fileName=path.substr(fileNameIndex); // strip everything before the character we just counted to
-    fileName=fileName.replace('.html', '.png'); // change the extension to jpg/png
-
+    //fileName=fileName.replace('.html', '.png'); // change the extension to jpg/png
+fileName=fileName.replace('.html', '')
     // prepending is easier to deal with stacking order/z-index
-    $('.wrapper').prepend('<img src="../themes/assets/images/recipes/menu-pics/'+fileName+'" class="recipe--image">');
+//    $('.wrapper').prepend('<img src="../themes/assets/images/recipes/menu-pics/'+fileName+'" class="recipe--image">');
+    
+    $('body').prepend('<div class="theme-bg '+fileName+'">theme bg</div>');
 
 // image loaded?
       setTimeout(function() {
-            $('.recipe--image').transition({
+            $('.theme-bg').transition({
         opacity:1
-    }, 255);
+    }, 455);
        }, 255);
 
 }
