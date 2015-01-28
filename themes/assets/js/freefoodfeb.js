@@ -41,6 +41,8 @@ setupMasonary=function(){
 Event listeners for clicks on the thumb cards
 
 #######################################################*/
+// loadedMenu gets appended to the link through to the email system
+var loadedMenu=0;
 
 themeListener = function(){
     // listener on navigation item
@@ -57,9 +59,15 @@ themeListener = function(){
         $(this).addClass('visited');
         fadeCard($(this).parent(), '0.5', '0'); // force this one as we want it to dissapear immediately
         var pageToLoad=($(this)).attr('href');
-        fadeAllThumbs('out', pageToLoad); // can be in or out#
+        fadeAllThumbs('out', pageToLoad); // can be in or out
 
+        //store the one wevbe picked as loadedMenu var. It gets appended to the query string when the menu slides in.
+
+        loadedMenu=$(this).attr('data-val-menu_id');
+
+        //scrollToTop
         //load the main theme page, consisting of a menu with links to recipes
+
     });
 };
 
@@ -82,17 +90,17 @@ fadeCard = function(elem, cardScale, cardOpacity){
         //thisGrey='grayscale(100%)';
     }
 
-    elem.transition({ // requires transit.js
-    scale:cardScale,
-    opacity:cardOpacity,
-   //rotateY: '15deg',
-   // -moz-filter:thisblur,
-    filter:thisBlur
-    //filter:thisGrey - break sthe blur
-    },
-    275,
-    'easeOutSine'
-    )
+        elem.transition({ // requires transit.js
+        scale:cardScale,
+        opacity:cardOpacity,
+       //rotateY: '15deg',
+       // -moz-filter:thisblur,
+        filter:thisBlur
+        //filter:thisGrey - break sthe blur
+        },
+        275,
+        'easeOutSine'
+        )
 }
 
 /* ######################################################
@@ -107,6 +115,7 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
         var cardScale="0.5";
         var cardOpacity="0";
         var navOpacity="1";
+        var navPosition="-16px"; // matches the original value set in css. not very maintainable
         var navPosition="-16px"; // matches the original value set in css. not very maintainable
         var delayNav="1500"; // we want the nav to delay when its sliding in, but not if its sliding out
     } else {
@@ -138,11 +147,7 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
             }
 
             }, (i+1) * 125); // add a slight delay to get the aniamtions starts staggered
-
         });
-
-
-
 };
 
 /* ######################################################
@@ -154,7 +159,6 @@ loadThemePage: main theme page with menu and link to recipes
 loadThemePage=function(whichPage){
    // Create a holder with loading text. Create this here so we can have a nice loading function.
    // $('#results').append('<section class="fff-panel loading" id="json-'+whichPage+'">loading&hellip;</section>');
-
    var pageToLoad=whichPage + ' .menu'; // just traget the menu element
 
    $('.theme__holder').append('<div class="menu__holder"></div>'); // this will get deleted when we dont need it
@@ -164,15 +168,14 @@ loadThemePage=function(whichPage){
             $('.menu').transition({
                 opacity:1,
                 visibility:'visible',
-                rotate:'-3deg',
-            }, 450);
+                rotate:'-4deg',
+            }, 350);
 
             // set up the events listeners
             recipeClickEvents();
             getRecipeImage(whichPage);
     });
             toggleFooter();
-
 };
 
 
@@ -231,7 +234,7 @@ loadRecipe=function(pageToLoad){
 
 
             $('.menu__holder').after('<div class="recipe__holder"></div>');
-            $('.recipe__holder').before('<b class="close-recipe">close</b>');
+            $('.recipe__holder').before('<b class="close-recipe">X</b>');
             $('.recipe__holder').append('<img src="../themes/assets/images/ajaxloader.gif" class="loader">');
             loadFragment=pageToLoad + ' #main'; // The quotes must have space character at the start.
 
@@ -245,24 +248,34 @@ loadRecipe=function(pageToLoad){
 
 recipeCloseListener=function(){
    $('.close-recipe').click(function(){
-       console.log('recipe click');
-          $('.recipe__holder').transition({ 
+
+          $('.recipe__holder').transition({
                     opacity:0//fade out
               }, 125, function(){
                   $(this).remove(); // delete
- });
-       
+         });
+
+         $('.close-recipe').transition({
+                    opacity:0//fade out
+              }, 125, function(){
+                  $(this).remove(); // delete
+         });
+
+
         $('.menu').transition({
            scale:1,
            left:0,
            top:0,
            rotate:'-4deg'
            // filter:'blur(2px)'
-        }, 255);        
+        }, 255);
 
-       
-       
+
+
            });
+
+
+
         }
 // need to strip the img tag from the html rather than hiding it in CSS
 
@@ -322,7 +335,6 @@ toggle the footer on and off
 ####################################################### */
 
 var footerShowing=false; // set this as a var so we can just call toggleFooter without worrying about its current state
-
 toggleFooter = function(){
     if (footerShowing) {
         $('.theme--supplemental').transition({
@@ -333,12 +345,30 @@ toggleFooter = function(){
     else {
        setTimeout(function() {
         $('.theme--supplemental').transition({
-            bottom:0
+            bottom:'-110px' // this should really be a var
         });
        }, 1200);
         footerShowing=true;
     }
 }
+
+
+
+var footerExpanded=false;
+$('.theme--supplemental').find('.header').click(function(event){
+     if (!footerExpanded) {
+            $('.theme--supplemental').transition({
+                bottom:'0px'
+            });
+         footerExpanded=true;
+    } else {
+
+   $('.theme--supplemental').transition({
+                bottom:'-110px' // this should really be a var
+            });
+         footerExpanded=false;
+         }
+    });
 
 
 /* ######################################################

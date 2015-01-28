@@ -21,7 +21,7 @@
            </a>
      </header>
       <div class="wrapper">
-      <nav class="navigation" role="navigation"><a href="themes" id="js-themes-nav"><b>&larr;</b> Show all themes</a></nav>
+      <nav class="navigation" role="navigation"><a href="themes" id="js-themes-nav"><b>&raquo;</b> Show all themes</a></nav>
 
          <div class="intro">
                 <p>No party is complete without a party bag&hellip; and that goes for our Free Food February parties, celebrating the slimming, hunger-busting power of Free Food!</p>
@@ -41,7 +41,7 @@
               </section>
 
                <section class="theme__card theme__card--dinnerparty">
-                  <a href="menus/dinner-party.html" class="theme__card__link">
+                  <a href="menus/dinner-party.html" class="theme__card__link" data-val-menu_id="1">
                         <h1 class="theme__card__header">Dinner party</h1>
                         <img src="assets/images/invites/dinner-party.jpg" class="theme__card__image">
 
@@ -49,7 +49,7 @@
               </section>
 
                    <section class="theme__card theme__card--teaparty">
-                  <a href="menus/tea-party.html" class="theme__card__link">
+                  <a href="menus/tea-party.html" class="theme__card__link"  data-val-menu_id="2">
                         <h1 class="theme__card__header">Tea party</h1>
                         <img src="assets/images/invites/tea-party.jpg" class="theme__card__image">
 
@@ -57,28 +57,28 @@
               </section>
 
               <section class="theme__card theme__card--fakeaway">
-                  <a href="menus/fakeaway-aroundworld.html" class="theme__card__link">
+                  <a href="menus/fakeaway-aroundworld.html" class="theme__card__link"  data-val-menu_id="3">
                         <h1 class="theme__card__header">Lads night in</h1>
                         <img src="assets/images/invites/fakeaway-lads.jpg" class="theme__card__image">
                   </a>
               </section>
 
                <section class="theme__card theme__card--hangover">
-                  <a href="menus/hangover.html" class="theme__card__link">
+                  <a href="menus/hangover.html" class="theme__card__link"  data-val-menu_id="4">
                         <h1 class="theme__card__header">Hangover brunch</h1>
                         <img src="assets/images/invites/hangover.jpg" class="theme__card__image">
                   </a>
               </section>
 
                      <section class="theme__card theme__card--fakeaway">
-                  <a href="menus/fakeaway-aroundworld.html" class="theme__card__link">
+                  <a href="menus/fakeaway-aroundworld.html" class="theme__card__link"  data-val-menu_id="5">
                         <h1 class="theme__card__header">Girls night in</h1>
                         <img src="assets/images/invites/fakeaway-girls.jpg" class="theme__card__image">
                   </a>
               </section>
 
               <section class="theme__card theme__card--pursefriendly">
-                  <a href="menus/hangover.html" class="theme__card__link">
+                  <a href="menus/hangover.html" class="theme__card__link"  data-val-menu_id="6">
                         <h1 class="theme__card__header">Brunch</h1>
                         <img src="assets/images/invites/brunch.jpg" class="theme__card__image">
                   </a>
@@ -86,7 +86,7 @@
 
 
               <section class="theme__card theme__card--pancakes">
-                  <a href="menus/pancake.html" class="theme__card__link">
+                  <a href="menus/pancake.html" class="theme__card__link"  data-val-menu_id="7">
                     <h1 class="theme__card__header">Pancake party!</h1>
                     <img src="assets/images/invites/pancake.jpg" class="theme__card__image">
                   </a>
@@ -94,14 +94,14 @@
 
 
               <section class="theme__card theme__card--valentines">
-                  <a href="menus/valentines.html" class="theme__card__link">
+                  <a href="menus/valentines.html" class="theme__card__link"  data-val-menu_id="8">
                     <h1 class="theme__card__header">Valentines dinner</h1>
                     <img src="assets/images/invites/valentines.jpg" class="theme__card__image">
                   </a>
               </section>
 
               <section class="theme__card theme__card--sunday">
-                  <a href="menus/sunday.html" class="theme__card__link">
+                  <a href="menus/sunday.html" class="theme__card__link"  data-val-menu_id="9">
                     <h1 class="theme__card__header">Sunday lunch</h1>
                     <img src="assets/images/invites/sunday.jpg" class="theme__card__image">
                   </a>
@@ -111,7 +111,21 @@
        </div>
 
        <footer class="theme--supplemental">
-            <p>Like this party menu? <a href="create-invite.html?template=1" class="btn btn__small">invite friends by email</a> or download a <a href="invitations.pdf" class="pdf">printable invitation.</a></p>
+
+
+          <h2 class="header"><strong>&darr;</strong> Party goodies <strong>&darr;</strong></h2>
+               <ul class="party-resources">
+                  <li><a href="menus/pdfs/blank.pdf" class="pdf" target="_blank">Blank menu template</a></li>
+                  <li><a href="menus/pdfs/place-cards.pdf"  class="pdf"  target="_blank">Table place holders</a></li>
+                  <!-- li><a href="menus/pdfs/place-cards.pdf"  class="pdf">Table place holders</a></li -->
+              </ul>
+
+            <div class="party-invitations">
+                <p>Like this party menu? <a href="create-invite.html?template=1" class="btn btn__small">invite friends by email</a></p>
+
+            <!--         or download a <a href="invitations.pdf" class="pdf">printable invitation.</a></p>-->
+             </div>
+
        </footer>
 
    </body>
