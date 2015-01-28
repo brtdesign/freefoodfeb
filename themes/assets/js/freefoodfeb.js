@@ -142,9 +142,11 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
 
 
             // if we're on the last card, start to bring in the menu
-            if ((i+1)==cardArray.length && inOrOut=='out'){
-               loadThemePage(pageToLoad);
-            }
+                if ((i+1)==cardArray.length && inOrOut=='out'){
+                    setTimeout(function() { // slight pause, otherwise its a bit too aggressive
+                      loadThemePage(pageToLoad);
+                    }, 250);
+                }
 
             }, (i+1) * 125); // add a slight delay to get the aniamtions starts staggered
         });
