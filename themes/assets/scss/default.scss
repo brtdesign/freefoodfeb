@@ -271,14 +271,12 @@ Theme 'Cards' layout
         opacity:0;
     }
 }
-
     .theme__card {
         filter:blur(0px); // The animation on first run is janky without this.
         opacity:1;
         box-shadow:0px 0px 12px 1px rgba(#000, 0.35);
         margin: 12px 1.5%;
         border:1px solid $lime-green;
-
         width:30.3%; // set the desktop size as default so we dont have to mess about for IE8
         float:left;
         transition: all 125ms ease;
@@ -383,7 +381,7 @@ Recipes
     opacity:0;
     position:relative;
     overflow:auto;
-    background-color:rgba(#fff, 0.75);
+    background-color:rgba(#fff, 0.95);
     padding:2em;
     box-shadow:2px 2px 18px rgba($slate-grey, 0.5);
 

@@ -143,7 +143,6 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
                       loadThemePage(pageToLoad);
                     }, 250); // delay on menu coming in -  slight pause, otherwise its a bit too aggressive
                 }
-
             }, (i+1) * 65); // setInterval timeout value - add a slight delay to get the aniamtions starts staggered
         }); //((i+1)/i) * 125)
 };
@@ -283,7 +282,6 @@ showRecipe=function( response, status, xhr ){
     }, 455)
 }
 
-
 //// called when we go back to theme cards [age]
 removeRecipe=function(){
      $('.recipe__holder').transition({
@@ -294,8 +292,7 @@ removeRecipe=function(){
          $('.recipe__holder').remove();
      });
 
-
-         $('.theme-bg').transition({
+        $('.theme-bg').transition({
         opacity:0
 
        // left:'-4px'
@@ -323,7 +320,7 @@ fileName=fileName.replace('.html', '')
     // prepending is easier to deal with stacking order/z-index
 //    $('.wrapper').prepend('<img src="../themes/assets/images/recipes/menu-pics/'+fileName+'" class="recipe--image">');
 
-    $('body').prepend('<div class="theme-bg '+fileName+'">theme bg</div>');
+    $('body').prepend('<div class="theme-bg '+fileName+'"></div>');
 
 // image loaded?
       setTimeout(function() {
@@ -375,11 +372,10 @@ $('.theme--supplemental').find('.header').click(function(event){
                 bottom:'-110px' // this should really be a var
             });
          footerExpanded=false;
-         }
+   }
 
 
-    var currentUrl = $('.theme--supplemental').find('a.btn').attr('href');
-
+var currentUrl = $('.theme--supplemental').find('a.btn').attr('href');
      // remove query string
         currentUrl=currentUrl.split("?")[0];
      // gets stored as a global var when we click a card
@@ -387,7 +383,7 @@ $('.theme--supplemental').find('.header').click(function(event){
 
         $('.theme--supplemental').find('a.btn').attr('href', currentUrl);
 
-    });
+});
 
 
 /* ######################################################
