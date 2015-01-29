@@ -34,8 +34,6 @@ setupMasonary=function(){
         });
    };
 
-
-
 /* ######################################################
 
 Event listeners for clicks on the thumb cards
