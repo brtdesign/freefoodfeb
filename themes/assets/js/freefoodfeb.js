@@ -273,7 +273,7 @@ recipeCloseListener=function(){
 
 showRecipe=function( response, status, xhr ){
     $('.recipe__holder').css({
-        filter:'blur(15px)'
+        filter:'blur(10px)'
     })
     //console.log( status, xhr );
     $('.recipe__holder').transition({
@@ -308,26 +308,25 @@ GET CUSTOM RECIPE IMAGES. Called when we load in the menus.
 Created as 24 bit png's and crushed with tinypng
 
 ############################################## */
-
+var fileName=''; // define here so we can call anywhere
 getRecipeImage=function(path){
 
     // get an image equivilent to the filename
 
     var fileNameIndex=path.lastIndexOf("/")+1; // count to the last slash
-    var fileName=path.substr(fileNameIndex); // strip everything before the character we just counted to
+     fileName=path.substr(fileNameIndex); // strip everything before the character we just counted to
     //fileName=fileName.replace('.html', '.png'); // change the extension to jpg/png
 fileName=fileName.replace('.html', '')
     // prepending is easier to deal with stacking order/z-index
 //    $('.wrapper').prepend('<img src="../themes/assets/images/recipes/menu-pics/'+fileName+'" class="recipe--image">');
 
     $('body').prepend('<div class="theme-bg '+fileName+'"></div>');
-
 // image loaded?
       setTimeout(function() {
             $('.theme-bg').transition({
         opacity:1
     }, 455);
-       }, 255);
+       }, 955);
 
 }
 
@@ -375,14 +374,13 @@ $('.theme--supplemental').find('.header').click(function(event){
    }
 
 
-var currentUrl = $('.theme--supplemental').find('a.btn').attr('href');
+var currentUrl = $('#email-invite').attr('href');
      // remove query string
         currentUrl=currentUrl.split("?")[0];
      // gets stored as a global var when we click a card
         currentUrl += '?id=' + loadedMenu;
-
-        $('.theme--supplemental').find('a.btn').attr('href', currentUrl);
-
+        $('#email-invite').attr('href', currentUrl);
+        $('#print-invite').attr('href', 'assets/pdfs/menus/'+fileName+'.pdf'); // defined when load ina menu. the .html file
 });
 
 

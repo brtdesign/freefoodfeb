@@ -12,6 +12,17 @@ $menu-red:#EC1C25;
 $non-link-default:#999;
 
 
+
+@keyframes arrow-fade {
+  0%   { opacity: 1; }
+  50% { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+
+
+.theme--supplemental .header strong {
+      animation: arrow-fade 2.0s infinite;
+}
 /* ############################################################
 
 them bg images
@@ -32,21 +43,43 @@ them bg images
     //visibility:hidden;
     background:transparent url(../images/recipes/menu-pics/fakeaway-aroundworld.jpg) center center no-repeat;
     background-size:cover;
-}
+    transform: translateZ(0);
+        
+    @media screen and (min-width:1200px){
+            &.hangover {
+                background-image:url(../images/recipes/menu-pics/hangover.jpg);
+            }
+
+            &.pancake {
+                 background-image:url(../images/recipes/menu-pics/pancake.jpg);      
+            }
+
+            &.sunday {
+                 background-image:url(../images/recipes/menu-pics/sunday.jpg);
+            } 
+        
+            &.valentines {
+                background-image:url(../images/recipes/menu-pics/valentines.jpg);
+            }
+            &.dinner-party {
+                background-image:url(../images/recipes/menu-pics/dinner-party.jpg);
+            }
+            &.tea-party {
+                background-image:url(../images/recipes/menu-pics/tea-party.jpg);
+            }
+        
+            &.chinese {
+                background-image:url(../images/recipes/menu-pics/chinese.jpg);
+            }
+        }
+    }
 
 .theme__card__header {
     top:3px;
     left:3px;
 }
 
-.recipe--image {
-right:0;
-left:auto;
-}
 
-.recipe--image {
- z-index:9999 !important;
-}
 
 .recipe__holder {
   z-index:99990 !important;
@@ -89,7 +122,6 @@ Basic setup
 .menu__holder {
     max-width:560px;
     position:absolute; // we position with this so we can get the menu absolute centre (with
-
         @media screen and (max-width:540px) {
             width:130%;
             margin-left:-20%;
@@ -103,7 +135,7 @@ Basic setup
      z-index:999;
      padding:2.5em;
      border-radius:1px;
-     box-shadow: 0px 0px 34px 12px rgba(#000, 0.65);
+     box-shadow: 0px 0px 18px 12px rgba(#000, 0.35);
      transform-origin: 0% 0%; // used by transit.js to scale
 
 //    &:hover {
@@ -267,7 +299,7 @@ $dinner-yellow:#FBB020;
 
 .menu--dinner {
     background:#F8EEDE url(../images/recipes/chinese-border.gif) center center repeat;
-    box-shadow:inset 0 0 3px rgba(#333, 0.55), 1px 1px 12px 6px rgba($slate-grey, 0.25);
+   // box-shadow:inset 0 0 3px rgba(#333, 0.55), 1px 1px 12px 6px rgba($slate-grey, 0.25);
 
         .menu__card__dishes {
             border:1px solid $dinner-sand;
@@ -359,6 +391,10 @@ $hangover-green:#5A975E;
     li {
         list-style:none;
         padding-bottom:0;
+    }
+    
+    .divider {
+        padding-bottom:1.5em;
     }
 
     .tagline {
@@ -510,6 +546,7 @@ $fakeaway-world-darker:#CEAE86;
             background-color:$fakeaway-world-sandy;
             box-shadow: -6px -6px 0px #fff;
         }
+        
         &:before { // complex inner border radius
             right:auto;
             left:-49px;
@@ -581,6 +618,7 @@ $fakeaway-world-darker:#CEAE86;
 $pancake-blue:#5375A4;
 
 .menu.menu--pancakes{
+    //box-shadow: 0px 0px 16px 12px rgba($pancake-blue,0.65);
     .menu__card__dishes {
         background-image:none;
         padding-top:2em;
@@ -690,7 +728,7 @@ $sunday-brown:#894E41;
 .menu.menu--sunday {
     background:$sunday-sand url(../images/recipes/hessian.gif) top left repeat;
     border:1px solid lighten($sunday-brown, 30%);
-    box-shadow:inset 0 0 12px darken($sunday-sand, 5%);
+    //box-shadow:inset 0 0 12px darken($sunday-sand, 5%);
 
      a, .divider, .divider:after {
        color:$sunday-yellow;
