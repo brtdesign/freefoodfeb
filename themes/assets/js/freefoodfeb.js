@@ -139,16 +139,15 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
             setTimeout(function() {
                 fadeCard($(val), cardScale, cardOpacity);
 
-
             // if we're on the last card, start to bring in the menu
                 if ((i+1)==cardArray.length && inOrOut=='out'){
-                    setTimeout(function() { // slight pause, otherwise its a bit too aggressive
+                    setTimeout(function() {
                       loadThemePage(pageToLoad);
-                    }, 250);
+                    }, 250); // delay on menu coming in -  slight pause, otherwise its a bit too aggressive
                 }
 
-            }, (i+1) * 125); // add a slight delay to get the aniamtions starts staggered
-        });
+            }, (i+1) * 65); // setInterval timeout value - add a slight delay to get the aniamtions starts staggered
+        }); //((i+1)/i) * 125)
 };
 
 /* ######################################################
@@ -297,15 +296,15 @@ removeRecipe=function(){
          $('.recipe__holder').remove();
      });
 
-    
+
          $('.theme-bg').transition({
         opacity:0
-       
+
        // left:'-4px'
     }, 650, function(){
           $('.theme-bg').remove();
      });
-   
+
 }
 
 /* #############################################
@@ -325,7 +324,7 @@ getRecipeImage=function(path){
 fileName=fileName.replace('.html', '')
     // prepending is easier to deal with stacking order/z-index
 //    $('.wrapper').prepend('<img src="../themes/assets/images/recipes/menu-pics/'+fileName+'" class="recipe--image">');
-    
+
     $('body').prepend('<div class="theme-bg '+fileName+'">theme bg</div>');
 
 // image loaded?

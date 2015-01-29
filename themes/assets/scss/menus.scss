@@ -11,12 +11,12 @@ $sw-red:#ED1941;
 $menu-red:#EC1C25;
 $non-link-default:#999;
 
-/*###############################################################
 
-add to primary css
+/* ############################################################
 
-*/
+them bg images
 
+ ############################################################ */
 
 .theme-bg {
     width:100%;
@@ -28,15 +28,15 @@ add to primary css
     right:0;
     bottom:0;
     z-index:0;
-    background-color:#ff0;
     opacity:0;
+    //visibility:hidden;
+    background:transparent url(../images/recipes/menu-pics/fakeaway-aroundworld.jpg) center center no-repeat;
+    background-size:cover;
 }
 
 .theme__card__header {
     top:3px;
     left:3px;
-//    background-image:url(http://www.slimmingworld.com/assets/images/ui-elements/recipe-icons.png);
-//    background-repeat:no-repeat;
 }
 
 .recipe--image {
@@ -103,7 +103,7 @@ Basic setup
      z-index:999;
      padding:2.5em;
      border-radius:1px;
-     box-shadow: 1px 1px 18px 6px rgba($slate-grey, 0.35);
+     box-shadow: 0px 0px 34px 12px rgba(#000, 0.65);
      transform-origin: 0% 0%; // used by transit.js to scale
 
 //    &:hover {

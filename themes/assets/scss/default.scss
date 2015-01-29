@@ -104,6 +104,10 @@ body {
 
 }
 
+
+.menu, .theme__card {
+         transform:translateZ(0); // force composite layer
+}
 /* ##############################################
 
 Footer with party bag info etc
@@ -135,6 +139,7 @@ Footer with party bag info etc
     .header {
         color:#fff;
         border-bottom:1px solid #333;
+        padding-bottom:10px;
         text-shadow:1px 1px 1px #333;
         cursor:pointer;
         strong {
@@ -172,6 +177,12 @@ Footer with party bag info etc
     }
 }
 
+
+.party-invitations {
+    position:absolute;
+    top:3px;
+    right:6px;
+}
 
 
 .pdf {
@@ -294,7 +305,6 @@ Theme 'Cards' layout
         }
 
 
-
         a {
             line-height:0;
             display:block; // force to encapsulate img correctly chrome:40
@@ -368,7 +378,7 @@ Recipes
 // appended when we $.load
 .recipe__holder {
     float:right;
-    width:68%;
+    width:62%;
     clear:none;
     opacity:0;
     position:relative;

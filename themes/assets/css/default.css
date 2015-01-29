@@ -914,6 +914,11 @@ body {
   font-size: 125%;
 }
 
+.menu, .theme__card {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+
 /* ##############################################
 
 Footer with party bag info etc
@@ -944,6 +949,7 @@ Footer with party bag info etc
 .theme--supplemental .header {
   color: #fff;
   border-bottom: 1px solid #333;
+  padding-bottom: 10px;
   text-shadow: 1px 1px 1px #333;
   cursor: pointer;
 }
@@ -978,6 +984,12 @@ Footer with party bag info etc
 }
 .party-resources a:hover {
   text-decoration: underline;
+}
+
+.party-invitations {
+  position: absolute;
+  top: 3px;
+  right: 6px;
 }
 
 .pdf {
@@ -1144,7 +1156,7 @@ Recipes
 
 .recipe__holder {
   float: right;
-  width: 68%;
+  width: 62%;
   clear: none;
   opacity: 0;
   position: relative;
