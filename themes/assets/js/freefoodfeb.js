@@ -378,7 +378,7 @@ var currentUrl = $('#email-invite').attr('href');
      // remove query string
         currentUrl=currentUrl.split("?")[0];
      // gets stored as a global var when we click a card
-        currentUrl += '?id=' + loadedMenu;
+        currentUrl += '?ChosenTemplateId=' + loadedMenu;
         $('#email-invite').attr('href', currentUrl);
         $('#print-invite').attr('href', 'assets/pdfs/menus/'+fileName+'.pdf'); // defined when load ina menu. the .html file
 });
