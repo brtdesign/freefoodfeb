@@ -16,6 +16,13 @@ $(document).ready(function() {
        themeListener();
 }); // close $ready
 
+scrollUp=function(){
+     $("html, body").animate({ scrollTop: 0 }, "slow");
+//    $('.theme__holder').transition({
+//        height:'auto'
+//    }, 255);
+}
+
 /* ######################################################
 
 Instantiate masonary
@@ -123,6 +130,7 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
             // if we're on the last card, start to bring in the menu
                 if ((i+1)==cardArray.length && inOrOut=='out'){
                     setTimeout(function() {
+                      scrollUp();
                       loadThemePage(pageToLoad);
                     }, 250); // delay on menu coming in -  slight pause, otherwise its a bit too aggressive
                 }
@@ -155,6 +163,7 @@ loadThemePage=function(whichPage){
             recipeClickEvents();
             //getRecipeImage(whichPage);
     });
+            
             toggleNav();
 };
 
@@ -170,7 +179,7 @@ removeThemePage=function(){
     }, 255, function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
             fadeAllThumbs('in');
-            showHideNav();
+            //showHideNav();
             toggleNav();
             removeRecipe();    
     });
@@ -264,13 +273,18 @@ recipeCloseListener=function(){
 showRecipe=function( response, status, xhr ){
     $('.recipe__holder').css({
         filter:'blur(10px)'
-    })
+    });
     //console.log( status, xhr );
     $('.recipe__holder').transition({
         opacity:1,
         filter:'blur(0px)'
-    }, 455)
+    }, 455);
+    
+   scrollUp();
+   
 }
+
+
 
 //// called when we go back to theme cards [age]
 removeRecipe=function(){
@@ -358,7 +372,9 @@ toggleNav = function(){
      // gets stored as a global var when we click a card
         currentUrl += '?ChosenTemplateId=' + loadedMenu;
         $('#email-invite').attr('href', currentUrl);
-        $('#print-invite').attr('href', 'assets/pdfs/menus/'+fileName+'.pdf'); // defined when load ina menu. the .html file
+        $('#print-menu').attr('href', 'assets/pdfs/menus/'+fileName+'.pdf'); // defined when load ina menu. the .html file
+    
+    $('#print-invite').attr('href', 'assets/pdfs/ecards/'+fileName+'.jpg'); //
    
 };  // close toggleNav
 
@@ -370,7 +386,9 @@ toggleNav = function(){
 
 showHideNav=function(){
        if (!navExpanded) {
-
+           
+           navExpanded=true; 
+           
             $('.theme--supplemental').transition({
                 top:'0px'
             });
@@ -385,10 +403,12 @@ showHideNav=function(){
             color:'#D5DC31'
           });
     
-      navExpanded=true; 
+
     
 } else {
 
+     navExpanded=false;   
+    
    $('.theme--supplemental').transition({
             top:'-130px' // this should really be dynamic
         });
@@ -402,8 +422,6 @@ showHideNav=function(){
         rotate:'-0deg', // CCW
         color:'#fff'
      });
-
-     navExpanded=false;
     }
 } // close show hide nav
 
