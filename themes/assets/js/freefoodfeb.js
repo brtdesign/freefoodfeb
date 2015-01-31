@@ -47,8 +47,7 @@ themeListener = function(){
     $('#js-themes-nav').click(function(event){
         event.preventDefault();
         // remove the menu thats showing
-        removeThemePage();
-        // fade in the thumbnails
+        removeThemePage();      
     });
 
     // click event listeners on the theme cards
@@ -60,11 +59,11 @@ themeListener = function(){
         fadeAllThumbs('out', pageToLoad); // can be in or out
 
         //store the one weve picked as loadedMenu var. It gets appended to the query string when the menu slides in.
-getRecipeImage(pageToLoad);
+        
+        getRecipeImage(pageToLoad);
+        
         loadedMenu=$(this).attr('data-val-menu_id');
 
-        //scrollToTop
-        //load the main theme page, consisting of a menu with links to recipes
     });
 };
 
@@ -80,11 +79,9 @@ fadeCard = function(elem, cardScale, cardOpacity){
 
     if (cardOpacity==1) {
         thisBlur='blur(0px) grayscale(0%)';
-        //thisGrey='grayscale(0%)';
     }
     else {
         thisBlur='blur(30px) grayscale(100%)';
-        //thisGrey='grayscale(100%)';
     }
 
         elem.transition({ // requires transit.js
@@ -92,8 +89,8 @@ fadeCard = function(elem, cardScale, cardOpacity){
         opacity:cardOpacity,
        //rotateY: '15deg',
        // -moz-filter:thisblur,
-        filter:thisBlur
-        //filter:thisGrey - break sthe blur
+       filter:thisBlur,
+
         },
         275,
         'easeOutSine'
@@ -111,25 +108,11 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
     if  (inOrOut=='out'){
         var cardScale="0.5";
         var cardOpacity="0";
-        var navOpacity="1";
-        var navPosition="-16px"; // matches the original value set in css. not very maintainable
-        var navPosition="-16px"; // matches the original value set in css. not very maintainable
-        var delayNav="1500"; // we want the nav to delay when its sliding in, but not if its sliding out
+
     } else {
         var cardScale="1";
         var cardOpacity="1";
-        var navOpacity="0";
-        var navPosition="-172px";
-        var delayNav="0"; // start immediately if its been clicked to fade the thumbs back in
     }
-
-      // fade + slide the nav in or out
-    setTimeout(function() {
-    $('#js-themes-nav').transition({
-            opacity:navOpacity,
-            left:navPosition,
-        }, 350); // animation timing
-    }, delayNav); // delay start timing, should be 0 when this is fading out so it responds immediately to click
 
 
     //loop through the thumbs and fade them in or out
@@ -172,7 +155,7 @@ loadThemePage=function(whichPage){
             recipeClickEvents();
             //getRecipeImage(whichPage);
     });
-            toggleFooter();
+            toggleNav();
 };
 
 
@@ -187,8 +170,9 @@ removeThemePage=function(){
     }, 255, function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
             fadeAllThumbs('in');
-            toggleFooter();
-            removeRecipe();
+            showHideNav();
+            toggleNav();
+            removeRecipe();    
     });
 }
 
@@ -203,6 +187,12 @@ recipeClickEvents=function(){
             event.preventDefault();
             var pageToLoad=$(this).attr('href');
             animateMenu(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
+            
+
+            if (navExpanded) { // navExpanded is set to false, then toggled. Set further down
+              showHideNav();
+            };
+//            
         });
     };
 
@@ -305,7 +295,6 @@ removeRecipe=function(){
 /* #############################################
 
 GET CUSTOM RECIPE IMAGES. Called when we load in the menus.
-Created as 24 bit png's and crushed with tinypng
 
 ############################################## */
 var fileName=''; // define here so we can call anywhere
@@ -316,7 +305,7 @@ getRecipeImage=function(path){
     var fileNameIndex=path.lastIndexOf("/")+1; // count to the last slash
      fileName=path.substr(fileNameIndex); // strip everything before the character we just counted to
     //fileName=fileName.replace('.html', '.png'); // change the extension to jpg/png
-fileName=fileName.replace('.html', '')
+fileName=fileName.replace('.html', '');
     // prepending is easier to deal with stacking order/z-index
 //    $('.wrapper').prepend('<img src="../themes/assets/images/recipes/menu-pics/'+fileName+'" class="recipe--image">');
 
@@ -326,75 +315,97 @@ fileName=fileName.replace('.html', '')
             $('.theme-bg').transition({
         opacity:1
     }, 455);
-       }, 955);
+}, 955);
 
 }
 
 
-/* ######################################################
 
-toggle the footer on and off
+/* #############################################
 
-####################################################### */
+Nav bar functions. 
+1). toggleNav : Slide the nav into view ona menu page
+2). expandNav :Extend it to show fill height
 
-var footerShowing=false; // set this as a var so we can just call toggleFooter without worrying about its current state
-toggleFooter = function(){
-    if (footerShowing) {
+############################################## */
+
+// this is the intial view 
+var navShowing=false; // set this as a var so we can just call toggleNav without worrying about its current state
+var navExpanded=false;
+
+toggleNav = function(){
+    if (navShowing) {
         $('.theme--supplemental').transition({
-           bottom:'-200px'
+           top:'-250px'
         });
-        footerShowing=false;
+        navShowing=false;
     }
     else {
-       setTimeout(function() {
+       setTimeout(function() { // staggger the animation on unloading
         $('.theme--supplemental').transition({
-            bottom:'-110px' // this should really be a var
+            top:'-130px'// this should really be a var
         });
        }, 1200);
-        footerShowing=true;
+        navShowing=true;
     }
-}
+    
 
 
-
-var footerExpanded=false;
-
-$('.theme--supplemental').find('.header').click(function(event){
-     if (!footerExpanded) {
-            $('.theme--supplemental').transition({
-                bottom:'0px'
-            });
-         footerExpanded=true;
-    } else {
-
-   $('.theme--supplemental').transition({
-                bottom:'-110px' // this should really be a var
-            });
-         footerExpanded=false;
-   }
-
-
-var currentUrl = $('#email-invite').attr('href');
+        // set up the cvontents of the nav bar with the corrct references from the loaded menu 
+        var currentUrl = $('#email-invite').attr('href');
      // remove query string
         currentUrl=currentUrl.split("?")[0];
      // gets stored as a global var when we click a card
         currentUrl += '?ChosenTemplateId=' + loadedMenu;
         $('#email-invite').attr('href', currentUrl);
         $('#print-invite').attr('href', 'assets/pdfs/menus/'+fileName+'.pdf'); // defined when load ina menu. the .html file
-});
+   
+};  // close toggleNav
 
+  
+// function for expanding the nav to reveal the full contents
+    $('.theme--supplemental__header').click(function(event){
+      showHideNav(); // moved so we can call 
+    });
 
-/* ######################################################
+showHideNav=function(){
+       if (!navExpanded) {
 
-toggle the header states
+            $('.theme--supplemental').transition({
+                top:'0px'
+            });
 
-####################################################### */
+          $('.theme--supplemental__header').find('.left-arrow').transition({    
+            rotate:'270deg', // negative defines the direction of spin 
+              color:'#D5DC31'
+          });
 
-var headerMaxed=true;
+           $('.theme--supplemental__header').find('.right-arrow').transition({    
+            rotate:'-270deg',
+            color:'#D5DC31'
+          });
+    
+      navExpanded=true; 
+    
+} else {
 
-toggleHeader = function (){
-     console.log('toggle header');
-}
+   $('.theme--supplemental').transition({
+            top:'-130px' // this should really be dynamic
+        });
+
+    $('.theme--supplemental__header').find('.left-arrow').transition({    
+        rotate:'0deg',
+        color:'#fff'
+     });
+
+    $('.theme--supplemental__header').find('.right-arrow').transition({    
+        rotate:'-0deg', // CCW
+        color:'#fff'
+     });
+
+     navExpanded=false;
+    }
+} // close show hide nav
 
 
 
