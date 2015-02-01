@@ -88,7 +88,7 @@ them bg images
     top:-24px;
     right:4px;
     padding:3px;
-    z-index:999999;
+    z-index:99999;
     font: 1.25rem / 1.618 "Source Sans Pro", sans-serif;
     cursor:pointer;
     padding:2px 10px;
@@ -115,12 +115,12 @@ Basic setup
 ###################*/
 
 .menu__holder {
+    width:100%;
     max-width:560px;
     position:absolute; // we position with this so we can get the menu absolute centre (with
         @media screen and (max-width:540px) {
-            width:130%;
-            margin-left:-20%;
-            margin-right:-10%;
+           
+            
     }
 }
 
@@ -129,18 +129,17 @@ Basic setup
      position:relative;
      z-index:999;
      padding:2.5em;
+     padding-top:0;
      border-radius:1px;
      box-shadow: 0px 0px 18px 12px rgba(#000, 0.35);
      transform-origin: 0% 0%; // used by transit.js to scale
-
-//    &:hover {
-//        & a {
-//            //border-bottom: 1px solid currentColor;
-//            text-decoration:underline;
-//            //background-color:#ccc;
-//        }
-//    }
-}
+         @media screen and (max-width:540px) {
+             padding-top:0;
+              padding:1em;   
+              left: -2em !important; // old school hacks
+              margin-right: -2em !important;// try to give the menu as much space as possible on small screens
+         }
+    }
 
 
 
@@ -194,7 +193,7 @@ Basic setup
         padding:1em 10px 4px 10px;
         margin:0 -10%;
         position:absolute;
-        top:-46px;
+        top:-72px;
         left:0;
         right:0;
         background:transparent url(../images/svg/red-banner.svg) center center no-repeat;
@@ -205,6 +204,15 @@ Basic setup
         text-shadow: 0px 2px 1px rgba(#000, 0.1);
         text-align:center;
         z-index: 999999999;
+        
+        @media screen and (max-width:540px) {
+            font-size:100%;
+            width:100%;
+            max-width:100%;
+            margin:0;
+            top:-54px;
+            line-height:2.5;
+        }
     }
 
 
@@ -477,7 +485,7 @@ $dark-blue:#275CAD;
     }
 
     .menu__card__dishes {
-        margin-top:-2em;
+        
         border:6px solid  lighten($light-blue, 20%);
         background:#fff url(../images/recipes/tpot.gif) right 12px bottom 12px no-repeat;
 
@@ -595,9 +603,7 @@ $fakeaway-world-darker:#CEAE86;
         padding:0;
     }
 
-    .char2 {
-        margin-right:-7px;
-    }
+
 
 
     .lanterns {

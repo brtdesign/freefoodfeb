@@ -60,7 +60,7 @@ themeListener = function(){
     // click event listeners on the theme cards
     $('.theme__card__link').click(function(event){
         event.preventDefault();
-        $(this).addClass('visited');
+        $(this).parent().addClass('visited');
         fadeCard($(this).parent(), '0.5', '0'); // force this one as we want it to dissapear immediately
         var pageToLoad=($(this)).attr('href');
         fadeAllThumbs('out', pageToLoad); // can be in or out
