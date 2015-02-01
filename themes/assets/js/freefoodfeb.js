@@ -179,8 +179,22 @@ removeThemePage=function(){
     }, 255, function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
             fadeAllThumbs('in');
-            //showHideNav();
+           // showHideNav(); // causes unexpected show/hide flash 
             toggleNav();
+ // Force reseting arrows as this can get muddled up
+        // pretty poor way to tdo this, but no time to refactor
+                    navExpanded=false;
+                    navShowing=false;
+                    $('.theme--supplemental__header').find('.left-arrow').transition({    
+                rotate:'0deg',
+                color:'#fff'
+             });
+
+            $('.theme--supplemental__header').find('.right-arrow').transition({  
+                rotate:'-0deg', // CCW
+                color:'#fff'
+             });
+        
             removeRecipe();    
     });
 }

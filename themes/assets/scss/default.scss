@@ -83,7 +83,7 @@ $breakpoints: 320 768 1280 1920; // used as the actual breakpoint in px, and is 
 body {
     padding:$gutter/2;
     padding-bottom:200px; // to allow the footer to have position fixed
-
+    overflow-x: hidden;
 }
 
 .wrapper {
@@ -163,8 +163,12 @@ Footer with party bag info etc
     text-align:right;
     box-shadow: 0 6px 4px rgba(#000, 0.35);
     
-    @media screen and (min-width:500px) {
+    @media screen and (min-width:440px) {
         text-align:center;
+        
+        strong {
+            top:-4px;
+        }
     }
     
     @media screen and (max-width:640px){
@@ -176,7 +180,6 @@ Footer with party bag info etc
         font-size:80%;
         color:#fff;
         position:relative;
-        top:-4px;
         display:inline-block;
         clear:none;
         animation: arrow-fade 2.0s infinite;
@@ -200,7 +203,9 @@ Footer with party bag info etc
     padding:2px 12px;
     
        @media screen and (max-width:860px) {
-           width:22px;
+        width:34px;
+        padding:2px 8px;
+        min-width: 34px;
            i { display:none;
                }
         }
@@ -306,44 +311,48 @@ Theme 'Cards' layout
     top:8.5em;
 }
 
-.loading {
-   & .theme__card {
-        opacity:0;
-    }
-}
+
     .theme__card {
         filter:blur(0px); // The animation on first run is janky without this.
         opacity:1;
-        box-shadow:0px 0px 12px 1px rgba(#000, 0.35);
+        box-shadow:0px 0px 12px 4px rgba(#000, 0.45);
         margin: 12px 1.5%;
         border:1px solid $lime-green;
         width:30.3%; // set the desktop size as default so we dont have to mess about for IE8
         float:left;
-        transition: all 125ms ease;
-        ///background:#fff url(../images/invites/fakeaway.jpg) center top no-repeat;
-
+        padding:0;
+        padding-top:20.5%;
+        background:#fff url(../images/ajaxloader.gif) center center no-repeat;
+        transition:all 125ms ease;
+        
         &:hover {
-        margin-top:8px;
-            margin-bottom:16px;
+            margin-top:6px;
+            margin-bottom:10px;
         }
 
         img {
             width:100%;
             padding:3px;
             background-color:#fff;
+            margin-bottom:1em;
         }
-         @media screen and (max-width:480px){
+         @media screen and (max-width:320px){
             width:96%;
-            margin:6px 2%;
+            margin:8px 2%;
+             padding-top:31%;
         }
 
-        @media screen and (min-width:481px)  and (max-width:960px) {
+        @media screen and (min-width:321px)  and (max-width:840px) {
             width:46%;
-            margin:28px 2%;
+            margin:8px 2%;
+            padding-top:31%;
         }
-
 
         a {
+           position:absolute;
+            top:0;
+            left:0;
+            right:0;
             line-height:0;
             display:block; // force to encapsulate img correctly chrome:40
 
@@ -361,28 +370,17 @@ Theme 'Cards' layout
     }
 
 
-.theme__card__header, .theme__card__desc {
+.theme__card__header {
     font-size:90%;
     background:rgba(#000, 0.75);
     color:#fff;
     padding:0.5em;
     margin:0;
-}
-
-
-
-.theme__card__header {
     position:absolute;
     border:1px solid rgba(#fff, 0.5);
     top:2px;
     left:2px;
 }
-
-.theme__card__desc {
-    background-color:transparent;
-}
-
-
 
 /* ##############################################
 
@@ -418,10 +416,13 @@ Recipes
     position:relative;
     top:-2em;
     overflow:auto;
-    background-color:rgba(#fff, 0.95);
-    padding:2em;
+    background-color:rgba(#fff, 0.90);
+    padding:1.5em;
     box-shadow: 0px 0px 10px 9px rgba(0,0,0,0.35);
-
+    z-index:99990 !important;
+    img {
+        display:none;
+    }
 
         h1 {
             background:none !important; // this is set inline
@@ -434,7 +435,7 @@ Recipes
 
     ol li, ul li{
        @include font-full(16, $content-text);
-      list-style-position:outside;
+      list-style-position:inside;
     }
 
     ol {
@@ -452,13 +453,18 @@ Recipes
     .panel {
         border: 1px solid #e5e0e0;
         background: rgba(#e5e3e2, 0.75);
-        margin-bottom: 0.65em;
+        margin:1.5em 0em;
         padding:0.5em;
+
         border-radius: 0 0 4px 4px;
 
     ul {
         list-style:none;
         margin-bottom:0;
+       li {
+            font-size:90%;
+           margin-bottom:6px;
+       }
     }
 
     li {

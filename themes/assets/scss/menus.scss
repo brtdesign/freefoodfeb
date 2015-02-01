@@ -80,14 +80,12 @@ them bg images
     visibility:hidden; // we fade this in after load();
 }
 
-.recipe__holder {
-  z-index:99990 !important;
-}
+
 
 
 .close-recipe {
     position:absolute;
-    top:-1px;
+    top:-24px;
     right:4px;
     padding:3px;
     z-index:999999;
@@ -95,7 +93,7 @@ them bg images
     cursor:pointer;
     padding:2px 10px;
     border:1px solid #eee;
-    background-color:#f8f8f8;
+    background-color:#ebe6e6;
     text-align:center;
     color:#666;
     text-shadow:1px 1px 1px #fff;
@@ -107,9 +105,7 @@ them bg images
     }
 }
 
-footer {
- z-index:99999 !important;
-}
+
 
 .kern {
 margin-right:-3px;
@@ -155,7 +151,7 @@ Basic setup
 .menu__card__dishes {
  margin:0;
  position:relative;
-color:$non-link-default;
+ color:$non-link-default;
     a {
         width:100%;
         display:block;
@@ -756,3 +752,5 @@ $sunday-brown:#894E41;
         color:$sunday-brown;
     }
 }
+
+
