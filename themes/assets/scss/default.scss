@@ -1,16 +1,14 @@
 /* ######################################################### */
 /*                CALLS TO ALL THE PARTIALS                  */
 /* ######################################################### */
-//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_reset";
-//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_variables-global";
-//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_utilities";
-//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_mixins";
-//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_typography";
-//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_buttons";
-//@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_forms";
-@import "C:\xampp\htdocs\brtdesign.github.io\assets\_scss\partials\_variables";
-@import "C:\xampp\htdocs\brtdesign.github.io\assets\_scss\partials\_mixins";
-@import "_static-partial-for-dev";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_reset";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_variables-global";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_utilities";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_mixins";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_typography";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_buttons";
+@import "E:/SVNProjects/Trunk/SlimmingWorld/UK/Public/www/assets/prototype/app-library/final/partials/_forms";
+
 
 /* #####################################################
 
@@ -49,10 +47,21 @@ copied from group register - should be in lib?
 
 #####################################################*/
 
+.browser-warning {
+    position:absolute;
+    top:1em;
+    margin:auto;
+    text-align:center;
+    width:100%;
+    padding:1em;
+    background-color:#fff;
+    z-index:9999999999999999;
+}
+
 html {
     background-color:#dfdfdf;
     background-image:url('../images/backgrounds/768/primary.jpg');
-    background-position: right bottom; // we want the free food feb graphic in shot
+    background-position: center center; // we want the free food feb graphic in shot
     background-size: cover; // must be prefixed - prepros doing it at the moment.
     background-attachment:fixed;
     min-height:100%;
@@ -116,7 +125,7 @@ Footer with party bag info etc
     text-align:center;
     padding:0.5em 1em 4em 1em;
     border-bottom:1px solid #333;
-    
+
     @media screen and (min-width:740px){
         background:rgba(#181716, 0.95) url(../images/bunting.png) top right no-repeat;
     }
@@ -129,13 +138,13 @@ Footer with party bag info etc
 
     .btn {
         margin:0;
-       
+
     }
-    
+
     #email-invite {
          box-shadow:0 0 12px 3px rgba(#000, 0.6);
     }
-    
+
     ul {
         list-style:none;
         margin:0;
@@ -145,7 +154,7 @@ Footer with party bag info etc
                 padding-left:62px;
                 }
     }
-    
+
     li {
         display:inline-block;
     }
@@ -173,20 +182,20 @@ Footer with party bag info etc
     width:100%;
     text-align:right;
     box-shadow: 0 6px 4px rgba(#000, 0.35);
-    
+
     @media screen and (min-width:361px) {
         text-align:center;
-        
+
         strong {
             top:-4px;
         }
     }
-    
+
     @media screen and (max-width:640px){
         font-size:105%;
         padding:12px 6px;
     }
-    
+
     strong {
         font-size:80%;
         color:#fff;
@@ -212,7 +221,7 @@ Footer with party bag info etc
     display:block;
     z-index:9999999;
     padding:2px 12px;
-    
+
        @media screen and (max-width:520px) {
             width: 40px;
             padding: 3px 6px;
@@ -220,10 +229,10 @@ Footer with party bag info etc
            i { display:none;
                }
         }
-    
+
     i{
         font-style:normal;
-     
+
     }
         &:before {
             text-align:center;
@@ -240,8 +249,8 @@ Footer with party bag info etc
     width:100%;
     max-width:480px;
     float:left; // CF
-    
-    
+
+
     h2 {
         @include font-size(16);
         color:#fff;
@@ -266,7 +275,7 @@ Footer with party bag info etc
         padding-top:2em;
     }
     .party-invitations {
-        float:right;    
+        float:right;
     }
 }
 
@@ -342,7 +351,7 @@ Theme 'Cards' layout
         min-height:180px;
         background:#fff url('data:image/gif;base64,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') center center no-repeat;
         transition:all 125ms ease;
-        
+
         &:hover {
             margin-top:6px;
             margin-bottom:10px;
@@ -359,13 +368,13 @@ Theme 'Cards' layout
          @media screen and (max-width:320px){
             width:96%;
             margin:8px 2%;
-     
+
         }
 
         @media screen and (min-width:321px)  and (max-width:840px) {
             width:46%;
             margin:8px 2%;
-      
+
         }
 
         a {
@@ -373,9 +382,9 @@ Theme 'Cards' layout
   }
         &.visited {
                 background-color:$lime-green;
-           
+
         }
-  
+
 }
 
     .theme__card__link {
@@ -393,7 +402,7 @@ Theme 'Cards' layout
     margin:3px 3px 0 3px;
     border-bottom:1px solid rgba(#ccc, 0.5);
     text-shadow:1px 1px 1px #333;
-    
+
 }
 
 /* ##############################################
@@ -430,10 +439,19 @@ Recipes
     position:relative;
     top:-2em;
     overflow:auto;
-    background-color:rgba(#fff, 0.90);
-    padding:1.5em;
-    box-shadow: 0px 0px 10px 9px rgba(0,0,0,0.35);
+    background-color:rgba(#fff, 0.70);
+    padding:1em;
+    box-shadow: 0px 0px 10px 6px rgba(0,0,0,0.25);
     z-index:99990 !important;
+    border:1px solid #999;
+
+    #main {
+        background:#fff url(../images/recipes/paper-bg.gif) center center repeat;
+        padding:1em;
+        border:3px double #e5d4d4;
+        box-shadow:inset 0px 0px 6px 1px rgba(#fff, 0.35);
+    }
+
     img {
         display:none;
     }
@@ -441,10 +459,14 @@ Recipes
         h1 {
             background:none !important; // this is set inline
             font: 2.25em/1.1 'Sorts Mill Goudy', serif;
+            color:$sw-red;
+            border-bottom:2px dotted #999;
         }
 
         h2 {
-        font: 1.75em/1.1 'Sorts Mill Goudy', serif;
+            font: 1.75em/1.1 'Sorts Mill Goudy', serif;
+            color:$sw-red;
+            border-bottom:2px dotted #999;
         }
 
     ol li, ul li{
@@ -491,21 +513,34 @@ Recipes
     }
 
     .serves-title {
-        background-position:0px -49px;
+        background-position:0px -45px;
     }
 
     .syns {
         white-space:nowrap;
-        background-position:0px -104px;
+        background-position:0px -100px;
 
         ul {
             display:inline;
-            clear:none;
             font-weight:bold;
+                p{ // hack to paint over the V symbol which peeks when the 'tip' is in view
+                    display:block;
+                    font-size:80%;
+                    clear:left;
+                    margin-bottom:-3em;
+                    background-color:#E9E8E7;
+                    white-space:normal;
+                    padding:1em;
+                    margin-left: -3em;
+                }
             }
+        }
+        .recipe-vegetarian__title {
+            background-position:0px -159px;
         }
     }
 }
+
 
 // massive images that get loaded with recipes. may not be needed
 .recipe--image {
@@ -539,4 +574,4 @@ Recipes
     float:left;
 }
 
-
+@import "_menus";

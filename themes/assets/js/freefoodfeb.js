@@ -11,16 +11,12 @@ $(document).ready(function() {
 
        setupMasonary();
        $('.theme__holder').removeClass('loading');
-      // $('.theme__card__header').arctext({radius: 280});
-    // click event listener for the individual cards
        themeListener();
-}); // close $ready
+});
 
 scrollUp=function(){
      $("html, body").animate({ scrollTop: 0 }, "slow");
-//    $('.theme__holder').transition({
-//        height:'auto'
-//    }, 255);
+
 }
 
 /* ######################################################
@@ -29,16 +25,19 @@ Instantiate masonary
 
 #######################################################*/
 
+   var $container = $('.theme__holder');
+
 setupMasonary=function(){
    // arrange items using masonary
-    var $container = $('.theme__holder');
+
     $container.imagesLoaded( function() {
         $container.masonry ({
           itemSelector: '.theme__card'
             });
 
-         $container.masonry('bindResize');
+
         });
+             $container.masonry('bindResize');
    };
 
 /* ######################################################
@@ -54,7 +53,7 @@ themeListener = function(){
     $('#js-themes-nav').click(function(event){
         event.preventDefault();
         // remove the menu thats showing
-        removeThemePage();      
+        removeThemePage();
     });
 
     // click event listeners on the theme cards
@@ -66,9 +65,9 @@ themeListener = function(){
         fadeAllThumbs('out', pageToLoad); // can be in or out
 
         //store the one weve picked as loadedMenu var. It gets appended to the query string when the menu slides in.
-        
+
         getRecipeImage(pageToLoad);
-        
+
         loadedMenu=$(this).attr('data-val-menu_id');
 
     });
@@ -136,6 +135,9 @@ fadeAllThumbs=function(inOrOut, pageToLoad){
                 }
             }, (i+1) * 65); // setInterval timeout value - add a slight delay to get the aniamtions starts staggered
         }); //((i+1)/i) * 125)
+
+
+  $container.masonry('bindResize');
 };
 
 /* ######################################################
@@ -163,7 +165,7 @@ loadThemePage=function(whichPage){
             recipeClickEvents();
             //getRecipeImage(whichPage);
     });
-            
+
             toggleNav();
 };
 
@@ -179,23 +181,23 @@ removeThemePage=function(){
     }, 255, function(){
          $('.menu__holder').remove(); // delete the holder, it gets recreated
             fadeAllThumbs('in');
-           // showHideNav(); // causes unexpected show/hide flash 
+           // showHideNav(); // causes unexpected show/hide flash
             toggleNav();
  // Force reseting arrows as this can get muddled up
         // pretty poor way to tdo this, but no time to refactor
                     navExpanded=false;
                     navShowing=false;
-                    $('.theme--supplemental__header').find('.left-arrow').transition({    
+                    $('.theme--supplemental__header').find('.left-arrow').transition({
                 rotate:'0deg',
                 color:'#fff'
              });
 
-            $('.theme--supplemental__header').find('.right-arrow').transition({  
+            $('.theme--supplemental__header').find('.right-arrow').transition({
                 rotate:'-0deg', // CCW
                 color:'#fff'
              });
-        
-            removeRecipe();    
+
+            removeRecipe();
     });
 }
 
@@ -210,12 +212,12 @@ recipeClickEvents=function(){
             event.preventDefault();
             var pageToLoad=$(this).attr('href');
             animateMenu(pageToLoad); // much smoother animation doing this consequtively instead of concurrently
-            
+
 
             if (navExpanded) { // navExpanded is set to false, then toggled. Set further down
               showHideNav();
             };
-//            
+//
         });
     };
 
@@ -244,19 +246,19 @@ loadRecipe=function(pageToLoad){
 
 
             $('.menu__holder').after('<div class="recipe__holder"></div>');
-            $('.recipe__holder').before('<b class="close-recipe">X</b>');
-            $('.recipe__holder').append('<img src="../themes/assets/images/ajaxloader.gif" class="loader">');
-            loadFragment=pageToLoad + ' #main'; // The quotes must have space character at the start.
+
+           // $('.recipe__holder').append('<img src="../themes/assets/images/ajaxloader.gif" class="loader">');
+            loadFragment=pageToLoad+'?'+new Date().getTime()+' #main'; // The quotes must have space character at the start.
 
             $('.recipe__holder').load(loadFragment, function( response, status, xhr ){
                  showRecipe();
                  recipeCloseListener();
             });
-
         }
 
 
 recipeCloseListener=function(){
+
    $('.close-recipe').click(function(){
 
           $('.recipe__holder').transition({
@@ -285,6 +287,7 @@ recipeCloseListener=function(){
 // need to strip the img tag from the html rather than hiding it in CSS
 
 showRecipe=function( response, status, xhr ){
+       scrollUp();
     $('.recipe__holder').css({
         filter:'blur(10px)'
     });
@@ -292,10 +295,13 @@ showRecipe=function( response, status, xhr ){
     $('.recipe__holder').transition({
         opacity:1,
         filter:'blur(0px)'
-    }, 455);
-    
-   scrollUp();
-   
+    }, 455, function(){
+
+           $('.recipe__holder').before('<b class="close-recipe">X</b>');
+    });
+
+
+
 }
 
 
@@ -351,13 +357,13 @@ fileName=fileName.replace('.html', '');
 
 /* #############################################
 
-Nav bar functions. 
+Nav bar functions.
 1). toggleNav : Slide the nav into view ona menu page
 2). expandNav :Extend it to show fill height
 
 ############################################## */
 
-// this is the intial view 
+// this is the intial view
 var navShowing=false; // set this as a var so we can just call toggleNav without worrying about its current state
 var navExpanded=false;
 
@@ -376,63 +382,63 @@ toggleNav = function(){
        }, 1200);
         navShowing=true;
     }
-    
 
 
-        // set up the cvontents of the nav bar with the corrct references from the loaded menu 
+
+        // set up the cvontents of the nav bar with the corrct references from the loaded menu
         var currentUrl = $('#email-invite').attr('href');
      // remove query string
         currentUrl=currentUrl.split("?")[0];
      // gets stored as a global var when we click a card
         currentUrl += '?ChosenTemplateId=' + loadedMenu;
         $('#email-invite').attr('href', currentUrl);
-        $('#print-menu').attr('href', 'assets/pdfs/menus/'+fileName+'.pdf'); // defined when load ina menu. the .html file
-    
-    $('#print-invite').attr('href', 'assets/pdfs/ecards/'+fileName+'.jpg'); //
-   
+        $('#print-menu').attr('href', '/Views/FreeFoodFeb/assets/pdfs/menus/'+fileName+'.pdf'); // defined when load ina menu. the .html file
+
+    $('#print-invite').attr('href', '/Views/FreeFoodFeb/assets/pdfs/ecards/'+fileName+'.jpg'); //
+
 };  // close toggleNav
 
-  
+
 // function for expanding the nav to reveal the full contents
     $('.theme--supplemental__header').click(function(event){
-      showHideNav(); // moved so we can call 
+      showHideNav(); // moved so we can call
     });
 
 showHideNav=function(){
        if (!navExpanded) {
-           
-           navExpanded=true; 
-           
+
+           navExpanded=true;
+
             $('.theme--supplemental').transition({
                 top:'0px'
             });
 
-          $('.theme--supplemental__header').find('.left-arrow').transition({    
-            rotate:'270deg', // negative defines the direction of spin 
+          $('.theme--supplemental__header').find('.left-arrow').transition({
+            rotate:'270deg', // negative defines the direction of spin
               color:'#D5DC31'
           });
 
-           $('.theme--supplemental__header').find('.right-arrow').transition({    
+           $('.theme--supplemental__header').find('.right-arrow').transition({
             rotate:'-270deg',
             color:'#D5DC31'
           });
-    
 
-    
+
+
 } else {
 
-     navExpanded=false;   
-    
+     navExpanded=false;
+
    $('.theme--supplemental').transition({
             top:'-130px' // this should really be dynamic
         });
 
-    $('.theme--supplemental__header').find('.left-arrow').transition({    
+    $('.theme--supplemental__header').find('.left-arrow').transition({
         rotate:'0deg',
         color:'#fff'
      });
 
-    $('.theme--supplemental__header').find('.right-arrow').transition({    
+    $('.theme--supplemental__header').find('.right-arrow').transition({
         rotate:'-0deg', // CCW
         color:'#fff'
      });
